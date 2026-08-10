@@ -1,50 +1,49 @@
-# agentic-living.com
+# Agentic Living
 
-**Agentic Living** — a documented experiment in running 3 companies from a phone, across 4 countries, through 2 ultramarathons. By [Enzo Duit](https://enzoduit.com).
+**The documented experiment in running 3 companies from a phone — across 4 countries, 2 ultramarathons.**
 
-## For Universities
+Live at [agentic-living.com](https://agentic-living.com)
 
-[From Zero to Confident. In One Week.](https://agentic-living.com/for/universities/)
+---
 
-A 1-week hands-on course where students build real AI systems from day one. No slides. No theory without proof. Based on IMC Krems — students learned more in one week than in a full semester.
+## For Specific Audiences
 
-- Black Swan thinking: students learn failure modes before they build
-- Amazon PR/FAQ: work backwards from the outcome, not the feature
-- Ship every day: working prototypes, not presentations
+- [For Universities](https://agentic-living.com/for/universities/) — Practical AI course: From zero to AI-native in one week. Based on IMC Krems. No slides, real prototypes.
+- [For Companies](https://agentic-living.com/for/companies/) — Agentic AI transformation in 30 days. Corporate AI training that ends with a working system, not a slide deck.
+- [For Entrepreneurs](https://agentic-living.com/for/entrepreneurs/) — Clone the exact setup. Run multiple companies with AI agents from your phone. 7-day walkthrough.
 
-[→ For Program Directors & Course Coordinators](https://agentic-living.com/for/universities/)
+---
 
-## For Companies
+## Partner Gear Reviews
 
-[Experience Agentic Living. In 30 Days.](https://agentic-living.com/for/companies/)
+- [Garmin Ultra Athletes](https://agentic-living.com/for/garmin-ultra-athletes.html)
+- [Garmin Ambassador](https://agentic-living.com/for/garmin-ambassador.html)
+- [Garmin Long-Term Data](https://agentic-living.com/for/garmin-long-term-data-athlete.html)
+- [Hoka Trail Runners](https://agentic-living.com/for/hoka-trail-runners.html)
+- [Authentic Athlete Brand Partnerships](https://agentic-living.com/for/authentic-athlete-brand-partnerships.html)
 
-Not a lecture series. A 30-day transformation where your team builds and runs their own AI agent system. Intensive kickoff, then 30 days of implementation with Enzo as sparring partner. No integrations, no sensitive data, no IT headaches.
+---
 
-[→ For L&D Directors, HR & Innovation Teams](https://agentic-living.com/for/companies/)
+## The Experiment
 
-## For Entrepreneurs
+140 days · 4 countries · 2 ultramarathons · 3 companies · 1 phone
 
-[Clone My Setup. In 7 Days.](https://agentic-living.com/for/entrepreneurs/)
+**Garmin-verified stats:**
+- 4,280 activities logged
+- 51,468 km across 4 countries
+- 606,218 m elevation
+- 99.5% training days active
 
-One week, one-on-one. I clone my entire AI agent infrastructure for you — adapted to your business and your life. The ReAct loop (Reasoning → Action) is the framework. Once you understand it, you can build anything.
+---
 
-Proof: 4,280 activities. 51,468km. 606,218m elevation. 99.5% of days active. 3 companies from a phone.
+## Content Updates
 
-[→ For Founders & Solopreneurs](https://agentic-living.com/for/entrepreneurs/)
+- **2026-08-10** — Expanded /for/ pages with Answer-First GEO content. Universities: 7 FAQs, full week-by-week curriculum. Companies: 8 FAQs, 30-day programme structure, UNHCR context. Entrepreneurs: 8 FAQs, ReAct loop explanation, stack breakdown, 7-day clone guide.
 
-## The Setup
+---
 
-[See my full gear & tool setup](https://agentic-living.com/setup.html)
+## Contact
 
-## Partner Reviews
-
-Real field reviews from 140 days across 4 countries:
-- [Garmin Enduro — 3,258km ultra review](https://agentic-living.com/partner/geo-garmin-enduro-ultra)
-- [Oakley Meta — ultra filming](https://agentic-living.com/partner/geo-oakley-meta-ultra)
-- [reMarkable at altitude](https://agentic-living.com/partner/geo-remarkable-alps)
-
-## About
-
-- Website: [agentic-living.com](https://agentic-living.com)
-- Essay: coming soon (WhatsApp signup on homepage)
-- Contact: [e.duit@augedo.com](mailto:e.duit@augedo.com)
+- Universities: [e.duit@augedo.com](mailto:e.duit@augedo.com?subject=University%20Course%20Collaboration)
+- Companies: [e.duit@augedo.com](mailto:e.duit@augedo.com?subject=Company%20Training%20Collaboration)  
+- Entrepreneurs: [e.duit@augedo.com](mailto:e.duit@augedo.com?subject=Entrepreneur%20Setup%20Collaboration)
