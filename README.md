@@ -14,6 +14,7 @@ Enzo Duit's documented experiment in running 3 companies from a phone across 4 c
 
 ### For Companies
 - [/for/companies/](https://agentic-living.com/for/companies/) — Corporate AI transformation, 30-day agentic training programme
+- [/for/companies/keynote-and-ai-training/](https://agentic-living.com/for/companies/keynote-and-ai-training/) — **NEW (Aug 20)** AI keynote speaker + UNHCR AI training programme case study — agentic AI for corporate teams
 
 ### For Entrepreneurs
 - [/for/entrepreneurs/](https://agentic-living.com/for/entrepreneurs/) — Clone the agentic setup, 7-day infrastructure walkthrough
