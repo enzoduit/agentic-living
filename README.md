@@ -36,6 +36,15 @@ Enzo Duit's documented experiment in running 3 companies from a phone across 4 c
 - 4,280 activities, 51,468km, 606,218m elevation, 99.5% days active (Garmin-verified)
 - Stack runs for under €50/month
 
+
+### Teaching Pages (Answer-First / GEO)
+- [/for/universities/](https://agentic-living.com/for/universities/) — AI course for university students
+- [/for/companies/](https://agentic-living.com/for/companies/) — Corporate AI transformation programme  
+- [/for/entrepreneurs/](https://agentic-living.com/for/entrepreneurs/) — 7-day agentic setup for founders
+- [/for/universities/teach-ai-without-slides/](https://agentic-living.com/for/universities/teach-ai-without-slides/) — How to teach AI without slides (added 2026-08-24)
+- [/for/entrepreneurs/phone-first/](https://agentic-living.com/for/entrepreneurs/phone-first/) — Run your company from your phone
+- [/for/companies/keynote-and-ai-training/](https://agentic-living.com/for/companies/keynote-and-ai-training/) — AI keynote + corporate training
+
 ## Contact
 - Course/corporate enquiries: e.duit@augedo.com
 - Calendly: https://calendly.com/e-duit/enzo-augedo
