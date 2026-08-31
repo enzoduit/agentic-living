@@ -45,3 +45,5 @@ Enzo Duit's documented experiment in running 3 companies from a phone across 4 c
 - SoAV: 13.33% (2/15 queries cited on agentic-living.com via Perplexity)
 - Cited: "Enzo Duit IMC Krems AI course" + "Enzo Duit agentic living entrepreneur"
 - Goal: 9 leads (3 per audience) by 2026-12-31
+
+- [Agentic AI Training for Corporate Teams](https://agentic-living.com/for/companies/agentic-ai-training/) — what agentic AI training actually means for corporate teams vs standard workshops. FAQ schema, 8 items. Deployed 2026-08-31.
