@@ -136,6 +136,26 @@ This is also why — if you have heard the OpenClaw stories and security concern
 
 ---
 
+## The Cost Layer
+
+There is one more category of risk that most people encounter the hard way: financial exposure. Two scenarios are worth understanding before you build anything.
+
+**The API key story.** When you build an AI-powered website — anything that calls an AI model from a page a browser loads — you need an API key. Think of it as a password that tells the AI provider: this request is from me, charge my account. Some developers, often newer ones, put this key directly in the frontend code of the website — the HTML and JavaScript that the browser downloads when someone visits the page. That code is visible to anyone who knows where to look. Thousands of people do this. And thousands of others actively search for exposed keys. When they find one, they use it at the original owner’s expense. People have woken up to bills of hundreds or thousands of dollars from usage they never authorised. The fix is simple: API keys never go in frontend code. They live on a server, never sent to the user’s browser. But the story is worth knowing because it illustrates the core principle: the things you choose to expose are the things that create risk.
+
+**The endless loop.** The ReAct loop — Thought → Action → Observation, repeating until the goal is reached — means the agent can, in theory, run indefinitely. If something goes wrong — an unclear goal, a task that keeps generating subtasks, a situation the agent cannot resolve — it keeps running. And you pay for every step. Input tokens. Output tokens. Every intermediate reasoning step the model generates. A runaway agent can accumulate costs quickly, without you knowing it is happening.
+
+You pay for what the model processes. Every word in, every word out, every reasoning step in between — these are billed in units called tokens. Roughly one token per syllable. A short conversation costs cents. A runaway loop that runs for hours can cost significantly more.
+
+**The guardrails.** Build your financial protection before you need it — the same way you build the security perimeter before you connect anything sensitive.
+
+*At the payment level:* Use a card with a hard spending limit — a dedicated card, a virtual card, or a prepaid card with a ceiling you set. Not your main card with no cap. When the card stops, something may break. That is exactly what you want: a hard stop that tells you something went wrong, rather than an unbounded bill arriving later.
+
+*At the provider level:* Every major AI provider offers spending limits, usage alerts, and per-period caps in their account settings. Set them before your first experiment. A notification at €10 spent. A hard limit at €50. These are standard features — not using them is the equivalent of running a server with no monitoring.
+
+Multiple layers — card limits, provider limits, usage alerts — mean that any single failure has a ceiling. You decide the maximum scale of the bad outcome before the first line runs. The people who ran into the horror stories almost all had the same thing in common: they had set no limits at all.
+
+---
+
 ## Your Third Step
 
 You have your 2035 vision. You have stress-tested it against its most likely failure. Now you design your first real experiment.
