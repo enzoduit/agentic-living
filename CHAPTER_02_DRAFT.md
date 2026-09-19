@@ -86,6 +86,9 @@ After the AI tells you the most likely failure, write one paragraph — in the s
 
 You now have a vision and a first principle for how to build it responsibly. That is not a small thing.
 
+**→ [The challenge — The Black Mirror Session](https://agentic-living.com/black-mirror)**
+**→ [An example — SleepGuard in Crisis: How It Could Go Wrong](https://agentic-living.com/black-mirror-example)**
+
 → *If you are working within a job:* your press release was about your role, not a startup. Run the same exercise: what is the most likely way this vision fails? Maybe it is that you build something your organisation does not allow you to use. Maybe it is that you automate the wrong thing and lose the confidence of your team. Find that specific failure. Then write one paragraph on what you would do to prevent it.
 
 ---
