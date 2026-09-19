@@ -70,6 +70,8 @@ My goal — with Agentic Living, with the workshops, with everything I have buil
 
 The Zell am See night was the moment I stopped being excluded. Everything that follows is what I found on the other side of that walk.
 
+One note on who this is for. Some readers are building their own companies. Others are doing their best work inside existing ones. Both are at Level 0 right now. Both can cross. The destination looks different: the entrepreneur's Level 1 is a product or company that runs largely without them in the execution. The employee's Level 1 is a role that accomplishes more than any role before it — because everything that does not require their judgment is handled, and what remains is entirely their thinking. The crossing is the same. What you find on the other side is yours to define.
+
 ---
 
 ## How This Book Is Structured

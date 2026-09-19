@@ -126,4 +126,6 @@ Whatever happens in that first week — success, partial success, complete failu
 
 That is not a small thing. That is the crossing.
 
+→ *If you are working within a job:* your MVP is not a product. It is proof that one task in your role can be handled better. Look at your working week and find the task that takes the most time and requires the least judgment — the one that exists because someone has to do it, not because it requires you specifically. Design the experiment around that one task. If it works, you have demonstrated Level 1 in your context. That demonstration is also what makes the conversation with your organisation possible.
+
 ---

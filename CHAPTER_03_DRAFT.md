@@ -150,4 +150,6 @@ You do not have to run the experiment yet. But by the end of this conversation, 
 
 That is grounding. You are no longer imagining Level 1. You are designing the path to it.
 
+→ *If you are within an organisation:* before you list what you would be comfortable with an AI reading, add one check: is any of this controlled by your employer? Company email on company servers, shared drives, enterprise tools — check with IT or your data security team before connecting those. The principles in this chapter apply fully. The perimeter is just more clearly defined from the start. Begin with what is clearly yours: your personal notes, your own documents, your calendar. The crossing starts there.
+
 ---

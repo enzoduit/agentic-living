@@ -98,4 +98,6 @@ Something in you will respond. Pay attention to that.
 
 Keep the press release. We will come back to it.
 
+→ *If you are working within a company or organisation rather than building your own product:* your press release does not need to be about a startup. Imagine it is 2035 and you are in your current role — or the version of it you would be proud to describe. Write the announcement of what you accomplished. What changed in how your work gets done? What did you deliver that was not possible before? What became possible in your position that nobody had managed before you? Let the AI interview you the same way. Your answers will be just as surprising.
+
 ---
