@@ -62,6 +62,44 @@ As the system proves itself — as the outputs are consistently correct, consist
 
 ---
 
+## The Flow: What Goes In and What Goes Out
+
+There is a practical mental model that makes the design of a secure agentic system much clearer. Think about two categories: what flows into the agent automatically, and where the agent can communicate something out.
+
+Incoming email is the clearest example of automatic input. If you connect your inbox to an agent, any person in the world who sends you an email is contributing information to your agent's context. You have no control over who sends you email — which means you have no control over what information arrives. That is fine. But it means you need to think carefully about what that information can influence or trigger.
+
+The security question shifts when you apply this lens: not just "what does the agent have access to?" but "what can get in, and what can get out, and how?"
+
+The answer to what can get out is the more important one. Every channel through which the agent can communicate externally — email responses, published content, API calls, messages sent on your behalf — is a potential point of failure. If the agent can send email, a badly framed instruction could result in a message you did not intend to send. If it can publish content, a misconfigured constraint could result in content you did not intend to publish.
+
+The practical answer: restrict the output channels before you worry too much about the input channels. Be deliberate about what the agent can do in the world — what it can send, where it can write, what it can publish, who it can contact. Expand that list incrementally as trust is built.
+
+Think of it as a semi-permeable membrane: broad input, narrow and controlled output. The world can tell the agent many things. The agent speaks back to the world only through channels you have explicitly opened.
+
+---
+
+## AI as Your Own Security Officer
+
+I want to tell you something that happened on July 17, 2026. Not because it is a horror story — it is not — but because it illustrates what happens when you get the design right.
+
+My agent ran its daily infrastructure check. It found something. The portal where the agent itself operates — where its task queue sits, where its monitoring data lives, where its decisions are logged — had no access control on it. Anyone who knew the address could open it.
+
+This was not a catastrophic breach. But it was a real gap — and left uncorrected, it would have been a real risk. The agent flagged it, protected the portal, extended its monitoring to seven domains it had not been watching before, and built a permanent alert layer so that the same thing could not happen again.
+
+By the time I received the summary message, the portal was already protected.
+
+I have had this happen several times. The agent finds a security issue before anyone else does, fixes it, and tells me what it fixed. The summary arrives after the problem is solved.
+
+This matters for two reasons. First: it shows that even with a lot of experience, things can still slip through. A portal left exposed is exactly the kind of thing that gets missed in the noise of running multiple systems at once. Second: it shows that AI can find the things that go wrong faster than a human can — if it is given access to the right data and a clearly defined responsibility.
+
+The key word there is responsibility. I did not give the agent a task: "check for this one vulnerability." I gave it a role: Data Security Officer. The distinction is everything. A task ends. A role continues. A role looks for problems you did not think to specify.
+
+This is something you can implement for your own setup — early, before things get complex. An agent with read access to your infrastructure and a clear mandate to monitor and flag can do what a human security officer does, but continuously, without forgetting, without needing to be reminded. And unlike a human, it can act the moment it finds something — not in the next meeting, not after a ticket is raised.
+
+The infrastructure you build is not just the thing the agent uses to do your work. It is also the thing the agent uses to keep your work safe.
+
+---
+
 ## What This Looks Like in Practice
 
 Let me make this concrete with how I actually started.
