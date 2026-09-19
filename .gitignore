@@ -6,3 +6,12 @@
 *.mp3
 *.backup
 *.tmp
+
+# Book assets (tracked)
+!images/
+!images/*.jpg
+!AGENTIC_LIVING.pdf
+!book.css
+
+# Temp build file
+_combined.md
