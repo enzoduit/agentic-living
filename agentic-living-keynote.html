@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Agentic Living — Keynote</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--c:#FAFAFA;--s:#0A0A0A;--x:#FF4500;--t:#E5E5E5;--dim:rgba(10,10,10,.55)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#111;font-family:'JetBrains Mono',monospace}
+#deck{width:100vw;height:100vh;position:relative}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px;opacity:0;pointer-events:none;transition:opacity .4s ease;background:var(--c)}
+.slide.active{opacity:1;pointer-events:all}
+.dark{background:var(--s)}
+
+/* chrome */
+#bar{position:fixed;bottom:0;left:0;height:2px;background:var(--x);transition:width .35s ease;z-index:99}
+#num{position:fixed;bottom:13px;right:18px;font-size:9px;letter-spacing:.16em;z-index:99;color:rgba(10,10,10,.14)}
+#act-lbl{position:fixed;bottom:13px;left:18px;font-size:9px;letter-spacing:.16em;z-index:99;color:rgba(10,10,10,.14)}
+
+/* typography */
+.eye{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+.eye.inv{color:rgba(255,255,255,.88)}
+.hero{font-family:Georgia,serif;font-size:clamp(36px,7vw,96px);line-height:1.1;color:var(--s)}
+.hero.light{color:var(--c)}.hero.accent{color:var(--x)}
+.big{font-family:Georgia,serif;font-size:clamp(22px,4vw,56px);line-height:1.25}
+.big.light{color:var(--c)}
+.cap{font-size:11px;letter-spacing:.1em;color:var(--dim);margin-top:18px;font-style:italic}
+.cap.inv{color:rgba(255,255,255,.82)}
+.pop{opacity:0;transform:translateY(14px);transition:all .5s ease}
+.active .pop{opacity:1;transform:none}
+.d1{transition-delay:.3s}.d2{transition-delay:.6s}.d3{transition-delay:.9s}.d4{transition-delay:1.2s}
+
+/* ── S1 City Lights ── */
+#s1{background:var(--s);overflow:hidden}
+#s1 .cbg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,#1a1006 0%,#080814 60%,#020208 100%)}
+.cdot{position:absolute;border-radius:50%;background:var(--x);opacity:0;animation:cl linear infinite}
+@keyframes cl{0%,100%{opacity:0}50%{opacity:.65}}
+#s1 .s1c{position:relative;z-index:2;text-align:center}
+#s1 .s1txt{font-family:Georgia,serif;font-size:clamp(22px,4vw,54px);color:var(--c);font-style:italic;text-align:center;max-width:740px;line-height:1.5;opacity:0;transition:opacity 1.2s ease .5s}
+#s1.active .s1txt{opacity:1}
+#s1 .s1sub{font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.55);margin-top:28px;text-transform:uppercase;opacity:0;transition:opacity .6s ease 2s}
+#s1.active .s1sub{opacity:1}
+
+/* ── S2 ORA Loop ── */
+.lring{fill:none;stroke:var(--t);stroke-width:1.5}
+.lflow{fill:none;stroke:var(--x);stroke-width:1.5;stroke-dasharray:10 24;animation:lf 2.5s linear infinite}
+@keyframes lf{to{stroke-dashoffset:-68}}
+.lword{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;fill:var(--s);transition:all 1.4s ease}
+.lword.faded{opacity:.06;fill:var(--x)}
+
+/* ── S3 Counter ── */
+#s3 .bigpct{font-family:Georgia,serif;font-size:clamp(80px,18vw,200px);font-weight:600;color:var(--x);line-height:1;opacity:0;transform:scale(.88);transition:all .6s ease}
+#s3.active .bigpct{opacity:1;transform:scale(1)}
+
+/* ── S4 Snow ── */
+#s4{background:var(--s)}
+.flake{position:absolute;border-radius:50%;background:rgba(255,255,255,.28);animation:sf linear infinite}
+@keyframes sf{to{transform:translateY(110vh)}}
+#s4 .sq{font-family:Georgia,serif;font-size:clamp(20px,3.5vw,46px);color:var(--c);text-align:center;max-width:700px;line-height:1.55;font-style:italic;opacity:0;transition:opacity 2s ease 1s}
+#s4.active .sq{opacity:1}
+#s4 .sloc{font-size:10px;letter-spacing:.22em;color:rgba(255,255,255,.65);text-transform:uppercase;margin-top:32px;opacity:0;transition:opacity .6s ease 3.5s}
+#s4.active .sloc{opacity:1}
+
+/* ── S5 loop fade ── */
+#s5 .lcap{font-size:12px;color:var(--dim);text-align:center;margin-top:28px;font-style:italic;opacity:0;transition:opacity .5s ease .4s}
+#s5.active .lcap{opacity:1}
+
+/* ── S6 Two words ── */
+.twowords{display:flex;gap:36px;align-items:center;flex-wrap:wrap;justify-content:center}
+.tw{font-family:Georgia,serif;font-size:clamp(30px,6.5vw,84px);font-weight:600;color:var(--s);opacity:0;transform:translateY(18px);transition:all .6s ease}
+#s6.active .tw:nth-child(1){opacity:1;transform:none;transition-delay:.2s}
+#s6.active .tw:nth-child(2){opacity:1;transform:none;transition-delay:.2s}
+.tw-sep{font-size:36px;color:var(--t);opacity:0;transition:opacity .4s ease .5s}
+#s6.active .tw-sep{opacity:1}
+.tw-cap{font-size:12px;color:var(--dim);text-align:center;margin-top:24px;font-style:italic;opacity:0;transition:opacity .6s ease .9s}
+#s6.active .tw-cap{opacity:1}
+
+/* ── S7 Proof zones ── */
+.pbar{display:flex;width:100%;max-width:880px;height:210px}
+.pz{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;text-align:center;opacity:0;transform:translateY(12px);transition:all .5s ease}
+.pzl{flex:1;border:1px solid var(--t);border-right:none}
+.pzm{flex:1.5;background:var(--s);color:var(--c)}
+.pzr{flex:1;border:1px solid var(--t);border-left:none}
+#s7.active .pzl{opacity:1;transform:none;transition-delay:.2s}
+#s7.active .pzm{opacity:1;transform:none;transition-delay:.65s}
+#s7.active .pzr{opacity:1;transform:none;transition-delay:1.1s}
+.pzeye{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.pzm .pzeye{color:rgba(255,255,255,.25)}
+.pzval{font-size:12px;line-height:1.7}
+.pzm .pzval{color:rgba(255,255,255,.8);font-size:11px}
+.day{font-size:11px;font-weight:700;color:var(--x);opacity:0;transition:opacity .3s;display:inline-block;margin:0 3px}
+.pline{margin-top:18px;font-size:11px;color:var(--dim);font-style:italic;opacity:0;transition:opacity .5s ease 1.8s}
+#s7.active .pline{opacity:1}
+
+/* ── S8 Quote ── */
+#s8{background:var(--s)}
+.sq8{font-family:Georgia,serif;font-size:clamp(22px,4.5vw,56px);color:var(--x);text-align:center;max-width:820px;line-height:1.3;font-style:italic;opacity:0;transition:opacity 1s ease .4s}
+#s8.active .sq8{opacity:1}
+.sq8a{font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.25);margin-top:20px;opacity:0;transition:opacity .6s ease 1.6s}
+#s8.active .sq8a{opacity:1}
+
+/* ── S9 Goal ── */
+#s9 .goal{font-family:Georgia,serif;font-size:clamp(20px,3.8vw,50px);text-align:center;max-width:780px;line-height:1.35;color:var(--s)}
+.goalx{color:var(--x)}
+
+/* ── S10 Experiment ── */
+#s10 .exp{font-family:Georgia,serif;font-size:clamp(28px,5vw,64px);text-align:center;color:var(--s);line-height:1.2}
+.mapwrap{position:relative;width:400px;height:160px;margin-top:24px}
+/* subtle world outlines via SVG dots */
+.pin{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--x);opacity:0;transition:opacity .4s ease}
+.pin::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:var(--x);opacity:.18;animation:pp 2s ease infinite}
+@keyframes pp{50%{transform:scale(2.2);opacity:0}}
+#s10.active .pin{opacity:1}
+
+/* ── AGENT slides S11-S15 ── */
+.arow{display:flex;gap:12px;margin-bottom:28px}
+.altr{font-family:Georgia,serif;font-size:68px;font-weight:600;color:rgba(10,10,10,.18);transition:color .4s}
+.altr.lit{color:var(--x)}
+.amsg{font-family:Georgia,serif;font-size:clamp(18px,3vw,38px);text-align:center;max-width:640px;line-height:1.35;color:var(--s);opacity:0;transition:opacity .6s ease .4s}
+.active .amsg{opacity:1}
+.asub{font-size:11px;color:var(--dim);text-align:center;margin-top:14px;font-style:italic;opacity:0;transition:opacity .6s ease .7s}
+.active .asub{opacity:1}
+
+/* S12 Grounding boxes */
+.gbox{display:flex;align-items:center;gap:28px;margin-top:28px}
+.gcard{width:128px;height:116px;border:1px solid var(--t);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);opacity:0;transform:scale(.92);transition:all .5s ease}
+.gcard.fail{border-color:#ffaaaa;background:#fff8f8}
+.gcard.win{border-color:var(--x)}
+.gcard-ico{font-size:32px}
+.gx{color:#cc2200;font-weight:700;font-size:15px}
+.gchk{color:var(--x);font-weight:700;font-size:15px}
+.garr{font-size:22px;color:var(--t);opacity:0;transition:opacity .4s ease 1.1s}
+.active .garr{opacity:1}
+.active .gcard.fail{opacity:1;transform:none;transition-delay:.3s}
+.active .gcard.win{opacity:1;transform:none;transition-delay:.8s}
+
+/* S13 Calendar */
+.cal{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;max-width:440px}
+.ci{padding:6px 7px;background:var(--t);font-size:8px;letter-spacing:.03em;border-radius:2px;opacity:0;transition:all .3s;text-align:center}
+.ci.vis{opacity:1}.ci.x{text-decoration:line-through;background:#fde;color:var(--dim)}.ci.keep{background:var(--x);color:#fff;text-decoration:none;font-weight:500}
+.cal-hero{font-family:Georgia,serif;font-size:clamp(24px,4vw,48px);color:var(--s);margin-top:20px;opacity:0;transition:opacity .5s ease}
+
+/* S14 Panels */
+.panels{display:flex;width:100%;max-width:760px;align-items:center}
+.pnel{flex:1;padding:28px 16px;text-align:center;border:1px solid var(--t);opacity:0;transform:translateX(-10px);transition:all .5s ease}
+.pnarr{color:var(--x);font-size:22px;padding:0 6px;opacity:0;transition:opacity .35s}
+.pnel-ico{font-size:36px;margin-bottom:8px}
+.pnel-lbl{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+.active .pnel:nth-child(1){opacity:1;transform:none;transition-delay:.2s}
+.active .pnarr:nth-child(2){opacity:1;transition-delay:.55s}
+.active .pnel:nth-child(3){opacity:1;transform:none;transition-delay:.65s}
+.active .pnarr:nth-child(4){opacity:1;transition-delay:1s}
+.active .pnel:nth-child(5){opacity:1;transform:none;transition-delay:1.1s}
+
+/* S15 Task vs Responsibility */
+.tvr{display:flex;gap:28px}
+.tvcard{width:240px;padding:28px 22px;border:1px solid var(--t);text-align:center;opacity:0;transform:translateY(12px);transition:all .5s ease}
+.tvcard.on{border-color:var(--x)}
+.active .tvcard:nth-child(1){opacity:1;transform:none;transition-delay:.2s}
+.active .tvcard:nth-child(2){opacity:1;transform:none;transition-delay:.7s}
+.tvhead{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+.tvcard.on .tvhead{color:var(--x)}
+.tvico{font-size:44px;margin-bottom:14px}
+.tvtxt{font-size:11px;color:var(--dim);line-height:1.7}
+.tvloop{color:var(--x);font-size:20px;display:block;margin:6px 0}
+
+/* ── S16 METR ── */
+#s16{background:var(--s)}
+.mhead{font-family:Georgia,serif;font-size:clamp(22px,4vw,50px);color:var(--x);text-align:center;margin-bottom:28px;font-weight:600}
+.mc{stroke:var(--x);stroke-width:2;fill:none;stroke-dasharray:680;stroke-dashoffset:680;transition:stroke-dashoffset 2.8s ease .4s}
+#s16.active .mc{stroke-dashoffset:0}
+
+/* ── S17 Security ── */
+.snodes{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+.sn{padding:6px 12px;border:1px solid var(--t);font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:0;transition:opacity .4s}
+.sn.dso{border-color:var(--x);color:var(--x);font-weight:600}
+.active .sn{opacity:1}
+.active .sn:nth-child(1){transition-delay:.1s}.active .sn:nth-child(2){transition-delay:.2s}.active .sn:nth-child(3){transition-delay:.4s}.active .sn:nth-child(4){transition-delay:.2s}.active .sn:nth-child(5){transition-delay:.1s}
+.radar{width:60px;height:60px;border-radius:50%;border:1.5px solid var(--x);position:relative;margin:12px auto;opacity:0;transition:opacity .4s ease .7s}
+.active .radar{opacity:1}
+.rsweep{position:absolute;width:50%;height:1.5px;background:linear-gradient(to right,transparent,var(--x));top:50%;left:50%;transform-origin:left center;animation:rsw 2s linear infinite}
+@keyframes rsw{to{transform:rotate(360deg)}}
+.sbadge{display:inline-block;padding:5px 12px;background:#aa0000;color:#fff;font-size:9px;letter-spacing:.08em;margin:8px;opacity:0;transition:opacity .4s ease 1.3s}
+.active .sbadge{opacity:1}
+.sok{color:#00aa33;font-size:9px;font-weight:600;letter-spacing:.12em;opacity:0;transition:opacity .4s ease 2s;display:block}
+.active .sok{opacity:1}
+
+/* ── S18 Rhythm ── */
+.rcomp{display:flex;gap:24px;width:100%;max-width:700px}
+.rc{flex:1}
+.rclbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.rcchart{height:60px;position:relative;border-bottom:2px solid var(--s);overflow:hidden;background:var(--t)}
+.rcflat{position:absolute;bottom:30px;left:0;right:0;height:2px;background:rgba(10,10,10,.2)}
+.rcspike{position:absolute;bottom:0;background:var(--x);border-radius:2px 2px 0 0}
+.bq{font-family:Georgia,serif;font-size:clamp(15px,2.4vw,24px);font-style:italic;text-align:center;max-width:680px;line-height:1.55;margin-top:28px;color:var(--s);opacity:0;transition:opacity .8s ease .8s}
+.active .bq{opacity:1}
+
+/* ── S19 Trails vs Screen ── */
+.split2{display:flex;width:100%;max-width:820px;height:220px;gap:2px}
+.spc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.spc.gray{background:var(--t)}
+.spc.mtn{background:var(--s)}
+.sphead{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.spc.mtn .sphead{color:rgba(255,255,255,.2)}
+.spico{font-size:40px;margin-bottom:8px}
+.spq{font-family:Georgia,serif;font-size:clamp(13px,1.8vw,18px);color:var(--c);font-style:italic;line-height:1.5;opacity:0;transition:opacity .8s ease .6s}
+.active .spq{opacity:1}
+
+/* ── S20 Chart 27→96 ── */
+.cl{stroke:var(--x);stroke-width:2.5;fill:none;stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 2.4s ease .5s}
+#s20.active .cl{stroke-dashoffset:0}
+.cdot{fill:var(--x);opacity:0;transition:opacity .3s}
+
+/* ── S21 Rhythm orbit ── */
+#s21{background:var(--s)}
+.cyc{overflow:visible}
+.ctxt{font-size:9px;letter-spacing:.12em;text-transform:uppercase;fill:rgba(255,255,255,.82);opacity:0;transition:opacity .5s ease}
+#s21.active .ctxt{opacity:1}
+#s21.active .ctxt:nth-child(1){transition-delay:.3s}
+#s21.active .ctxt:nth-child(3){transition-delay:.6s}
+#s21.active .ctxt:nth-child(5){transition-delay:.9s}
+.cring2{fill:none;stroke:rgba(255,255,255,.1);stroke-width:1.5}
+.cflow2{fill:none;stroke:var(--x);stroke-width:1.5;stroke-dasharray:9 22;animation:cf2 2.5s linear infinite}
+@keyframes cf2{to{stroke-dashoffset:-62}}
+.cflt{font-size:11px;fill:rgba(255,69,0,.55);opacity:0;animation:fout 4s ease-in-out infinite}
+@keyframes fout{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(-48px) translateX(12px)}}
+#s21 .csub{font-size:11px;color:rgba(255,255,255,.82);letter-spacing:.1em;margin-top:16px;text-align:center}
+
+/* ── S22 Dev bars ── */
+.devwrap{display:flex;gap:40px;align-items:flex-end;height:180px;position:relative}
+.devgroup{display:flex;flex-direction:column;align-items:center;gap:0}
+.devbar{width:80px;border-radius:2px 2px 0 0;opacity:0;transition:height .9s ease,opacity .4s ease;position:relative;min-height:4px}
+.devbar .dnum{position:absolute;top:-32px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:28px;font-weight:600;color:var(--x);white-space:nowrap}
+.devlbl{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:6px;text-align:center}
+.devyear{font-size:8px;color:var(--dim);margin-top:2px;text-align:center}
+.devcpx{font-size:9px;color:var(--dim);margin-top:2px;text-align:center}
+#s22.active .devbar{opacity:1}
+/* heights set via JS */
+.cpx-label{position:absolute;right:-70px;top:0;bottom:0;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:4px;opacity:0;transition:opacity .5s ease 1.4s}
+#s22.active .cpx-label{opacity:1}
+.cpx-arrow-line{width:2px;background:linear-gradient(to bottom,var(--t),var(--x));height:120px}
+.cpx-head{font-size:20px;color:var(--x)}
+.cpx-text{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--x);writing-mode:vertical-rl;transform:rotate(180deg)}
+
+/* ── S23 Dual Timeline ── */
+#s23{background:var(--s)}
+.dtlbl{font-size:9px;fill:rgba(255,255,255,.82);font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
+.dtop{fill:rgba(255,255,255,.88);font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.dtcurve{stroke:var(--x);stroke-width:2;fill:none;stroke-dasharray:640;stroke-dashoffset:640;transition:stroke-dashoffset 2.8s ease .5s}
+#s23.active .dtcurve{stroke-dashoffset:0}
+
+/* ── ACT 3 ── */
+#s24{background:var(--s)}
+.btext{font-family:Georgia,serif;font-size:clamp(36px,8vw,100px);color:var(--c);text-align:center;opacity:0;transition:opacity 1.2s ease .6s}
+#s24.active .btext{opacity:1}
+
+/* S25 Sofia */
+.sqsof{font-family:Georgia,serif;font-size:clamp(18px,3vw,38px);text-align:center;max-width:780px;line-height:1.5;font-style:italic;color:var(--s)}
+.sofa{font-size:11px;letter-spacing:.14em;color:var(--dim);margin-top:16px}
+
+/* S26 Worth nothing */
+.wico{font-size:80px;margin-bottom:16px;opacity:0;transition:opacity .5s ease .2s}
+#s26.active .wico{opacity:1}
+.wx{font-size:80px;color:var(--x);opacity:0;transition:opacity .4s ease 1s;line-height:1}
+#s26.active .wx{opacity:1}
+
+/* S27 Two curves */
+.tbc{stroke:var(--x);stroke-width:2.5;fill:none;stroke-dasharray:550;stroke-dashoffset:550;transition:stroke-dashoffset 2.2s ease .4s}
+.tsc{stroke:var(--s);stroke-width:2.5;fill:none;stroke-dasharray:550;stroke-dashoffset:550;transition:stroke-dashoffset 2.2s ease .9s}
+#s27.active .tbc,#s27.active .tsc{stroke-dashoffset:0}
+
+/* Case studies */
+.caseico{font-size:52px;margin-bottom:12px}
+.casetitle{font-family:Georgia,serif;font-size:clamp(18px,3vw,42px);color:var(--x);margin-bottom:8px;font-weight:600}
+.casesub{font-size:12px;color:var(--dim);letter-spacing:.06em;max-width:500px;text-align:center;line-height:1.7}
+
+/* S31 Final */
+#s31{background:var(--s)}
+.finmain{font-family:Georgia,serif;font-size:clamp(22px,4vw,52px);color:var(--c);text-align:center;max-width:800px;line-height:1.35;opacity:0;transition:opacity .8s ease .4s}
+#s31.active .finmain{opacity:1}
+.finsub{font-family:Georgia,serif;font-size:clamp(16px,2.5vw,32px);color:var(--x);font-style:italic;text-align:center;max-width:700px;margin-top:28px;line-height:1.5;opacity:0;transition:opacity .8s ease 1.8s}
+#s31.active .finsub{opacity:1}
+
+/* ── S22 Bubble chart ── */
+#s22 .bub-lbl{font-family:Georgia,serif;dominant-baseline:middle;text-anchor:middle;font-weight:600;transition:opacity .5s ease;opacity:0}
+#s22 .bsub2{font-size:9px;font-family:'JetBrains Mono',monospace;letter-spacing:.09em;text-anchor:middle;fill:var(--dim);opacity:0;transition:opacity .4s ease}
+#s22 .bsub2.acc{fill:var(--x)}
+
+/* S1b Trillion Initiative */
+.ti-row{display:flex;align-items:center;justify-content:center;gap:20px;margin:28px 0;flex-wrap:wrap}
+.ti-num{text-align:center;opacity:0;transform:translateY(12px);transition:all .5s ease}
+.ti-val{font-family:Georgia,serif;font-size:clamp(32px,5vw,68px);font-weight:600;color:var(--c);line-height:1}
+.ti-val.accent{color:var(--x)}
+.ti-lbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:4px}
+.ti-op{font-family:Georgia,serif;font-size:clamp(24px,4vw,52px);color:rgba(255,255,255,.2);opacity:0;transition:opacity .4s ease}
+/* S2 ORA sequential */
+.ora-row{display:flex;align-items:center;gap:0;width:100%;max-width:820px}
+.ora-step{flex:1;padding:24px 20px;border:1px solid var(--t);text-align:center;opacity:0;transform:translateY(12px);transition:all .5s ease}
+.ora-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-top:10px}
+.ora-icon{font-size:36px;margin-bottom:8px}
+.ora-desc{font-size:9px;color:var(--dim);letter-spacing:.06em;margin-top:4px}
+.ora-arr{font-size:20px;color:var(--x);padding:0 8px;opacity:0;transition:opacity .3s ease}
+.skel-line{height:7px;background:linear-gradient(90deg,var(--t) 25%,#e8e8e8 50%,var(--t) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:4px;margin:5px auto}
+@keyframes shimmer{to{background-position:-200% 0}}
+.tool-ico{font-size:22px;margin:0 4px;opacity:0;transition:opacity .3s ease}
+/* S6 Direction/Execution/Responsibility */
+.der-row{display:flex;align-items:stretch;gap:0;width:100%;max-width:880px}
+.der-col{flex:1;padding:32px 20px;text-align:center;border:1px solid var(--t)}
+.der-mid{flex:1;padding:32px 20px;text-align:center;border:1px solid #ffcccc;background:#fff5f5;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.der-head{font-family:Georgia,serif;font-size:clamp(18px,3vw,38px);font-weight:600;color:var(--s)}
+.der-sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:8px}
+.der-exec-lbl{font-family:Georgia,serif;font-size:clamp(16px,2.5vw,32px);font-weight:600;text-decoration:line-through;text-decoration-color:#cc0000;text-decoration-thickness:3px;color:rgba(10,10,10,.35)}
+.der-x{font-size:48px;color:#cc0000;line-height:1;margin-bottom:8px}
+
+/* S30b Patterns + S30c Excited */
+.patterns{display:flex;flex-direction:column;gap:20px;width:100%;max-width:820px}
+.pattern{display:flex;gap:20px;align-items:flex-start;opacity:0;transform:translateX(-14px);transition:all .5s ease}
+.pat-num{font-family:Georgia,serif;font-size:44px;font-weight:600;color:var(--x);line-height:1;flex-shrink:0;width:44px}
+.pat-content{flex:1}
+.pat-head{font-size:13px;font-weight:500;color:var(--s);letter-spacing:.04em;margin-bottom:3px}
+.pat-company{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--x);font-weight:600;margin-right:8px}
+.pat-detail{display:inline-block;font-size:10px;color:var(--dim);letter-spacing:.08em;font-style:italic}
+.ex-items{display:flex;flex-direction:column;gap:32px;width:100%;max-width:800px}
+.ex-item{display:flex;gap:24px;align-items:flex-start;opacity:0;transform:translateY(14px);transition:all .5s ease}
+.ex-icon{font-size:36px;flex-shrink:0;margin-top:4px}
+.ex-head{font-family:Georgia,serif;font-size:clamp(16px,2.4vw,26px);color:var(--c);line-height:1.3;margin-bottom:8px}
+.ex-quote{font-family:Georgia,serif;font-size:clamp(13px,1.8vw,20px);color:var(--x);font-style:italic;line-height:1.5}
+.ex-sub{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.06em}
+
+/* S2 Circular ORA loop */
+.loop-ring{position:relative;width:270px;height:270px;margin:12px auto}
+.loop-bg-svg{position:absolute;top:0;left:0;width:100%;height:100%}
+.loop-dash-ring{fill:none;stroke:var(--t);stroke-width:1.5;stroke-dasharray:6 18}
+.loop-flow-ring{display:none}
+@keyframes loopflow{to{stroke-dashoffset:-579}}
+.lnd{position:absolute;text-align:center;width:84px;opacity:0}
+/* Triangle positions */
+.lnd-r{top:6px;left:50%;transform:translateX(-42px)} /* REASON top */
+.lnd-a{bottom:10px;right:8px} /* ACT bottom-right */
+.lnd-o{bottom:10px;left:8px} /* OBSERVE bottom-left */
+/* Phase cycling — 9s total: R(0-33%), A(33-66%), O(66-90%), BLANK(90-100%) */
+.slide.active .lnd-r{animation:phaseR 5s ease-in-out infinite}
+.slide.active .lnd-a{animation:phaseA 5s ease-in-out infinite}
+.slide.active .lnd-o{animation:phaseO 5s ease-in-out infinite}
+@keyframes phaseR{
+  0%{opacity:0} 8%{opacity:1} 27%{opacity:1} 33%{opacity:0} 100%{opacity:0}
+}
+@keyframes phaseA{
+  0%,33%{opacity:0} 41%{opacity:1} 60%{opacity:1} 66%{opacity:0} 100%{opacity:0}
+}
+@keyframes phaseO{
+  0%,66%{opacity:0} 74%{opacity:1} 88%{opacity:1} 94%{opacity:0} 100%{opacity:0}
+}
+.lnd-icon{font-size:26px;margin-bottom:5px;display:block}
+.lnd-lbl{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+/* REASON skeleton text */
+.sk-lines{width:62px;margin:0 auto}
+.skl{height:6px;background:linear-gradient(90deg,var(--t) 25%,#e8e8e8 50%,var(--t) 75%);background-size:200% 100%;border-radius:3px;margin:4px 0;animation:shimmer 1.5s ease infinite}
+.skl:nth-child(2){width:75%}.skl:nth-child(3){width:55%}
+/* ACT tool icons */
+.tool-row{display:flex;gap:4px;justify-content:center}
+.ta-icon{font-size:18px;opacity:1} /* tools visible via parent node animation */
+/* OBSERVE eye scan */
+.eye-scan{font-size:28px;display:inline-block}
+.slide.active .lnd-o .eye-scan{animation:eyescan 1.8s ease-in-out infinite}
+@keyframes eyescan{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.18) scaleY(.9)}}
+
+/* ── CONTRAST FIXES ── */
+/* Dark slide text overrides */
+.dark .lnd-lbl{color:rgba(255,255,255,.92)}
+.dark .cap{color:rgba(255,255,255,.85)}
+.dark .loop-dash-ring{stroke:rgba(255,255,255,.25)}
+/* Fix skeleton lines on dark backgrounds */
+.dark .skl{background:linear-gradient(90deg,rgba(255,255,255,.12) 25%,rgba(255,255,255,.25) 50%,rgba(255,255,255,.12) 75%);background-size:200% 100%}
+/* AGENT slides — main message must be readable */
+.active .amsg{color:var(--s)}
+.active .asub{color:rgba(10,10,10,.6)}
+/* Fix calendar items — contrast */
+.ci{color:rgba(10,10,10,.7)}
+/* Fix der panel text on light slides */
+.der-s{color:rgba(10,10,10,.5)}
+/* Fix all .body texts */
+.body{color:rgba(10,10,10,.55)}
+.body.inv{color:rgba(255,255,255,.82)}
+/* Fix pz labels */
+.pzeye{color:rgba(10,10,10,.5)}
+.pzm .pzeye{color:rgba(255,255,255,.45)}
+/* Fix proof line */
+.pline{color:rgba(10,10,10,.55)}
+/* Fix tour labels */
+.pnel-lbl{color:rgba(10,10,10,.5)}
+/* Fix dev bars */
+.devlbl{color:rgba(10,10,10,.55)}
+.devyear{color:rgba(10,10,10,.5)}
+.devcpx{color:rgba(10,10,10,.45)}
+/* Ensure all visible text on dark */
+.dark .sofa{color:rgba(255,255,255,.82)}
+/* Fix twin comparison labels */
+.tvtxt{color:rgba(10,10,10,.55)}
+.tvcard.on .tvtxt{color:rgba(10,10,10,.55)}
+/* Fix sec notes */
+.sec-ok{color:#00cc44;font-size:10px}
+/* Fix security slide dark text */
+.sdot{color:rgba(10,10,10,.5)}
+.case-sub{color:rgba(10,10,10,.6)}
+
+/* ── ORA Loop on LIGHT slides — dark elements for contrast ── */
+#s2 .loop-dash-ring,#s5 .loop-dash-ring{stroke:rgba(10,10,10,.18)}
+#s2 .lnd-lbl,#s5 .lnd-lbl{color:rgba(10,10,10,.65)}
+#s2 .skl,#s5 .skl{background:linear-gradient(90deg,rgba(10,10,10,.09) 25%,rgba(10,10,10,.18) 50%,rgba(10,10,10,.09) 75%);background-size:200% 100%}
+#s2 .cap,#s5 .cap{color:rgba(10,10,10,.6)}
+/* Arrow polygons on light — keep orange */
+#s2 polygon,#s5 polygon{fill:var(--x);opacity:.7}
+/* Eye on light */
+#s2 .eye-scan,#s5 .eye-scan{filter:none}
+/* Tools on light — dark emoji visible */
+#s2 .ta-icon,#s5 .ta-icon{font-size:18px}
+
+/* METR Milestones */
+.mm-row{display:flex;align-items:center;gap:8px;margin:24px 0;flex-wrap:wrap;justify-content:center;max-width:860px;width:100%}
+.mm-card{text-align:center;padding:18px 14px;border:1px solid rgba(255,255,255,.14);flex:1;min-width:90px;max-width:140px}
+.mm-now{border-color:var(--x)!important}
+.mm-soon{border-color:rgba(255,255,255,.06);opacity:.6}
+.mm-y{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:8px}
+.mm-now .mm-y{color:var(--x)}
+.mm-v{font-family:Georgia,serif;font-size:clamp(16px,2.5vw,26px);font-weight:600;color:var(--c);line-height:1.2}
+.mm-sep{font-size:16px;color:rgba(255,255,255,.55);flex-shrink:0;font-weight:300}
+
+/* ── PROJECTOR CONTRAST BOOST — dark slides ── */
+.dark * { -webkit-font-smoothing: antialiased; }
+.dark .eye.inv { color: rgba(255,255,255,.88) !important; }
+.dark p, .dark div { color: inherit; }
+/* Ensure all white text on dark is readable */
+section.dark { color: #FAFAFA; }
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="num"></div>
+<div id="act-lbl"></div>
+<div id="deck">
+
+<!-- ════ ACT 1: THE JOURNEY ════ -->
+
+<!-- S1 -->
+<div class="slide dark" id="s1">
+  <div class="cbg"></div>
+  <div class="s1c">
+    <div class="s1txt">"I couldn't afford to miss this one."</div>
+    <div class="s1sub">Silicon Valley · Two years ago · Trillion Initiative</div>
+  </div>
+</div>
+
+<!-- S1b Trillion Initiative — My Response -->
+<div class="slide dark" id="s1b">
+  <div style="position:absolute;top:20px;right:22px;opacity:.82"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" width="155" height="28">
+    <path d="M 18 42 L 28 42 L 28 6 L 8 6 L 8 14 L 18 14 Z" fill="#FAFAFA"/>
+    <rect x="30" y="2" width="16" height="16" fill="#FF4500"/>
+    <text x="38" y="13" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="bold" fill="#FAFAFA" text-anchor="middle">12</text>
+    <rect x="58" y="12" width="1.5" height="26" fill="rgba(255,255,255,.28)"/>
+    <text x="72" y="26" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#FAFAFA">TRILLION</text>
+    <text x="72" y="42" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" letter-spacing="2" fill="rgba(255,255,255,.82)">INITIATIVE</text>
+  </svg></div>
+  <div class="eye inv">MY RESPONSE</div>
+  <div style="text-align:center;margin-bottom:24px">
+    <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px">The Trillion Initiative</div>
+    <div style="font-family:Georgia,serif;font-size:clamp(28px,5vw,64px);color:var(--c);line-height:1.1;font-weight:600"><span style="color:var(--x)">Build</span> &amp; <span style="color:var(--x)">invest</span><br>in agentic businesses.</div>
+  </div>
+  <div class="ti-row">
+    <div class="ti-num" id="tn1"><div class="ti-val">100</div><div class="ti-lbl">founders</div></div>
+    <div class="ti-op" id="to1">×</div>
+    <div class="ti-num" id="tn2"><div class="ti-val">$100M</div><div class="ti-lbl">each</div></div>
+    <div class="ti-op" id="to2">=</div>
+    <div class="ti-num" id="tn3"><div class="ti-val accent">$1T</div><div class="ti-lbl">impact</div></div>
+  </div>
+  <div class="cap inv pop d4">The reason it's called the Trillion Initiative.</div>
+</div>
+
+<!-- S2 ORA Loop — circular endless animation -->
+<div class="slide" id="s2">
+  <div class="eye">Every knowledge job — the same loop</div>
+  <div class="loop-ring">
+    <!-- Ring SVG -->
+    <svg class="loop-bg-svg" viewBox="0 0 270 270">
+      <circle class="loop-dash-ring" cx="135" cy="135" r="90"/>
+      <circle class="loop-flow-ring" cx="135" cy="135" r="90"/>
+      <!-- Arrow heads at approx 0°, 120°, 240° -->
+      <polygon points="225,127 219,122 219,132" fill="var(--x)" opacity=".6"/>
+      <polygon points="55,192 56,182 65,188" fill="var(--x)" opacity=".6"/>
+      <polygon points="105,55 115,52 112,62" fill="var(--x)" opacity=".4"/>
+    </svg>
+    <!-- REASON (top center) — text writing skeleton -->
+    <div class="lnd lnd-r">
+      <div class="sk-lines">
+        <div class="skl"></div>
+        <div class="skl"></div>
+        <div class="skl"></div>
+      </div>
+      <div class="lnd-lbl" style="margin-top:6px">REASON</div>
+    </div>
+    <!-- ACT (bottom right) — tool icons -->
+    <div class="lnd lnd-a">
+      <div class="tool-row">
+        <span class="ta-icon">📧</span>
+        <span class="ta-icon">📊</span>
+        <span class="ta-icon">🌐</span>
+      </div>
+      <div class="lnd-lbl" style="margin-top:6px">ACT</div>
+    </div>
+    <!-- OBSERVE (bottom left) — animated eye -->
+    <div class="lnd lnd-o">
+      <span class="lnd-icon eye-scan">👁</span>
+      <div class="lnd-lbl">OBSERVE</div>
+    </div>
+  </div>
+  <div class="cap">Knowledge workers: more than half of every developed economy.</div>
+</div>
+
+<!-- S3 51% counter -->
+<div class="slide" id="s3">
+  <div class="eye">The urgency</div>
+  <div class="bigpct" id="pct3">0%</div>
+  <div class="cap pop d2" style="font-size:14px;letter-spacing:.06em;">of workers in developed economies are knowledge workers.</div>
+  <div class="cap pop d3">But from theory to practice is a long way — how urgent is this?</div>
+</div>
+
+<!-- S4 Zell am See -->
+<div class="slide dark" id="s4">
+  <div class="sq">"If the loop can run without me — what is left for human effort?"</div>
+  <div class="sloc">Zell am See · January 2025 · −15°C</div>
+</div>
+
+<!-- S5 Loop runs without human — same circular animation as S2 -->
+<div class="slide" id="s5">
+  <div class="eye">One year later — February</div>
+  <div class="loop-ring">
+    <svg class="loop-bg-svg" viewBox="0 0 270 270">
+      <circle class="loop-dash-ring" cx="135" cy="135" r="90"/>
+      <polygon points="225,127 219,122 219,132" fill="var(--x)" opacity=".5"/>
+      <polygon points="55,192 56,182 65,188" fill="var(--x)" opacity=".5"/>
+    </svg>
+    <div class="lnd lnd-r">
+      <div class="sk-lines">
+        <div class="skl"></div><div class="skl"></div><div class="skl"></div>
+      </div>
+      <div class="lnd-lbl" style="margin-top:6px">REASON</div>
+    </div>
+    <div class="lnd lnd-a">
+      <div class="tool-row">
+        <span class="ta-icon">📧</span>
+        <span class="ta-icon">📊</span>
+        <span class="ta-icon">🌐</span>
+      </div>
+      <div class="lnd-lbl" style="margin-top:6px">ACT</div>
+    </div>
+    <div class="lnd lnd-o">
+      <span class="lnd-icon eye-scan">👁</span>
+      <div class="lnd-lbl">OBSERVE</div>
+    </div>
+  </div>
+  <div class="cap">The loop ran — without a human inside it.</div>
+</div>
+
+<!-- S6 Direction/Execution/Responsibility -->
+<div class="slide" id="s6">
+  <div class="eye">What remains for humans?</div>
+  <div class="der-row pop">
+    <div class="der-col">
+      <div class="der-head">DIRECTION</div>
+      <div class="der-sub">set the goal</div>
+    </div>
+    <div class="der-mid">
+      <div class="der-x">✕</div>
+      <div class="der-exec-lbl">EXECUTION</div>
+    </div>
+    <div class="der-col">
+      <div class="der-head">RESPONSIBILITY</div>
+      <div class="der-sub">own the result</div>
+    </div>
+  </div>
+  <div class="tw-cap pop d2">The middle is delegable. The edges are yours.</div>
+</div>
+
+<!-- S7 Perplexity proof -->
+<div class="slide" id="s7">
+  <div class="eye">The Proof</div>
+  <div class="pbar">
+    <div class="pz pzl">
+      <div class="pzeye">You · First</div>
+      <div class="pzval">Goal: rank #1<br><span style="font-size:11px;color:var(--dim)">+ guardrails</span></div>
+    </div>
+    <div class="pz pzm">
+      <div class="pzeye">Agent Loop</div>
+      <div class="pzval">Research → Write → Publish<br>Check → Iterate</div>
+      <div style="margin-top:10px;display:flex;gap:4px;flex-wrap:wrap;justify-content:center;">
+        <span class="day" id="pd1">1</span><span class="day" id="pd2">2</span><span class="day" id="pd3">3</span>
+        <span class="day" id="pd4">4</span><span class="day" id="pd5">5</span>
+        <span class="day" id="pd6" style="font-size:14px;color:#fff">#1</span>
+      </div>
+    </div>
+    <div class="pz pzr">
+      <div class="pzeye">You · Last</div>
+      <div style="font-family:Georgia,serif;font-size:52px;font-weight:600;color:var(--x)">#1</div>
+      <div style="font-size:10px;color:var(--dim);margin-top:6px;">on Perplexity · Day 6</div>
+    </div>
+  </div>
+  <div class="pline">The thinking was human. The execution was not.</div>
+</div>
+
+<!-- S8 Peter Steinberger -->
+<div class="slide dark" id="s8">
+  <div class="eye inv">OpenClaw · Peter Steinberger</div>
+  <div class="sq8">"The only limit is human imagination."</div>
+  <div class="sq8a">— Peter Steinberger, Creator of OpenClaw</div>
+</div>
+
+<!-- S9 Goal for today -->
+<div class="slide" id="s9">
+  <div class="goal pop">
+    My goal for you today:<br>
+    <span class="goalx">Leave this room knowing...<br>you can build anything.</span>
+  </div>
+  <div class="cap pop d2">160 days documented — worldwide — phone only — dictating to agents.</div>
+</div>
+
+<!-- ════ ACT 2: THE SYSTEM ════ -->
+
+<!-- S10 160 days experiment -->
+<div class="slide" id="s10">
+  <div class="eye">The Experiment</div>
+  <div class="exp">160 days.<br>Worldwide. Phone only.</div>
+  <div class="mapwrap" id="mapwrap">
+    <!-- dots injected by JS -->
+  </div>
+  <div class="cap pop d3">Buenos Aires · Patagonia · Bolivia · Catalonia · Vienna — dictating to agents.</div>
+</div>
+
+<!-- S11 A Awareness -->
+<div class="slide" id="s11">
+  <div class="arow"><span class="altr lit">A</span><span class="altr">G</span><span class="altr">E</span><span class="altr">N</span><span class="altr">T</span></div>
+  <div class="eye" style="color:var(--x);margin-bottom:16px">AWARENESS</div>
+  <div class="amsg">The loop can run without you — so what do you build?</div>
+</div>
+
+<!-- S12 G Grounding -->
+<div class="slide" id="s12">
+  <div class="arow"><span class="altr">A</span><span class="altr lit">G</span><span class="altr">E</span><span class="altr">N</span><span class="altr">T</span></div>
+  <div class="eye" style="color:var(--x);margin-bottom:16px">GROUNDING</div>
+  <div class="gbox">
+    <div class="gcard fail"><div class="gcard-ico">💻</div><div class="gx">✕</div><div>Home server</div></div>
+    <div class="garr">→</div>
+    <div class="gcard win"><div class="gcard-ico">📱</div><div class="gchk">✓</div><div>Cloud · anywhere</div></div>
+  </div>
+  <div class="asub">The constraint I didn't plan became the best decision I made.</div>
+</div>
+
+<!-- S13 E Elimination -->
+<div class="slide" id="s13">
+  <div class="arow"><span class="altr">A</span><span class="altr">G</span><span class="altr lit">E</span><span class="altr">N</span><span class="altr">T</span></div>
+  <div class="eye" style="color:var(--x);margin-bottom:16px">ELIMINATION</div>
+  <div class="cal" id="cal13"></div>
+  <div class="cal-hero" id="cal13msg">maybe 20% need you.. or less</div>
+</div>
+
+<!-- S14 E Raw output first -->
+<div class="slide" id="s14">
+  <div class="eye">Elimination in practice</div>
+  <div class="panels">
+    <div class="pnel"><div class="pnel-ico">📓</div><div class="pnel-lbl">Think</div></div>
+    <div class="pnarr">→</div>
+    <div class="pnel"><div class="pnel-ico">🎙️</div><div class="pnel-lbl">Dictate</div></div>
+    <div class="pnarr">→</div>
+    <div class="pnel"><div class="pnel-ico">📄</div><div class="pnel-lbl">Result</div></div>
+  </div>
+  <div class="cap pop d4" style="font-style:italic;">"I never see the formatting step. I move from thinking to result."</div>
+</div>
+
+<!-- S15 N Task vs Responsibility -->
+<div class="slide" id="s15">
+  <div class="arow"><span class="altr">A</span><span class="altr">G</span><span class="altr">E</span><span class="altr lit">N</span><span class="altr">T</span></div>
+  <div class="eye" style="color:var(--x);margin-bottom:24px">NOMINATING</div>
+  <div class="tvr">
+    <div class="tvcard"><div class="tvhead">TASK</div><div class="tvico">☑</div><div class="tvtxt">Done. Gone. Nothing continues.</div></div>
+    <div class="tvcard on"><div class="tvhead">RESPONSIBILITY</div><div class="tvico">☑</div><div class="tvloop">↻</div><div class="tvtxt">Holds the outcome. Always.</div></div>
+  </div>
+</div>
+
+<!-- S16 METR -->
+<div class="slide dark" id="s16">
+  <div class="eye inv">METR · Time Horizon 1.1 · January 2026</div>
+  <div class="mhead">doubling every 7 months</div>
+  <div class="mm-row">
+    <div class="mm-card">
+      <div class="mm-y">2019</div>
+      <div class="mm-v">~1<br>min</div>
+    </div>
+    <div class="mm-sep">→</div>
+    <div class="mm-card">
+      <div class="mm-y">2022</div>
+      <div class="mm-v">~8<br>min</div>
+    </div>
+    <div class="mm-sep">→</div>
+    <div class="mm-card">
+      <div class="mm-y">2025</div>
+      <div class="mm-v">~1<br>hour</div>
+    </div>
+    <div class="mm-sep">→</div>
+    <div class="mm-card mm-now">
+      <div class="mm-y">NOW '26</div>
+      <div class="mm-v">~4–6<br>hours</div>
+    </div>
+    <div class="mm-sep">→</div>
+    <div class="mm-card mm-soon">
+      <div class="mm-y">Soon</div>
+      <div class="mm-v">days /<br>weeks</div>
+    </div>
+  </div>
+  <div style="font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.1em;margin-top:10px">Source: metr.org · Time Horizon 1.1, January 2026</div>
+</div>
+
+<!-- S17 Security Officer -->
+<div class="slide" id="s17">
+  <div class="eye">Nominating in practice</div>
+  <div class="snodes">
+    <div class="sn">Agent 1</div><div class="sn">Agent 2</div>
+    <div class="sn dso">DATA SECURITY OFFICER</div>
+    <div class="sn">Agent 4</div><div class="sn">Agent 5</div>
+  </div>
+  <div class="radar"><div class="rsweep"></div></div>
+  <div class="sbadge">⚠ VULNERABILITY FOUND</div>
+  <div class="sok">✓ Fixed. 7 domains monitored. Report sent.</div>
+  <div class="cap pop d4" style="font-style:italic;">"Already secure by the time I read this."</div>
+</div>
+
+<!-- S18 T Rhythm -->
+<div class="slide" id="s18">
+  <div class="arow"><span class="altr">A</span><span class="altr">G</span><span class="altr">E</span><span class="altr">N</span><span class="altr lit">T</span></div>
+  <div class="eye" style="color:var(--x);margin-bottom:20px">TRANSLATING</div>
+  <div class="rcomp">
+    <div class="rc">
+      <div class="rclbl">Conventional work</div>
+      <div class="rcchart"><div class="rcflat"></div></div>
+    </div>
+    <div class="rc">
+      <div class="rclbl" style="color:var(--x)">Agentic work</div>
+      <div class="rcchart" style="background:var(--s)">
+        <div class="rcspike" style="left:8%;width:18%;height:70%"></div>
+        <div class="rcspike" style="left:54%;width:18%;height:62%"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bq">Not less work — the right work.</div>
+</div>
+
+<!-- S19 Trails -->
+<div class="slide" id="s19">
+  <div class="eye">Where does your best thinking happen?</div>
+  <div class="split2">
+    <div class="spc gray">
+      <div class="sphead">Screen · Desk</div>
+      <div class="spico">🖥️</div>
+      <div style="font-size:11px;color:var(--dim)">Record the output</div>
+    </div>
+    <div class="spc mtn">
+      <div class="sphead">Trails · Movement</div>
+      <div class="spico">🏔️</div>
+      <div class="spq">"My best thinking happens on trails.<br>Not at a screen."</div>
+    </div>
+  </div>
+</div>
+
+<!-- S20 27→96 chart -->
+<div class="slide" id="s20">
+  <div class="eye">T — The Data</div>
+  <svg width="600" height="240" viewBox="0 0 600 240" style="max-width:100%">
+    <line x1="55" y1="12" x2="55" y2="210" stroke="var(--t)" stroke-width="1"/>
+    <line x1="55" y1="210" x2="565" y2="210" stroke="var(--t)" stroke-width="1"/>
+    <text x="15" y="215" fill="var(--dim)" font-size="10" font-family="JetBrains Mono">0%</text>
+    <text x="15" y="22" fill="var(--dim)" font-size="10" font-family="JetBrains Mono">100%</text>
+    <path class="cl" d="M78,202 C155,197 235,182 315,162 C380,144 430,110 480,76 C520,50 545,32 558,20"/>
+    <circle class="cdot" cx="78" cy="202" r="5"/>
+    <circle class="cdot" cx="558" cy="20" r="5" style="transition-delay:2.2s"/>
+    <text x="66" y="197" fill="var(--dim)" font-size="10" font-family="JetBrains Mono">27%</text>
+    <text x="563" y="17" fill="#FF4500" font-size="11" font-family="JetBrains Mono" font-weight="bold">96%</text>
+    <text x="64" y="226" fill="var(--dim)" font-size="9" font-family="JetBrains Mono">March</text>
+    <text x="540" y="226" fill="var(--dim)" font-size="9" font-family="JetBrains Mono">July</text>
+  </svg>
+  <div class="cap pop d3">27% autonomous in March. 96% in July. The curve makes the argument.</div>
+</div>
+
+<!-- S21 Rhythm orbit -->
+<div class="slide dark" id="s21">
+  <div class="eye inv">T — The New Rhythm</div>
+  <svg class="cyc" width="300" height="280" viewBox="-20 -15 340 310">
+    <circle class="cring2" cx="150" cy="140" r="110"/>
+    <circle class="cflow2" cx="150" cy="140" r="110"/>
+    <text x="150" y="15" text-anchor="middle" class="ctxt" style="font-size:24px">📓</text>
+    <text x="150" y="36" text-anchor="middle" class="ctxt">OFFLINE</text>
+    <text x="50" y="255" text-anchor="middle" class="ctxt" style="font-size:24px">⚡</text>
+    <text x="50" y="276" text-anchor="middle" class="ctxt">CO-CREATE</text>
+    <text x="250" y="255" text-anchor="middle" class="ctxt" style="font-size:24px">🏔️</text>
+    <text x="250" y="276" text-anchor="middle" class="ctxt">AWAY</text>
+    <text class="cflt" x="135" y="120" style="animation-delay:0s">📄</text>
+    <text class="cflt" x="148" y="135" style="animation-delay:1.8s">📧</text>
+    <text class="cflt" x="162" y="128" style="animation-delay:3.6s">📊</text>
+  </svg>
+  <div class="csub">Work happens in between.</div>
+</div>
+
+<!-- S22 Dev productivity — Bubble chart -->
+<div class="slide" id="s22">
+  <div class="eye">T — PERSONAL PROOF</div>
+  <svg width="640" height="295" viewBox="0 0 640 295" style="max-width:100%;overflow:visible">
+    <!-- Y axis -->
+    <line x1="64" y1="16" x2="64" y2="256" stroke="var(--t)" stroke-width="1"/>
+    <text x="64" y="12" text-anchor="middle" fill="var(--dim)" font-size="12" font-family="JetBrains Mono,monospace">↑</text>
+    <text x="22" y="140" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="JetBrains Mono,monospace" transform="rotate(-90,22,140)">COMPLEXITY</text>
+    <!-- X axis -->
+    <line x1="64" y1="256" x2="600" y2="256" stroke="var(--t)" stroke-width="1"/>
+    <!-- X ticks + labels -->
+    <line x1="130" y1="256" x2="130" y2="262" stroke="var(--t)" stroke-width="1"/>
+    <line x1="370" y1="256" x2="370" y2="262" stroke="var(--t)" stroke-width="1"/>
+    <line x1="560" y1="256" x2="560" y2="262" stroke="var(--x)" stroke-width="1"/>
+    <text x="130" y="276" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="JetBrains Mono,monospace">2018</text>
+    <text x="370" y="276" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="JetBrains Mono,monospace">2023</text>
+    <text x="560" y="276" text-anchor="middle" fill="var(--x)" font-size="9" font-family="JetBrains Mono,monospace">2026</text>
+    <!-- Bubble 1: 2018, 10 devs, moderate complexity — large, gray -->
+    <circle id="b1" class="bub" cx="130" cy="210" r="0" fill="var(--t)" stroke="rgba(10,10,10,.12)" stroke-width="2"/>
+    <text id="b1n" class="bub-lbl" x="130" y="210" font-size="32">10</text>
+    <text class="bsub2" id="bs1a" x="130" y="252" style="transition-delay:.9s">8 years ago · moderate</text>
+    <!-- Bubble 2: 2023, 2 devs, very complex — medium, gray -->
+    <circle id="b2" class="bub" cx="370" cy="138" r="0" fill="var(--t)" stroke="rgba(10,10,10,.12)" stroke-width="2"/>
+    <text id="b2n" class="bub-lbl" x="370" y="138" font-size="28">2</text>
+    <text class="bsub2" id="bs2a" x="370" y="182" style="transition-delay:1.5s">3 years ago · very complex</text>
+    <!-- Bubble 3: 2026, 1 dev, most complex — small, orange -->
+    <circle id="b3" class="bub" cx="560" cy="68" r="0" fill="var(--x)" stroke="rgba(255,69,0,.25)" stroke-width="2"/>
+    <text id="b3n" class="bub-lbl acc" x="560" y="68" font-size="22" style="fill:#fff">0</text>
+    <text class="bsub2 acc" id="bs3a" x="560" y="104" style="transition-delay:2.1s">Today · very complex · Agents</text>
+  </svg>
+  <div style="margin-top:8px;font-size:9px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;text-align:center;">
+    ○ bubble size = number of developers
+  </div>
+  <div class="cap pop" id="s22cap" style="font-style:italic;margin-top:12px">Less team. More complexity. Agents close the gap.</div>
+</div>
+
+<!-- S23 Software Evolution × METR — redesigned, curve as main element -->
+<div class="slide dark" id="s23">
+  <div class="eye inv">Software Development Evolution × METR</div>
+  <svg width="680" height="290" viewBox="0 0 680 290" style="max-width:100%">
+    <!-- Y axis -->
+    <line x1="55" y1="20" x2="55" y2="245" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+    <!-- X axis -->
+    <line x1="55" y1="245" x2="650" y2="245" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+    <!-- Y axis labels (task duration, low→high) -->
+    <text x="48" y="241" text-anchor="end" class="dtlbl">mins</text>
+    <text x="48" y="195" text-anchor="end" class="dtlbl">~30m</text>
+    <text x="48" y="145" text-anchor="end" class="dtlbl">~1hr</text>
+    <text x="48" y="75" text-anchor="end" class="dtlbl">weeks</text>
+    <!-- Horizontal guides -->
+    <line x1="55" y1="240" x2="650" y2="240" stroke="rgba(255,255,255,.06)" stroke-width="1" stroke-dasharray="3,6"/>
+    <line x1="55" y1="190" x2="650" y2="190" stroke="rgba(255,255,255,.06)" stroke-width="1" stroke-dasharray="3,6"/>
+    <line x1="55" y1="140" x2="650" y2="140" stroke="rgba(255,255,255,.06)" stroke-width="1" stroke-dasharray="3,6"/>
+    <line x1="55" y1="70" x2="650" y2="70" stroke="rgba(255,255,255,.06)" stroke-width="1" stroke-dasharray="3,6"/>
+    <!-- METR CURVE: starts at bottom-left, ends well within bounds -->
+    <path class="dtcurve" d="M80,235 C140,232 210,222 290,202 C365,182 435,155 500,120 C550,92 595,72 635,58"/>
+    <!-- Paradigm milestone dots ON the curve -->
+    <!-- 1. Write (pre-2010): x=80, y≈235 -->
+    <circle cx="80" cy="235" r="4" fill="rgba(255,255,255,.82)" opacity="0" class="pmdot" style="transition:opacity .3s ease .5s"/>
+    <text x="80" y="228" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease .6s;fill:rgba(255,255,255,.5)">Write</text>
+    <text x="80" y="252" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease .6s">pre-2010</text>
+    <!-- 2. Stack Overflow (2010): x=160, y≈228 -->
+    <circle cx="165" cy="228" r="4" fill="rgba(255,255,255,.82)" opacity="0" class="pmdot" style="transition:opacity .3s ease .8s"/>
+    <text x="165" y="221" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease .9s;fill:rgba(255,255,255,.5)">Stack Overflow</text>
+    <text x="165" y="245" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease .9s">2010</text>
+    <!-- 3. ChatGPT (2023): x=310, y≈198 -->
+    <circle cx="310" cy="198" r="4" fill="rgba(255,255,255,.4)" opacity="0" class="pmdot" style="transition:opacity .3s ease 1.2s"/>
+    <text x="310" y="188" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease 1.3s;fill:rgba(255,255,255,.6)">ChatGPT</text>
+    <text x="310" y="212" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease 1.3s">2023</text>
+    <!-- 4. Cursor (2025): x=460, y≈132 -->
+    <circle cx="460" cy="132" r="4" fill="rgba(255,255,255,.5)" opacity="0" class="pmdot" style="transition:opacity .3s ease 1.6s"/>
+    <text x="460" y="122" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease 1.7s;fill:rgba(255,255,255,.7)">Cursor</text>
+    <text x="460" y="148" text-anchor="middle" class="dtlbl" opacity="0" style="transition:opacity .3s ease 1.7s">2025</text>
+    <!-- 5. OpenClaw (2026): x=560, y≈88 — ORANGE highlight -->
+    <circle cx="560" cy="88" r="6" fill="#FF4500" opacity="0" class="pmdot" style="transition:opacity .3s ease 2s"/>
+    <text x="560" y="76" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="#FF4500" letter-spacing=".1em" opacity="0" style="transition:opacity .3s ease 2.1s">OpenClaw</text>
+    <text x="560" y="102" text-anchor="middle" class="dtlbl" fill="#FF4500" opacity="0" style="transition:opacity .3s ease 2.1s">2026</text>
+    <!-- 6. Jobs→ (future): x=630, y≈60 -->
+    <circle cx="630" cy="60" r="4" fill="rgba(255,69,0,.5)" opacity="0" class="pmdot" style="transition:opacity .3s ease 2.4s"/>
+    <text x="630" y="48" text-anchor="middle" class="dtlbl" fill="rgba(255,69,0,.6)" opacity="0" style="transition:opacity .3s ease 2.5s">whole jobs→</text>
+    <!-- NOW vertical line -->
+    <line x1="560" y1="20" x2="560" y2="245" stroke="rgba(255,255,255,.1)" stroke-dasharray="4,4" stroke-width="1" opacity="0" id="s23now" style="transition:opacity .4s ease 2s"/>
+    <text x="530" y="16" class="dtlbl" opacity="0" id="s23nowtxt" style="transition:opacity .4s ease 2s">NOW</text>
+  </svg>
+  <div style="font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em;margin-top:6px;text-align:center">Same trend, two perspectives — METR measured it, developers lived it.</div>
+</div>
+
+<!-- ════ ACT 3: THE HARD TRUTH ════ -->
+
+<!-- S24 Easy part -->
+<div class="slide dark" id="s24">
+  <div class="btext">That was<br>the easy part.</div>
+</div>
+
+<!-- S25 Sofia -->
+<div class="slide" id="s25">
+  <div class="eye">Vienna · Workshop · 2026</div>
+  <div class="sqsof pop">"If I can do it, everybody can —<br>thanks to the technology we can access nowadays."</div>
+  <div class="sofa pop d2">— Sofia, Student</div>
+</div>
+
+<!-- S26 Worth nothing -->
+<div class="slide" id="s26">
+  <div class="wico">📦</div>
+  <div style="font-family:Georgia,serif;font-size:clamp(28px,5vw,64px);color:var(--s);text-align:center">Building is<br>worth nothing.</div>
+  <div class="wx">✕</div>
+</div>
+
+<!-- S27 Two curves — clear X crossing -->
+<div class="slide" id="s27">
+  <div class="eye">The Reality</div>
+  <svg width="620" height="260" viewBox="0 0 620 260" style="max-width:100%">
+    <!-- Y axis -->
+    <line x1="55" y1="18" x2="55" y2="228" stroke="var(--t)" stroke-width="1"/>
+    <!-- X axis -->
+    <line x1="55" y1="225" x2="590" y2="225" stroke="var(--t)" stroke-width="1"/>
+    <!-- Y axis labels -->
+    <text x="28" y="28" fill="var(--dim)" font-size="9" font-family="JetBrains Mono,monospace" text-anchor="middle">hard</text>
+    <text x="28" y="222" fill="var(--dim)" font-size="9" font-family="JetBrains Mono,monospace" text-anchor="middle">easy</text>
+    <!-- X axis label -->
+    <text x="540" y="242" fill="var(--dim)" font-size="9" font-family="JetBrains Mono,monospace">→ time</text>
+    <!-- BUILDING: hard → easy (diagonal top-left to bottom-right, ORANGE) -->
+    <path class="tbc" d="M70,38 L565,208"/>
+    <!-- SELLING: easy(ish) → hard (diagonal bottom-left to top-right, DARK) -->
+    <path class="tsc" d="M70,198 L565,42"/>
+    <!-- Crossing point marker (~x=317, y=123) -->
+    <circle id="crossdot" cx="317" cy="122" r="0" fill="var(--dim)" opacity="0" style="transition:r .4s ease 2.2s,opacity .4s ease 2.2s"/>
+    <!-- Labels at line ends (right side) -->
+    <text x="572" y="212" fill="var(--x)" font-size="10" font-family="JetBrains Mono,monospace" font-weight="500">building ↓</text>
+    <text x="572" y="46" fill="var(--s)" font-size="10" font-family="JetBrains Mono,monospace" font-weight="500">selling ↑</text>
+    <!-- Labels at line starts (left side) -->
+    <text x="60" y="32" fill="var(--x)" font-size="9" font-family="JetBrains Mono,monospace" opacity=".5">harder</text>
+    <text x="60" y="215" fill="var(--s)" font-size="9" font-family="JetBrains Mono,monospace" opacity=".5">easier</text>
+  </svg>
+  <div class="cap pop d3">Building got easier — selling got harder. And selling was already hard.</div>
+</div>
+
+
+
+
+
+
+
+<!-- Pat1 -->
+<div class="slide" id="spat1">
+  <div class="eye">PATTERN 1 — B2C</div>
+  <div style="max-width:700px">
+    <div style="font-family:Georgia,serif;font-size:clamp(22px,4vw,50px);font-weight:600;color:var(--s);line-height:1.2;margin-bottom:20px">Crack B2C with<br>user generated content + AI</div>
+    <div style="font-size:12px;color:var(--dim);line-height:1.8;margin-bottom:24px">Enable users to create and share content → AI improves it → network effect takes over. Bootstrappable.</div>
+    <div><span class="pat-company">Studyflash</span><span class="pat-detail">bootstrapped · path to $10M ARR</span></div>
+  </div>
+</div>
+
+<!-- Pat2 -->
+<div class="slide" id="spat2">
+  <div class="eye">PATTERN 2 — B2B</div>
+  <div style="max-width:700px">
+    <div style="font-family:Georgia,serif;font-size:clamp(22px,4vw,50px);font-weight:600;color:var(--s);line-height:1.2;margin-bottom:20px">Hyper power B2B<br>execution with AI</div>
+    <div style="font-size:12px;color:var(--dim);line-height:1.8;margin-bottom:24px">Use AI to execute at scale what previously needed large teams. Expand markets fast with a proven playbook.</div>
+    <div><span class="pat-company">Fonio</span><span class="pat-detail">Austria → 7 markets · $120M valuation playbook</span></div>
+  </div>
+</div>
+
+<!-- Pat3 -->
+<div class="slide" id="spat3">
+  <div class="eye">PATTERN 3 — MARKET</div>
+  <div style="max-width:700px">
+    <div style="font-family:Georgia,serif;font-size:clamp(22px,4vw,50px);font-weight:600;color:var(--s);line-height:1.2;margin-bottom:20px">Test which markets are<br>ready for AI adoption fast</div>
+    <div style="font-size:12px;color:var(--dim);line-height:1.8;margin-bottom:24px">Don't spend 2 years on the wrong market. Test systematically. Move when you find the right one.</div>
+    <div><span class="pat-company">Minimist</span><span class="pat-detail">market fit is everything</span></div>
+  </div>
+</div>
+
+
+<!-- Ex1 Agent to agent -->
+<div class="slide dark" id="sex1">
+  <div class="eye inv">WHAT I'M EXCITED ABOUT — 1</div>
+  <div style="text-align:center;max-width:700px">
+    <div class="ex-icon" style="font-size:52px;margin-bottom:20px">🤖</div>
+    <div class="ex-head">Agent to agent selling<br>for AI infrastructure</div>
+    <div class="ex-quote" style="margin-top:20px">"I literally only buy<br>what my agent recommends."</div>
+  </div>
+</div>
+
+<!-- Ex2 Systems of records -->
+<div class="slide dark" id="sex2">
+  <div class="eye inv">WHAT I'M EXCITED ABOUT — 2</div>
+  <div style="text-align:center;max-width:700px">
+    <div class="ex-icon" style="font-size:52px;margin-bottom:20px">🏗️</div>
+    <div class="ex-head">New generation of Systems of Records<br>— highly specialized</div>
+    <div class="ex-sub" style="margin-top:20px;font-size:14px;color:rgba(255,255,255,.5)">Current niche players won't adapt fast enough.</div>
+  </div>
+</div>
+
+
+
+<!-- Content teaser slide — agentic-living.com -->
+<div class="slide dark" id="scontent">
+  <div style="text-align:center">
+    <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:20px">THE BOOK</div>
+    <div style="font-family:Georgia,serif;font-size:clamp(28px,5vw,62px);color:var(--x);line-height:1.2;margin-bottom:36px;font-weight:600">Want the<br>full content?</div>
+    <div style="background:#fff;padding:18px;display:inline-block;border-radius:6px;margin-bottom:24px;line-height:0">
+      <img src="data:image/png;base64,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" width="180" height="180" style="display:block;image-rendering:pixelated">
+    </div>
+    <div style="font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.4);text-transform:uppercase">agentic-living.com</div>
+  </div>
+</div>
+
+<!-- QR CTA Slide — join.trillion-initiative.com -->
+<div class="slide dark" id="sqr">
+  <!-- TI logo top right -->
+  <div style="position:absolute;top:20px;right:22px;opacity:.7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" width="155" height="28">
+    <path d="M 18 42 L 28 42 L 28 6 L 8 6 L 8 14 L 18 14 Z" fill="#FAFAFA"/>
+    <rect x="30" y="2" width="16" height="16" fill="#FF4500"/>
+    <text x="38" y="13" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="bold" fill="#FAFAFA" text-anchor="middle">12</text>
+    <rect x="58" y="12" width="1.5" height="26" fill="rgba(255,255,255,.28)"/>
+    <text x="72" y="26" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#FAFAFA">TRILLION</text>
+    <text x="72" y="42" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" letter-spacing="2" fill="rgba(255,255,255,.82)">INITIATIVE</text>
+  </svg></div>
+  <div style="text-align:center">
+    <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:20px">TRILLION INITIATIVE</div>
+    <div style="font-family:Georgia,serif;font-size:clamp(26px,5vw,62px);color:var(--x);line-height:1.2;margin-bottom:36px;font-weight:600">Join the agentic<br>living tribe</div>
+    <div style="background:#fff;padding:18px;display:inline-block;border-radius:6px;margin-bottom:24px;line-height:0">
+      <img src="data:image/png;base64,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" width="180" height="180" style="display:block;image-rendering:pixelated">
+    </div>
+    <div style="font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.4);text-transform:uppercase">join.trillion-initiative.com</div>
+  </div>
+</div>
+
+
+
+
+
+<!-- S31 Final -->
+<div class="slide dark" id="s31">
+  <div class="finmain">You can build anything.<br>The market is the challenge.</div>
+  <div class="finsub">"The only limit is human imagination."</div>
+</div>
+
+</div><!-- /deck -->
+<script>
+const slides=[...document.querySelectorAll('.slide')],N=slides.length;
+let cur=0;const done=new Set();
+const acts=[
+  'ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY','ACT 1 — THE JOURNEY',
+  'ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM','ACT 2 — THE SYSTEM',
+  'ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH','ACT 3 — THE HARD TRUTH'
+];
+
+function go(i){
+  slides[cur].classList.remove('active');
+  cur=Math.max(0,Math.min(N-1,i));
+  slides[cur].classList.add('active');
+  document.getElementById('bar').style.width=((cur+1)/N*100)+'%';
+  const isDark=slides[cur].classList.contains('dark');
+  const chromColor=isDark?'rgba(255,255,255,.14)':'rgba(10,10,10,.14)';
+  document.getElementById('num').style.color=chromColor;
+  document.getElementById('num').textContent=(cur+1)+' / '+N;
+  document.getElementById('act-lbl').style.color=chromColor;
+  document.getElementById('act-lbl').textContent=acts[cur]||'';
+  if(!done.has(cur)){done.add(cur);anim(slides[cur].id);}
+}
+
+function anim(id){
+  if(id==='s1'){
+    const s=document.getElementById('s1');
+    for(let i=0;i<65;i++){
+      const d=document.createElement('div');d.className='cdot';
+      const sz=1+Math.random()*2;
+      d.style.cssText=`width:${sz}px;height:${sz}px;left:${5+Math.random()*90}%;top:${38+Math.random()*55}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;`;
+      s.appendChild(d);
+    }
+  }
+  if(id==='s1b'){
+    /* TI numbers pop in sequentially */
+    [['tn1',.3],['to1',.7],['tn2',.8],['to2',1.2],['tn3',1.3]].forEach(([id,d])=>{
+      setTimeout(()=>{
+        const e=document.getElementById(id);
+        if(!e)return;
+        e.style.opacity='1';e.style.transform='none';
+      },d*1000);
+    });
+  }
+  /* S2: CSS animation drives the loop (no JS needed) */
+  if(id==='s3'){let n=0;const el=document.getElementById('pct3');const t=setInterval(()=>{n++;el.textContent=n+'%';if(n>=51){el.textContent='51%+';clearInterval(t);}},28);}
+  if(id==='s4'){
+    const s=document.getElementById('s4');
+    for(let i=0;i<38;i++){const f=document.createElement('div');f.className='flake';f.style.cssText=`left:${Math.random()*100}%;width:${2+Math.random()*3}px;height:${2+Math.random()*3}px;animation-duration:${3+Math.random()*5}s;animation-delay:${Math.random()*6}s;`;s.insertBefore(f,s.firstChild);}
+    document.getElementById('s4').querySelector('.sloc').style.opacity='1';
+  }
+  if(id==='s7')['pd1','pd2','pd3','pd4','pd5','pd6'].forEach((d,i)=>setTimeout(()=>{const e=document.getElementById(d);if(e)e.style.opacity='1';},900+i*300));
+  if(id==='s10'){
+    const w=document.getElementById('mapwrap');
+    /* geographic dots: approximate world positions */
+    const pos=[
+      /* NA */ [15,35],[22,42],[25,50],[18,48],
+      /* EU */ [48,30],[52,28],[46,35],[55,32],
+      /* SA */ [28,65],[22,60],[30,70],
+      /* Asia */ [72,35],[78,40],[82,45],
+      /* AU  */ [80,72],[75,68]
+    ];
+    pos.forEach(([x,y],i)=>{
+      const d=document.createElement('div');d.className='pin';
+      d.style.cssText=`left:${x}%;top:${y}%;transition-delay:${.2+i*.1}s;`;
+      w.appendChild(d);
+    });
+    /* subtle world outline dots */
+    for(let i=0;i<80;i++){
+      const d=document.createElement('div');
+      d.style.cssText=`position:absolute;width:2px;height:2px;border-radius:50%;background:var(--t);left:${5+Math.random()*90}%;top:${5+Math.random()*90}%;opacity:.4;`;
+      w.appendChild(d);
+    }
+  }
+  if(id==='s13'){
+    const tasks=['Formatting','Status update','Scheduling','Filing','Summaries','Meeting prep','Email draft','Navigation','Review deck','Templates','Reporting','Admin','⚡ Strategy','⚡ Creative','⚡ Decide'];
+    const grid=document.getElementById('cal13');grid.innerHTML='';
+    tasks.forEach((t,i)=>{
+      const el=document.createElement('div');el.className='ci';el.textContent=t;grid.appendChild(el);
+      setTimeout(()=>el.classList.add('vis'),150+i*75);
+      const d2=150+tasks.length*75+350;
+      if(t.startsWith('⚡'))setTimeout(()=>el.classList.add('keep'),d2);
+      else setTimeout(()=>el.classList.add('x'),d2);
+    });
+    setTimeout(()=>{const m=document.getElementById('cal13msg');if(m)m.style.opacity='1';},150+tasks.length*75+750);
+  }
+  if(id==='s16')setTimeout(()=>{const p=document.querySelector('#s16 .mc');if(p)p.style.strokeDashoffset='0';},100);
+  if(id==='s20'){
+    setTimeout(()=>{const l=document.querySelector('#s20 .cl');if(l)l.style.strokeDashoffset='0';},100);
+    document.querySelectorAll('#s20 .cdot').forEach((d,i)=>setTimeout(()=>d.style.opacity='1',600+i*2200));
+  }
+  if(id==='s22'){
+    /* Bubble chart animation — pop in with easing */
+    function popBub(bid,targetR,delay,labelId){
+      setTimeout(()=>{
+        const el=document.getElementById(bid);
+        if(!el)return;
+        const ln=document.getElementById(labelId);
+        const t0=performance.now();const dur=900;
+        function ease(t){return 1-Math.pow(1-Math.min(t,1),3);}
+        function frame(now){
+          const t=ease((now-t0)/dur);
+          el.setAttribute('r',(t*targetR).toFixed(1));
+          if(t<1)requestAnimationFrame(frame);
+          else if(ln){ln.style.opacity='1';}
+        }
+        requestAnimationFrame(frame);
+      },delay);
+    }
+    popBub('b1',72,300,'b1n');
+    popBub('b2',32,900,'b2n');
+    popBub('b3',20,1500,'b3n');
+    /* Show sublabels */
+    ['bs1a','bs2a','bs3a'].forEach((id,i)=>{
+      setTimeout(()=>{const e=document.getElementById(id);if(e)e.style.opacity='1';},900+i*600);
+    });
+  }
+  if(id==='s23'){
+    setTimeout(()=>{const p=document.querySelector('#s23 .dtcurve');if(p)p.style.strokeDashoffset='0';},100);
+    /* show paradigm dots and labels after curve draws */
+    document.querySelectorAll('#s23 .pmdot, #s23 text').forEach(el=>el.style.opacity='1');
+    const now=document.getElementById('s23now');const nowt=document.getElementById('s23nowtxt');
+    if(now)now.style.opacity='1';if(nowt)nowt.style.opacity='1';
+  }
+  if(id==='s30b'){
+    ['pt1','pt2','pt3'].forEach((id,i)=>setTimeout(()=>{const e=document.getElementById(id);if(e){e.style.opacity='1';e.style.transform='none';}},300+i*400));
+  }
+  if(id==='s30c'){
+    ['ex1','ex2'].forEach((id,i)=>setTimeout(()=>{const e=document.getElementById(id);if(e){e.style.opacity='1';e.style.transform='none';}},300+i*500));
+  }
+  if(id==='s27'){
+    setTimeout(()=>{const b=document.querySelector('#s27 .tbc');if(b)b.style.strokeDashoffset='0';},100);
+    setTimeout(()=>{const s=document.querySelector('#s27 .tsc');if(s)s.style.strokeDashoffset='0';},100);
+    setTimeout(()=>{const d=document.getElementById('crossdot');if(d){d.setAttribute('r','5');d.style.opacity='.5';}},2300);
+  }
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' ')go(cur+1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);
+  if(e.key==='Home')go(0);if(e.key==='End')go(N-1);
+});
+document.getElementById('deck').addEventListener('click',e=>{
+  go(e.clientX>window.innerWidth*.15?cur+1:cur-1);
+});
+go(0);
+</script>
+</body>
+</html>

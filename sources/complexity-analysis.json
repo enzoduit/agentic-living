@@ -1,0 +1,146 @@
+[
+  {
+    "date": "2026-04-16",
+    "month": "2026-04",
+    "what_built": "Analyzed and presented Ed's own AI usage statistics (transcribed words, meeting hours) as a proof-of-use demo — a stats dashboard over session history.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 2,
+    "system_name": "AI Usage Stats"
+  },
+  {
+    "date": "2026-05-23",
+    "month": "2026-05",
+    "what_built": "Built an interactive showcase portal (os.enzoduit.com) for Ed's agentic work history, integrated with Cloudflare Zero Trust auth and a decisions portal, across a sprawling multi-week session.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 4,
+    "system_name": "Agentic OS Portal"
+  },
+  {
+    "date": "2026-05-30",
+    "month": "2026-05",
+    "what_built": "Created a presentation slide deck (HTML, deployed at slides.trillion-initiative.com) on AI for a Spanish-language digital congress, following the Nancy Duarte framework with Trillion Initiative branding.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 3,
+    "system_name": "AI Congress Slides"
+  },
+  {
+    "date": "2026-06-03",
+    "month": "2026-06",
+    "what_built": "Set up the Agent-Led Growth (ALG) workflow: bought domain, configured free-agentskills.org listing for Upriver API, built a GEO-optimized discovery page, and drafted a follow-up email to Lulu Zhang at Upriver.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 4,
+    "system_name": "ALG Upriver Setup"
+  },
+  {
+    "date": "2026-06-16",
+    "month": "2026-06",
+    "what_built": "Generated a Buenos Aires tourist run documentary video (with ffmpeg overlays and Garmin data) and deployed it to runs.trillion-initiative.com.",
+    "novelty": "MAINTENANCE",
+    "complexity": 2,
+    "system_name": null
+  },
+  {
+    "date": "2026-06-17",
+    "month": "2026-06",
+    "what_built": "Managed Meta Ads campaigns for World Vision Österreich: reviewed approved ads, organized ad sets, and created new draft ads across the Janukka/Zukunft/Spiegel projects.",
+    "novelty": "MAINTENANCE",
+    "complexity": 2,
+    "system_name": null
+  },
+  {
+    "date": "2026-06-19",
+    "month": "2026-06",
+    "what_built": "Created LinkedIn post visuals and drafted LinkedIn content for Trillion Initiative including a VivaTech 2026 post, deployed to a private Cloudflare-hosted gallery.",
+    "novelty": "MAINTENANCE",
+    "complexity": 2,
+    "system_name": null
+  },
+  {
+    "date": "2026-06-30",
+    "month": "2026-06",
+    "what_built": "Expanded a flyraising.com strategy dashboard with Facebook/Meta ad data breakdowns (cost per acquisition, platform splits) and produced a bilingual English/German proposal document.",
+    "novelty": "IMPROVEMENT",
+    "complexity": 3,
+    "system_name": "FlyRaising Strategy Dashboard"
+  },
+  {
+    "date": "2026-07-08",
+    "month": "2026-07",
+    "what_built": "Pulled the transcript from an ACNUR/PONCH meeting and drafted a follow-up email summarizing action items for all parties in Spanish.",
+    "novelty": "MAINTENANCE",
+    "complexity": 1,
+    "system_name": null
+  },
+  {
+    "date": "2026-07-09",
+    "month": "2026-07",
+    "what_built": "Built a custom Android transcription app (Listen APK) as a replacement for the discontinued Limitless/OMI service — with Railway backend, audio streaming pipeline, and flash-drain logic for the OMI pendant device.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 5,
+    "system_name": "Listen Pendant App"
+  },
+  {
+    "date": "2026-07-17",
+    "month": "2026-07",
+    "what_built": "Continued debugging the Listen Android app (APK build pipeline, app icon, installation issues) while also processing run photos for a new documentary — an unfocused mixed session.",
+    "novelty": "MAINTENANCE",
+    "complexity": 2,
+    "system_name": null
+  },
+  {
+    "date": "2026-07-17",
+    "month": "2026-07",
+    "what_built": "Debugged and fixed the agentic OS portal (os.enzoduit.com) — specifically rendering/caching issues with decision tabs and data endpoints not displaying correctly on mobile.",
+    "novelty": "MAINTENANCE",
+    "complexity": 2,
+    "system_name": null
+  },
+  {
+    "date": "2026-07-18",
+    "month": "2026-07",
+    "what_built": "Strategic business model ideation session for the Flyraising/donor acquisition agency — researched historical fundraising agency models and defined an initial service offering and communication strategy.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 2,
+    "system_name": "Flyraising Agency Model"
+  },
+  {
+    "date": "2026-07-21",
+    "month": "2026-07",
+    "what_built": "Hosted a custom karaoke page (enzoduit.com/bester-bruder) with synced lyrics, then extended the Decisions Portal with a three-action UI (approve/reject/send-back-with-feedback) and implemented the send-back API endpoint.",
+    "novelty": "IMPROVEMENT",
+    "complexity": 3,
+    "system_name": "Decisions Portal v2"
+  },
+  {
+    "date": "2026-07-21",
+    "month": "2026-07",
+    "what_built": "Fixed the runs.trillion-initiative.com site to show only runs with a documentary (filter tweak) and resolved a production vs preview deploy bug.",
+    "novelty": "MAINTENANCE",
+    "complexity": 1,
+    "system_name": null
+  },
+  {
+    "date": "2026-07-23",
+    "month": "2026-07",
+    "what_built": "Continued debugging the Listen pendant app across 5+ days — diagnosing upload failures (.bin.part files), rebuilding the APK, and investigating the audio streaming pipeline.",
+    "novelty": "MAINTENANCE",
+    "complexity": 3,
+    "system_name": null
+  },
+  {
+    "date": "2026-07-23",
+    "month": "2026-07",
+    "what_built": "Set up a GEO (Generative Engine Optimization) content pipeline with automated cron jobs for multiple client projects (StudyON, Stadion, others), targeting inbound leads via agent-readable content.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 4,
+    "system_name": "GEO Content Pipeline"
+  },
+  {
+    "date": "2026-07-28",
+    "month": "2026-07",
+    "what_built": "Designed and built an HTML prototype of a direct mail management UI (mailings, selections, price points, performance data) modeled after a Meta Ads-style split-screen interface.",
+    "novelty": "NEW_SYSTEM",
+    "complexity": 3,
+    "system_name": "Mailing Management UI"
+  }
+]

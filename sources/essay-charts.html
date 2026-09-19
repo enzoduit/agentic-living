@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font-family: Georgia, serif; background: white; padding: 1.5rem; max-width: 680px; margin: 0 auto; color: #1a1a1a; }
+  h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin: 0 0 0.8rem 0; font-weight: 400; }
+  .chart-wrap { margin-bottom: 2.5rem; }
+  .caption { font-size: 0.78rem; color: #777; margin-top: 0.6rem; font-style: italic; line-height: 1.5; }
+  svg text { font-family: Georgia, serif; }
+</style>
+</head>
+<body>
+
+<!-- Chart 1: Autonomous sessions explosion -->
+<div class="chart-wrap">
+<h3>Autonomous background tasks per month</h3>
+<svg width="640" height="220" viewBox="0 0 640 220">
+  <!-- Grid -->
+  <line x1="60" y1="10" x2="60" y2="180" stroke="#eee" stroke-width="1"/>
+  <line x1="60" y1="180" x2="620" y2="180" stroke="#eee" stroke-width="1"/>
+  
+  <!-- Y axis labels -->
+  <text x="50" y="184" text-anchor="end" fill="#aaa" font-size="11">0</text>
+  <text x="50" y="142" text-anchor="end" fill="#aaa" font-size="11">200</text>
+  <text x="50" y="100" text-anchor="end" fill="#aaa" font-size="11">400</text>
+  <text x="50" y="58" text-anchor="end" fill="#aaa" font-size="11">600</text>
+  <text x="50" y="18" text-anchor="end" fill="#aaa" font-size="11">800</text>
+  
+  <!-- Horizontal grid lines -->
+  <line x1="60" y1="140" x2="620" y2="140" stroke="#f0f0f0" stroke-width="1"/>
+  <line x1="60" y1="100" x2="620" y2="100" stroke="#f0f0f0" stroke-width="1"/>
+  <line x1="60" y1="58" x2="620" y2="58" stroke="#f0f0f0" stroke-width="1"/>
+  
+  <!-- Data: March=10, Apr=5, May=11, Jun=7, Jul=728 -->
+  <!-- Scale: 0-800 maps to 180-10 (170px range) -->
+  <!-- x positions: 5 months, evenly spaced 60-620 = 560px / 5 = 112px each, center = 60+56, 60+168, 60+280, 60+392, 60+504 -->
+  
+  <!-- Mar: 10 → height = 10/800*170 = 2.1px → y = 180-2 = 178 -->
+  <rect x="76" y="177.9" width="80" height="2.1" fill="#d4e8d4" rx="2"/>
+  <text x="116" y="197" text-anchor="middle" fill="#999" font-size="11">Mar</text>
+  <text x="116" y="172" text-anchor="middle" fill="#aaa" font-size="10">10</text>
+  
+  <!-- Apr: 5 → y=178.9 -->
+  <rect x="188" y="178.9" width="80" height="1.1" fill="#d4e8d4" rx="2"/>
+  <text x="228" y="197" text-anchor="middle" fill="#999" font-size="11">Apr</text>
+  <text x="228" y="174" text-anchor="middle" fill="#aaa" font-size="10">5</text>
+  
+  <!-- May: 11 → y=177.7 -->
+  <rect x="300" y="177.7" width="80" height="2.3" fill="#d4e8d4" rx="2"/>
+  <text x="340" y="197" text-anchor="middle" fill="#999" font-size="11">May</text>
+  <text x="340" y="172" text-anchor="middle" fill="#aaa" font-size="10">11</text>
+  
+  <!-- Jun: 7 → y=178.5 -->
+  <rect x="412" y="178.5" width="80" height="1.5" fill="#d4e8d4" rx="2"/>
+  <text x="452" y="197" text-anchor="middle" fill="#999" font-size="11">Jun</text>
+  <text x="452" y="174" text-anchor="middle" fill="#aaa" font-size="10">7</text>
+  
+  <!-- Jul: 728 → height = 728/800*170 = 154.7 → y = 180-154.7 = 25.3 -->
+  <rect x="524" y="25.3" width="80" height="154.7" fill="#2d7a4f" rx="2"/>
+  <text x="564" y="197" text-anchor="middle" fill="#999" font-size="11">Jul</text>
+  <text x="564" y="20" text-anchor="middle" fill="#2d7a4f" font-size="12" font-weight="bold">728</text>
+  
+  <!-- Arrow annotation -->
+  <text x="430" y="60" fill="#888" font-size="11" font-style="italic">73× growth</text>
+  <text x="430" y="74" fill="#888" font-size="11" font-style="italic">from March</text>
+  <line x1="500" y1="65" x2="522" y2="65" stroke="#aaa" stroke-width="1" marker-end="url(#arrow)"/>
+  
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#aaa"/>
+    </marker>
+  </defs>
+</svg>
+<p class="caption">Autonomous background tasks (cron jobs, heartbeats, scheduled agents) by month. The first four months combined: 33. July alone: 728. This is not a gradual increase — it is a threshold being crossed.</p>
+</div>
+
+<!-- Chart 2: Interactive vs Autonomous stacked -->
+<div class="chart-wrap">
+<h3>Human-active sessions vs. autonomous sessions</h3>
+<svg width="640" height="200" viewBox="0 0 640 200">
+  <!-- Background -->
+  <line x1="60" y1="10" x2="60" y2="165" stroke="#eee" stroke-width="1"/>
+  <line x1="60" y1="165" x2="620" y2="165" stroke="#eee" stroke-width="1"/>
+  
+  <!-- Y labels -->
+  <text x="50" y="168" text-anchor="end" fill="#aaa" font-size="11">0</text>
+  <text x="50" y="115" text-anchor="end" fill="#aaa" font-size="11">500</text>
+  <text x="50" y="63" text-anchor="end" fill="#aaa" font-size="11">1000</text>
+  <text x="50" y="11" text-anchor="end" fill="#aaa" font-size="11">1500</text>
+  
+  <line x1="60" y1="113" x2="620" y2="113" stroke="#f0f0f0"/>
+  <line x1="60" y1="61" x2="620" y2="61" stroke="#f0f0f0"/>
+  
+  <!-- Scale: 0-1500 → 155px. Each unit = 155/1500 = 0.1033px -->
+  
+  <!-- Mar: inter=22, cron=10 → inter_h=2.3, cron_h=1.0 -->
+  <rect x="76" y="162.7" width="80" height="2.3" fill="#63b3ed" rx="1"/>
+  <rect x="76" y="161.7" width="80" height="1.0" fill="#2d7a4f" rx="1"/>
+  <text x="116" y="182" text-anchor="middle" fill="#999" font-size="11">Mar</text>
+  
+  <!-- Apr: inter=80, cron=5 → inter_h=8.3, cron_h=0.5 -->
+  <rect x="188" y="156.7" width="80" height="8.3" fill="#63b3ed" rx="1"/>
+  <rect x="188" y="156.2" width="80" height="0.5" fill="#2d7a4f" rx="1"/>
+  <text x="228" y="182" text-anchor="middle" fill="#999" font-size="11">Apr</text>
+  
+  <!-- May: inter=100, cron=11 → inter_h=10.3, cron_h=1.1 -->
+  <rect x="300" y="153.6" width="80" height="10.3" fill="#63b3ed" rx="1"/>
+  <rect x="300" y="152.5" width="80" height="1.1" fill="#2d7a4f" rx="1"/>
+  <text x="340" y="182" text-anchor="middle" fill="#999" font-size="11">May</text>
+  
+  <!-- Jun: inter=131, cron=7 → inter_h=13.5, cron_h=0.7 -->
+  <rect x="412" y="150.8" width="80" height="13.5" fill="#63b3ed" rx="1"/>
+  <rect x="412" y="150.1" width="80" height="0.7" fill="#2d7a4f" rx="1"/>
+  <text x="452" y="182" text-anchor="middle" fill="#999" font-size="11">Jun</text>
+  
+  <!-- Jul: inter=542, cron=728 → inter_h=56.0, cron_h=75.2 → total=131.2 → bottom y=165-56=109, cron from 109-75.2=33.8 -->
+  <rect x="524" y="109" width="80" height="56" fill="#63b3ed" rx="1"/>
+  <rect x="524" y="33.8" width="80" height="75.2" fill="#2d7a4f" rx="1"/>
+  <text x="564" y="182" text-anchor="middle" fill="#999" font-size="11">Jul</text>
+  
+  <!-- Legend -->
+  <rect x="62" y="10" width="12" height="10" fill="#63b3ed" rx="1"/>
+  <text x="80" y="19" fill="#888" font-size="11">Human-active sessions</text>
+  <rect x="220" y="10" width="12" height="10" fill="#2d7a4f" rx="1"/>
+  <text x="238" y="19" fill="#888" font-size="11">Autonomous background sessions</text>
+</svg>
+<p class="caption">As autonomous capacity grew, human-active sessions grew too. More autonomy did not mean less involvement — it meant higher total throughput. July: 542 active sessions with Ed + 728 running without him.</p>
+</div>
+
+<!-- Chart 3: Complexity of what got built -->
+<div class="chart-wrap">
+<h3>Complexity of new systems built (April–July)</h3>
+<svg width="640" height="180" viewBox="0 0 640 180">
+  <line x1="60" y1="10" x2="60" y2="150" stroke="#eee"/>
+  <line x1="60" y1="150" x2="620" y2="150" stroke="#eee"/>
+  
+  <!-- Y: 1-5, height 140px, each unit 28px -->
+  <text x="50" y="154" text-anchor="end" fill="#aaa" font-size="10">1</text>
+  <text x="50" y="126" text-anchor="end" fill="#aaa" font-size="10">2</text>
+  <text x="50" y="98" text-anchor="end" fill="#aaa" font-size="10">3</text>
+  <text x="50" y="70" text-anchor="end" fill="#aaa" font-size="10">4</text>
+  <text x="50" y="42" text-anchor="end" fill="#aaa" font-size="10">5</text>
+  
+  <!-- Grid -->
+  <line x1="60" y1="122" x2="620" y2="122" stroke="#f5f5f5"/>
+  <line x1="60" y1="94" x2="620" y2="94" stroke="#f5f5f5"/>
+  <line x1="60" y1="66" x2="620" y2="66" stroke="#f5f5f5"/>
+  <line x1="60" y1="38" x2="620" y2="38" stroke="#f5f5f5"/>
+  
+  <!-- Data points: NEW=green, MAINTENANCE=light gray, IMPROVEMENT=blue -->
+  <!-- X: 18 items, 60-620 = 560px, spacing = 560/17 = 32.9px -->
+  <!-- Y: complexity 1=150-28=122, 2=122-28=94, 3=94-28=66, 4=66-28=38, 5=38-28=10 -->
+  
+  <!-- Apr: AI Stats, NEW, 2 → x=60, y=122 -->
+  <circle cx="93" cy="122" r="7" fill="#2d7a4f" opacity="0.8"/>
+  
+  <!-- May: OS Portal, NEW, 4 → x=60+33=93, y=38 -->
+  <circle cx="126" cy="38" r="8" fill="#2d7a4f" opacity="0.8"/>
+  
+  <!-- May: Congress Slides, NEW, 3 → x=159 -->
+  <circle cx="159" cy="66" r="7" fill="#2d7a4f" opacity="0.8"/>
+  
+  <!-- Jun: ALG, NEW, 4 -->
+  <circle cx="192" cy="38" r="8" fill="#2d7a4f" opacity="0.8"/>
+  
+  <!-- Jun: Run doc, MAINT, 2 -->
+  <circle cx="225" cy="122" r="5" fill="#ccc"/>
+  
+  <!-- Jun: Meta Ads, MAINT, 2 -->
+  <circle cx="258" cy="122" r="5" fill="#ccc"/>
+  
+  <!-- Jun: LinkedIn, MAINT, 2 -->
+  <circle cx="291" cy="122" r="5" fill="#ccc"/>
+  
+  <!-- Jun: FlyR Dashboard, IMPR, 3 -->
+  <circle cx="324" cy="66" r="6" fill="#63b3ed" opacity="0.8"/>
+  
+  <!-- Jul: ACNUR, MAINT, 1 -->
+  <circle cx="357" cy="150" r="4" fill="#ccc"/>
+  
+  <!-- Jul: Listen App, NEW, 5 → BIGGEST -->
+  <circle cx="390" cy="10" r="10" fill="#2d7a4f"/>
+  <text x="390" y="6" text-anchor="middle" fill="#2d7a4f" font-size="10" font-weight="bold">5</text>
+  
+  <!-- Jul: Listen debug, MAINT, 2 -->
+  <circle cx="423" cy="122" r="5" fill="#ccc"/>
+  
+  <!-- Jul: Portal fix, MAINT, 2 -->
+  <circle cx="456" cy="122" r="5" fill="#ccc"/>
+  
+  <!-- Jul: Agency model, NEW, 2 -->
+  <circle cx="489" cy="122" r="7" fill="#2d7a4f" opacity="0.8"/>
+  
+  <!-- Jul: Decisions v2, IMPR, 3 -->
+  <circle cx="522" cy="66" r="6" fill="#63b3ed" opacity="0.8"/>
+  
+  <!-- Jul: Runs filter, MAINT, 1 -->
+  <circle cx="555" cy="150" r="4" fill="#ccc"/>
+  
+  <!-- Jul: Listen debug cont, MAINT, 3 -->
+  <circle cx="572" cy="66" r="5" fill="#ccc"/>
+  
+  <!-- Jul: GEO Pipeline, NEW, 4 -->
+  <circle cx="589" cy="38" r="8" fill="#2d7a4f" opacity="0.8"/>
+  
+  <!-- Jul: Mailing UI, NEW, 3 -->
+  <circle cx="606" cy="66" r="7" fill="#2d7a4f" opacity="0.8"/>
+  
+  <!-- Month labels -->
+  <text x="93" y="170" text-anchor="middle" fill="#bbb" font-size="10">Apr</text>
+  <text x="192" y="170" text-anchor="middle" fill="#bbb" font-size="10">May–Jun</text>
+  <text x="490" y="170" text-anchor="middle" fill="#bbb" font-size="10">Jul</text>
+  
+  <!-- Legend -->
+  <circle cx="72" cy="15" r="6" fill="#2d7a4f"/>
+  <text x="84" y="19" fill="#888" font-size="10">New system</text>
+  <circle cx="160" cy="15" r="5" fill="#63b3ed"/>
+  <text x="172" y="19" fill="#888" font-size="10">Improvement</text>
+  <circle cx="248" cy="15" r="4" fill="#ccc"/>
+  <text x="258" y="19" fill="#888" font-size="10">Maintenance</text>
+</svg>
+<p class="caption">Larger circles = higher complexity. Green = new system built from scratch. The Listen Android app (July, complexity 5) required several sessions and is still not fully resolved. Not every ambitious build ships cleanly.</p>
+</div>
+
+</body>
+</html>

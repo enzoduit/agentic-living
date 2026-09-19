@@ -1,0 +1,290 @@
+[
+  {
+    "date": "2026-03-04",
+    "ed_msgs": 35,
+    "agent_msgs": 62,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 4.8,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-05",
+    "ed_msgs": 32,
+    "agent_msgs": 47,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 24.0,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-06",
+    "ed_msgs": 28,
+    "agent_msgs": 53,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 13.9,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-07",
+    "ed_msgs": 6,
+    "agent_msgs": 23,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 7.4,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-08",
+    "ed_msgs": 4,
+    "agent_msgs": 8,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 101.1,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-09",
+    "ed_msgs": 8,
+    "agent_msgs": 23,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 100.7,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-10",
+    "ed_msgs": 29,
+    "agent_msgs": 37,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 14.9,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-11",
+    "ed_msgs": 14,
+    "agent_msgs": 20,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 70.9,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-12",
+    "ed_msgs": 5,
+    "agent_msgs": 9,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 130.4,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-13",
+    "ed_msgs": 14,
+    "agent_msgs": 28,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 32.2,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-14",
+    "ed_msgs": 4,
+    "agent_msgs": 18,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 93.8,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-15",
+    "ed_msgs": 65,
+    "agent_msgs": 156,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 12.5,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-16",
+    "ed_msgs": 24,
+    "agent_msgs": 50,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 37.1,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-18",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 1,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-03-19",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 1,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-03-22",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 2,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-03-23",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 2,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-03-27",
+    "ed_msgs": 5,
+    "agent_msgs": 6,
+    "cron_count": 0,
+    "interactive_count": 1,
+    "avg_gap_min": 1.7,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-03-30",
+    "ed_msgs": 7,
+    "agent_msgs": 22,
+    "cron_count": 9,
+    "interactive_count": 2,
+    "avg_gap_min": 8.4,
+    "autonomy_ratio": 0.82
+  },
+  {
+    "date": "2026-03-31",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 1,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-04-01",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 1,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-04-02",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 1,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-04-06",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 2,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-04-07",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 1,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-04-08",
+    "ed_msgs": 12,
+    "agent_msgs": 30,
+    "cron_count": 2,
+    "interactive_count": 1,
+    "avg_gap_min": 5.0,
+    "autonomy_ratio": 0.67
+  },
+  {
+    "date": "2026-04-09",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 4,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-04-10",
+    "ed_msgs": 0,
+    "agent_msgs": 0,
+    "cron_count": 2,
+    "interactive_count": 0,
+    "avg_gap_min": 0,
+    "autonomy_ratio": 1.0
+  },
+  {
+    "date": "2026-04-12",
+    "ed_msgs": 8,
+    "agent_msgs": 24,
+    "cron_count": 4,
+    "interactive_count": 2,
+    "avg_gap_min": 10.8,
+    "autonomy_ratio": 0.67
+  },
+  {
+    "date": "2026-04-13",
+    "ed_msgs": 3,
+    "agent_msgs": 10,
+    "cron_count": 4,
+    "interactive_count": 2,
+    "avg_gap_min": 13.3,
+    "autonomy_ratio": 0.67
+  },
+  {
+    "date": "2026-04-14",
+    "ed_msgs": 16,
+    "agent_msgs": 49,
+    "cron_count": 2,
+    "interactive_count": 1,
+    "avg_gap_min": 6.8,
+    "autonomy_ratio": 0.67
+  },
+  {
+    "date": "2026-04-15",
+    "ed_msgs": 41,
+    "agent_msgs": 96,
+    "cron_count": 0,
+    "interactive_count": 3,
+    "avg_gap_min": 19.3,
+    "autonomy_ratio": 0.0
+  },
+  {
+    "date": "2026-04-16",
+    "ed_msgs": 58,
+    "agent_msgs": 112,
+    "cron_count": 11,
+    "interactive_count": 4,
+    "avg_gap_min": 78.8,
+    "autonomy_ratio": 0.73
+  }
+]

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    background: #FAFAF8;
+    color: #1a1a1a;
+    width: 148mm;
+    min-height: 210mm;
+    padding: 18mm 18mm 14mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .svg-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 8mm 0;
+  }
+  .svg-wrap img {
+    max-width: 100%;
+    max-height: 95mm;
+    object-fit: contain;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .qr-wrap {
+    background: #fff;
+    border: 1.5px solid #1a1a1a;
+    padding: 8px;
+    display: inline-block;
+  }
+  .qr-wrap img {
+    width: 90px;
+    height: 90px;
+    display: block;
+  }
+  .wa-label {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .url {
+    font-size: 8px;
+    color: #FF4500;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="svg-wrap">
+    <img src="postscript.svg" alt="">
+  </div>
+  <div class="bottom">
+    <div class="qr-wrap">
+      <img src="tp-qr-whatsapp.png" alt="WhatsApp QR">
+    </div>
+    <div class="wa-label">Scan → WhatsApp</div>
+    <div class="url">agentic-living.com/vip</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    background: #FAFAF8;
+    color: #1a1a1a;
+    width: 148mm;
+    min-height: 210mm;
+    padding: 20mm 18mm 16mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .label {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 16px;
+    align-self: flex-start;
+  }
+  .svg-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .svg-wrap img {
+    max-width: 100%;
+    max-height: 80mm;
+    object-fit: contain;
+    transform: none;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    width: 100%;
+  }
+  .qr-wrap {
+    background: #fff;
+    border: 1.5px solid #1a1a1a;
+    padding: 8px;
+    display: inline-block;
+  }
+  .qr-wrap img {
+    width: 90px;
+    height: 90px;
+    display: block;
+  }
+  .wa-label {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .divider {
+    width: 32px;
+    border-top: 1px solid #ddd;
+    margin: 4px auto;
+  }
+  .note {
+    font-size: 9px;
+    color: #888;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .url {
+    font-size: 8px;
+    color: #FF4500;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="label">This copy was shared with you personally</div>
+
+  <div class="svg-wrap">
+    <img src="cta-handwriting-rendered.png" alt="">
+  </div>
+
+  <div class="bottom">
+    <div class="qr-wrap">
+      <img src="tp-qr-whatsapp.png" alt="WhatsApp QR">
+    </div>
+    <div class="wa-label">Scan → WhatsApp</div>
+    <div class="divider"></div>
+    <div class="note">Ed reads every message personally.<br>If it sticks, it ends up in the book.</div>
+    <div class="url">agentic-living.com/vip</div>
+  </div>
+</body>
+</html>

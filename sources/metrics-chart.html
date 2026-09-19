@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Agentic Living — Metrics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: -apple-system, sans-serif; background: #0f0f0f; color: #eee; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; color: #fff; margin-bottom: 0.2rem; }
+  .sub { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
+  .chart-wrap { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+  h2 { font-size: 0.95rem; color: #aaa; margin: 0 0 1rem 0; font-weight: 500; }
+  canvas { max-height: 260px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .stat { background: #1a1a1a; border-radius: 10px; padding: 1.2rem; text-align: center; }
+  .stat .num { font-size: 1.8rem; font-weight: 700; color: #fff; }
+  .stat .label { font-size: 0.75rem; color: #666; margin-top: 0.3rem; line-height: 1.3; }
+  .note { color: #555; font-size: 0.8rem; margin-top: 0.8rem; font-style: italic; }
+  .legend-row { display: flex; gap: 1.5rem; margin-bottom: 0.8rem; font-size: 0.8rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<h1>Agentic Living — The Data</h1>
+<p class="sub">Real session logs. March–July 2026. 140+ days, 578 tracked tasks.</p>
+
+<div class="stats">
+  <div class="stat">
+    <div class="num">0</div>
+    <div class="label">Autonomous background tasks in Week 1</div>
+  </div>
+  <div class="stat">
+    <div class="num">~3/day</div>
+    <div class="label">Autonomous tasks by April (peak: 11 in one day)</div>
+  </div>
+  <div class="stat">
+    <div class="num">Complexity 5</div>
+    <div class="label">Custom Android app built in July — would have taken months alone</div>
+  </div>
+</div>
+
+<div class="chart-wrap">
+  <h2>Daily activity: Ed's messages vs. autonomous background tasks (March–April)</h2>
+  <canvas id="chart1"></canvas>
+  <p class="note">Week 1: Ed sent ~20 messages/day. Week 3: first background task fires with zero human involvement. By April 16: 11 autonomous tasks in a single day alongside 58 Ed messages.</p>
+</div>
+
+<div class="chart-wrap">
+  <h2>What got built: complexity of new systems over time (April–July)</h2>
+  <canvas id="chart2"></canvas>
+  <div style="margin-top:0.8rem">
+    <div class="legend-row">
+      <span><span class="dot" style="background:#68d391"></span>NEW_SYSTEM</span>
+      <span><span class="dot" style="background:#63b3ed"></span>IMPROVEMENT</span>
+      <span><span class="dot" style="background:#555"></span>MAINTENANCE</span>
+    </div>
+  </div>
+  <p class="note">Not a clean upward curve — that's the point. New systems get harder as the stack grows. June was mostly operational (existing workflows). July's biggest build: a full Android app from scratch.</p>
+</div>
+
+<div class="chart-wrap">
+  <h2>The honest picture: new systems vs. maintenance over time</h2>
+  <canvas id="chart3"></canvas>
+  <p class="note">As more systems are built, more maintenance exists. This is the tradeoff — and it's real. More autonomy also means more things that can break.</p>
+</div>
+
+<script>
+// Chart 1: March-April daily Ed messages vs cron tasks
+const dailyData = [
+  {d:"Mar 4",ed:35,cron:0},{d:"Mar 5",ed:32,cron:0},{d:"Mar 6",ed:28,cron:0},
+  {d:"Mar 7",ed:6,cron:0},{d:"Mar 8",ed:4,cron:0},{d:"Mar 9",ed:8,cron:0},
+  {d:"Mar 10",ed:29,cron:0},{d:"Mar 11",ed:14,cron:0},{d:"Mar 12",ed:5,cron:0},
+  {d:"Mar 13",ed:14,cron:0},{d:"Mar 14",ed:4,cron:0},{d:"Mar 15",ed:65,cron:0},
+  {d:"Mar 16",ed:24,cron:0},{d:"Mar 18",ed:0,cron:1},{d:"Mar 19",ed:0,cron:1},
+  {d:"Mar 22",ed:0,cron:2},{d:"Mar 23",ed:0,cron:2},{d:"Mar 27",ed:5,cron:0},
+  {d:"Mar 30",ed:7,cron:9},{d:"Mar 31",ed:0,cron:1},{d:"Apr 1",ed:0,cron:1},
+  {d:"Apr 2",ed:0,cron:1},{d:"Apr 6",ed:0,cron:2},{d:"Apr 7",ed:0,cron:1},
+  {d:"Apr 8",ed:12,cron:2},{d:"Apr 9",ed:0,cron:4},{d:"Apr 10",ed:0,cron:2},
+  {d:"Apr 12",ed:8,cron:4},{d:"Apr 13",ed:3,cron:4},{d:"Apr 14",ed:16,cron:2},
+  {d:"Apr 15",ed:41,cron:0},{d:"Apr 16",ed:58,cron:11}
+];
+
+new Chart(document.getElementById('chart1'), {
+  type: 'bar',
+  data: {
+    labels: dailyData.map(d => d.d),
+    datasets: [
+      { label: 'Ed messages (active)', data: dailyData.map(d => d.ed), backgroundColor: 'rgba(99,179,237,0.65)', borderColor: 'rgba(99,179,237,1)', borderWidth: 1 },
+      { label: 'Autonomous tasks', data: dailyData.map(d => d.cron), backgroundColor: 'rgba(104,211,145,0.75)', borderColor: 'rgba(104,211,145,1)', borderWidth: 1 }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { ticks: { color: '#666', font: { size: 9 } }, grid: { color: '#222' } },
+      y: { ticks: { color: '#666' }, grid: { color: '#222' } }
+    },
+    plugins: { legend: { labels: { color: '#aaa', font: { size: 11 } } } }
+  }
+});
+
+// Chart 2: Complexity scatter
+const builds = [
+  {date:"Apr 16",label:"AI Usage Stats",novelty:"NEW",complexity:2},
+  {date:"May 23",label:"OS Portal",novelty:"NEW",complexity:4},
+  {date:"May 30",label:"Congress Slides",novelty:"NEW",complexity:3},
+  {date:"Jun 3",label:"ALG Setup",novelty:"NEW",complexity:4},
+  {date:"Jun 16",label:"Run doc",novelty:"MAINT",complexity:2},
+  {date:"Jun 17",label:"Meta Ads",novelty:"MAINT",complexity:2},
+  {date:"Jun 19",label:"LinkedIn",novelty:"MAINT",complexity:2},
+  {date:"Jun 30",label:"FlyR Dashboard",novelty:"IMPR",complexity:3},
+  {date:"Jul 8",label:"ACNUR email",novelty:"MAINT",complexity:1},
+  {date:"Jul 9",label:"Listen App",novelty:"NEW",complexity:5},
+  {date:"Jul 17",label:"Listen debug",novelty:"MAINT",complexity:2},
+  {date:"Jul 17",label:"Portal fix",novelty:"MAINT",complexity:2},
+  {date:"Jul 18",label:"Agency model",novelty:"NEW",complexity:2},
+  {date:"Jul 21",label:"Decisions v2",novelty:"IMPR",complexity:3},
+  {date:"Jul 21",label:"Runs filter",novelty:"MAINT",complexity:1},
+  {date:"Jul 23",label:"Listen debug",novelty:"MAINT",complexity:3},
+  {date:"Jul 23",label:"GEO Pipeline",novelty:"NEW",complexity:4},
+  {date:"Jul 28",label:"Mailing UI",novelty:"NEW",complexity:3},
+];
+
+const colorMap = {NEW: 'rgba(104,211,145,0.85)', IMPR: 'rgba(99,179,237,0.85)', MAINT: 'rgba(100,100,100,0.6)'};
+
+new Chart(document.getElementById('chart2'), {
+  type: 'scatter',
+  data: {
+    datasets: builds.map((b,i) => ({
+      label: b.label,
+      data: [{x: i, y: b.complexity}],
+      backgroundColor: colorMap[b.novelty],
+      pointRadius: b.novelty === 'NEW' ? 10 : b.novelty === 'IMPR' ? 7 : 5,
+      pointHoverRadius: 12
+    }))
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { 
+        ticks: { 
+          color: '#666', font: { size: 9 },
+          callback: (v) => builds[v] ? builds[v].date : ''
+        }, 
+        grid: { color: '#222' },
+        min: -0.5, max: builds.length - 0.5
+      },
+      y: { 
+        ticks: { color: '#666', stepSize: 1 }, 
+        grid: { color: '#222' },
+        min: 0, max: 5.5,
+        title: { display: true, text: 'Complexity (1–5)', color: '#555' }
+      }
+    },
+    plugins: { 
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const b = builds[ctx.dataIndex] || builds[Math.round(ctx.parsed.x)];
+            return b ? `${b.label} (${b.novelty}, complexity ${b.complexity})` : '';
+          }
+        }
+      }
+    }
+  }
+});
+
+// Chart 3: Stacked bar by month - new vs maintenance
+const monthly = [
+  {month:"Apr", new:1, impr:0, maint:0},
+  {month:"May", new:2, impr:0, maint:0},
+  {month:"Jun", new:1, impr:1, maint:3},
+  {month:"Jul", new:4, impr:1, maint:5},
+];
+
+new Chart(document.getElementById('chart3'), {
+  type: 'bar',
+  data: {
+    labels: monthly.map(m => m.month),
+    datasets: [
+      { label: 'New systems', data: monthly.map(m => m.new), backgroundColor: 'rgba(104,211,145,0.75)' },
+      { label: 'Improvements', data: monthly.map(m => m.impr), backgroundColor: 'rgba(99,179,237,0.65)' },
+      { label: 'Maintenance', data: monthly.map(m => m.maint), backgroundColor: 'rgba(100,100,100,0.5)' }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { stacked: true, ticks: { color: '#666' }, grid: { color: '#222' } },
+      y: { stacked: true, ticks: { color: '#666', stepSize: 1 }, grid: { color: '#222' } }
+    },
+    plugins: { legend: { labels: { color: '#aaa', font: { size: 11 } } } }
+  }
+});
+</script>
+</body>
+</html>
