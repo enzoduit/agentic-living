@@ -52,7 +52,11 @@ The reMarkable is not a productivity tool. It is a thinking tool. The distinctio
 
 For me, the bridge is the reMarkable. Two hours every morning, offline, writing by hand. The thinking happens there — rough, unfiltered, not shaped for anyone else. When I am ready to act, I record a voice note and send it to the agent: what I worked out, what needs to happen. Raw thinking goes in. Structured output comes back. The agent turns what I said — sometimes haltingly, sometimes badly articulated — into a brief, a document, a plan, a draft. Not because it understood my thinking better than I did, but because it handles the structuring and formatting that would otherwise pull me out of thinking mode and into execution mode.
 
-Your bridge will look different. It might be a voice note recorded on a walk. A written note in a regular notebook, photographed and sent. A quick brain dump into a chat window after your morning coffee. What matters is that you have a consistent way to take the thinking that happened offline and hand it to the agent — so the gap between insight and action stays small.
+Your bridge will look different. It might be a voice note recorded on a walk. A written note in a regular notebook, photographed and sent. A spoken dictation straight into a chat window.
+
+One tip that makes a significant practical difference: dictate rather than type. When you speak to an agent, you naturally give more context than when you type — sentences flow more freely, you include the reasoning not just the conclusion, and the output tends to be richer and more useful as a result. If your existing setup is not good for dictation, I use Wispr Flow on a daily basis. It works across any application and is the best tool I have found for this — it feels like thinking out loud, directly into the system.
+
+What matters is that you have a consistent way to take the thinking that happened offline and hand it to the agent — so the gap between insight and action stays small.
 
 I did not plan this routine. It emerged from noticing that my best ideas arrived on runs and hikes, not at a desk. The desk is where I execute. The movement is where I think. The bridge is how the two connect. Find your version of all three.
 

@@ -20,6 +20,16 @@ Then July: fifty-seven percent autonomous.
 
 In a single month, the agent ran 728 autonomous sessions alongside 542 interactive ones. For the entire first four months combined, there had been 33 autonomous sessions total.
 
+The progression makes the dynamic visible:
+
+| Period | Autonomous | Interactive | % Autonomous |
+|--------|-----------|-------------|-------------|
+| March 2026 | 17 | 46 | 27% |
+| April – June 2026 (combined) | 16 | — | — |
+| July 2026 | 728 | 542 | 57% |
+
+This is not a gradual curve. It is a step function. March through June: 33 autonomous sessions total, the system mostly in scaffolding mode. July: 728. The nominations made across four months started compounding all at once.
+
 This did not happen because of a single decision. It happened because of dozens of nominations made over four months — each one adding a layer to the stack, each one expanding what the system held without me. The July numbers are not the result of a moment. They are the result of a practice.
 
 Nomination is how the stack grows.
@@ -54,7 +64,7 @@ I know what a Data Security Officer does. I know their checklists, what they aud
 
 The agent built a compliance profile. It created automated monitoring. It flagged exposures. It documented everything. The output was not a task completed — it was a function held.
 
-On July 17, running its daily check without being asked, it found something I had not specified: the portal where the agent itself operates had no access control on it. Anyone who knew the address could open it.
+On July 17 — and you will recognise this case from the Grounding chapter — the Data Security Officer demonstrated the difference directly. Running its daily check without being asked, it found something I had not specified: the portal where the agent itself operates had no access control on it. Anyone who knew the address could open it.
 
 The agent flagged it, protected the portal, extended monitoring to seven domains, and built a permanent alert layer. By the time I received the summary, the problem was already solved.
 
