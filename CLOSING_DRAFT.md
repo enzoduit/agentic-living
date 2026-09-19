@@ -134,7 +134,7 @@ Zell am See. January 2025. Minus fifteen degrees. The research paper. The shakin
 
 I did not know, that night, what I had just understood. I did not have a framework for it yet, or a name for the crossing, or a hundred and forty days of data. I had a feeling I could not sit still with, and a walk in the cold.
 
-Less than a year later, in Tulum City, I had a different version of the same sensation. Not the shock of understanding what was now possible — I already knew that. Something else: the recognition that it was spreading. People I knew were crossing. People I met were crossing. The acceleration that had felt theoretical in January 2025 was visible and measurable by late 2025.
+Less than a year later, I had a different version of the same sensation. Not the shock of understanding what was now possible — I already knew that. Something else: the recognition that it was spreading. People I knew were crossing. People I met were crossing. The acceleration that had felt theoretical in January 2025 was visible and measurable by late 2025.
 
 By February 2026, many more had already made it across. The question had shifted from whether this was possible to how many more people could be brought there.
 
