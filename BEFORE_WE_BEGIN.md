@@ -16,6 +16,8 @@ This is the difference that changes everything. A chatbot requires you to be pre
 
 The research paper that forms the backbone of this loop is called ReAct: Reasoning and Action. Reading it is what started everything in this book. You do not need to read it. You just need to hold the loop in mind: Thought → Action → Observation. That is what an agent does, over and over, until the goal is reached or you tell it to stop.
 
+*ReAct = Reasoning and Action. The name comes from the research paper that formalised this loop — the same paper that started everything in this book.*
+
 ---
 
 ## The Safety Question
