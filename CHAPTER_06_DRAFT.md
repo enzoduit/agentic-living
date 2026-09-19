@@ -34,15 +34,13 @@ Understanding this changed everything about how I structure my days.
 
 The rhythm that emerged, after months of trial and error, has three distinct phases. None of them looks like a conventional working day.
 
-**Phase one: offline thinking.** Two hours, no screen, no inputs. reMarkable and a pen. The raw thinking happens here — problems worked through, directions decided, what needs to happen clarified. Nothing is produced for anyone. This is the substrate that everything else runs on.
-
-This is not journaling. It is not free writing. It is deliberate thinking, by hand, in a format that does not allow editing or formatting or the compulsion to make it look good for an audience. The lack of screen is essential. Handwriting is slow enough that only the most important thoughts survive the process of writing them down. That friction is a feature.
+**Phase one: offline thinking.** Two hours, no screen, no inputs. For me this is a reMarkable and a pen — I find that writing by hand, on a device with no notifications, creates exactly the right conditions. But this is personal. For someone else it might be a notebook, a walk with no phone, a coffee shop before anything is opened. The specific tool matters less than the principle: no inputs, no responses, no screen demanding attention. The raw thinking happens here — problems worked through, directions decided, what needs to happen clarified. Nothing is produced for anyone. This is the substrate that everything else runs on.
 
 **Phase two: deep co-creation.** Two hours with the agent, building or deciding something specific. Intense, absorbed, total focus. The offline thinking feeds directly into this — I arrive knowing what I want to do, which makes the co-creation faster and sharper. These sessions have a hard limit. After roughly two hours, the quality of judgment declines — the briefs get vaguer, the calls get lazier. The discipline is to stop at that point and not push through.
 
-**Phase three: away from the phone entirely.** Movement. Long runs. Zone 2 training. Time at altitude. No agenda, no check-ins. The agents run in the background. The outputs accumulate. I am elsewhere.
+**Phase three: away from the phone entirely.** For me this is movement — long runs, Zone 2 training, time at altitude. That is my version. For you it might be something completely different: a drive, a swim, cooking, a long walk, an afternoon with no agenda. The point is not the activity. The point is that you are genuinely elsewhere, not half-present. The agents run in the background. The outputs accumulate. You are not managing them.
 
-Endurance training — real endurance training, the kind that produces results — requires what coaches call Zone 2: low intensity, long duration. Heart rate stays controlled; legs move; mind is free. For a serious programme, this means four to five hours a week of movement during which your attention is not required anywhere specific. When I understood this properly, I stopped seeing Zone 2 as time away from work. I started seeing it as the best thinking time available to me — if I had the right systems in place so that acting on what I thought required only a few minutes, not a full session.
+I run ultras, which means I spend a lot of time training at low intensity — what coaches call Zone 2. Heart rate controlled, legs moving, mind free. I stopped seeing this as time away from work a long time ago. It became the best thinking time available to me, because the systems were in place and acting on what I thought required only a few minutes, not a full session. But the principle — not the sport — is what matters here. Find the activity that gets you genuinely off the screen. The thinking will follow.
 
 This creates a working rhythm that looks strange from the outside: four hours of high-intensity cognitive work in two discrete phases, then genuinely off, then a brief review in the evening of what the agents produced and what needs direction. Not eight hours of continuous presence. Intense spikes, real recovery, outputs arriving in between.
 
@@ -52,13 +50,11 @@ This creates a working rhythm that looks strange from the outside: four hours of
 
 The reMarkable is not a productivity tool. It is a thinking tool. The distinction matters.
 
-Two hours every morning, offline, no screen, writing by hand. The thinking happens there — rough, unfiltered, not shaped for anyone else. Ideas arrive incomplete. Connections are made without worrying about how they will sound. Problems are worked through without the compulsion to format the solution for a reader.
+For me, the bridge is the reMarkable. Two hours every morning, offline, writing by hand. The thinking happens there — rough, unfiltered, not shaped for anyone else. When I am ready to act, I record a voice note and send it to the agent: what I worked out, what needs to happen. Raw thinking goes in. Structured output comes back. The agent turns what I said — sometimes haltingly, sometimes badly articulated — into a brief, a document, a plan, a draft. Not because it understood my thinking better than I did, but because it handles the structuring and formatting that would otherwise pull me out of thinking mode and into execution mode.
 
-Then the dictat: a voice note sent to the agent with what I worked out and what needs to happen. Raw thinking goes in. Structured output comes back. The agent takes what I said — sometimes quickly, sometimes haltingly, sometimes badly articulated — and turns it into a brief, a document, a plan, a draft. Not because the agent understood my thinking better than I did, but because it can do the structuring and formatting work that would otherwise pull me out of the thinking mode and into execution mode.
+Your bridge will look different. It might be a voice note recorded on a walk. A written note in a regular notebook, photographed and sent. A quick brain dump into a chat window after your morning coffee. What matters is that you have a consistent way to take the thinking that happened offline and hand it to the agent — so the gap between insight and action stays small.
 
-The reMarkable is the bridge between the two. Offline thinking happens there. When I am ready to act, I dictate. That voice note is the input that sets the next session of co-creation in motion.
-
-I did not plan this routine. It emerged from trying to figure out why my best ideas were arriving on runs and hikes rather than at a desk. The answer was obvious once I looked at it: the desk is where I execute. The movement is where I think. The reMarkable is the bridge between the two.
+I did not plan this routine. It emerged from noticing that my best ideas arrived on runs and hikes, not at a desk. The desk is where I execute. The movement is where I think. The bridge is how the two connect. Find your version of all three.
 
 ---
 
