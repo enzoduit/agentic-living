@@ -46,6 +46,12 @@ The same logic applies here, and it is surprisingly easy to implement. Most serv
 
 Only when you have seen the agent handle read access well — when you understand how it interprets the data, what it extracts, what it flags, what it ignores — should you consider giving it write access. And when you do, start with low-stakes write actions: drafting a message that you approve before it sends, creating a document in a sandbox folder, logging a summary to a file you review daily.
 
+Here is a concrete example of what this looks like in practice. My email connection is configured to create drafts — not to send them. Even if the agent composes a perfectly written email, even if the context makes the response obvious, even if everything about the situation calls for it to send: it technically cannot. The send action does not exist in the permissions I granted it. The last click is always mine.
+
+This is not a trust issue with the agent's writing. It is a design decision about which actions should require a deliberate human decision. Sending an email is irreversible. Once it leaves, it leaves. That is exactly the kind of action that should never happen without a human at the final step — regardless of how much you trust the system or how good the draft is.
+
+Technical restrictions are more reliable than behavioral ones. Do not rely on the agent "knowing" not to cross a line. Make it technically impossible for it to cross that line. The best-designed systems make the right behaviour the only possible behaviour.
+
 The instinct to "give it everything so it can really help" is the instinct that gets people into trouble. More access does not produce better results. Appropriate access, well-defined, produces results you can trust.
 
 ---
