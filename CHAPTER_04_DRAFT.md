@@ -14,19 +14,25 @@ The answer is elimination. Cut everything that is not necessary to prove the con
 
 ---
 
-## The Trap of the Full Vision
+## Shell vs. Brain — What to Actually Build
 
-When you wrote your 2035 press release, you imagined something complete. A system, a product, a way of working that is fully formed. That is exactly what the exercise was designed to produce — a vivid, specific picture of the destination.
+When you wrote your 2035 press release, you imagined something complete. That is exactly what the exercise was designed to produce. The trap is trying to build toward that destination all at once — and more specifically, building the wrong part of it first.
 
-The trap is trying to build toward that destination all at once.
+Most people, when they sit down to build, reach for what they can see. The interface. The name. The landing page that explains what the product does. The mockup that shows what it looks like. In the workshop, we call this building the Shell.
 
-In the workshop, we call this the Minimum Viable Proof — the smallest thing that demonstrates the core capability. Not the full product. Not even a prototype of the full product. The one piece, built today, that answers the most important question your vision raises.
+The Shell is not the product. The Shell is the container for the product. Containers that contain nothing are just boxes.
 
-Here is how to find it. Look at your press release and ask: what is the one claim in here that everything else depends on? Not the most impressive claim. The most foundational one. The claim that, if it turns out to be false, the whole vision collapses. That is what you build first.
+What you need to build is the Brain — the intelligence, the logic, the actual decision-making that is the value you promised. Strip away everything physical from your press release. Strip away the name, the branding, the interface. What is left? What is the actual decision that needs to happen? What does the system need to know — and what does it do with what it knows?
 
-In the workshop, teams learn that a 2035 hardware startup almost always begins as a 2025 software agent. The physical product, the infrastructure, the scale — all of that is downstream. The first question is: does the core logic work? Can the system do the thing that the system needs to do? If yes, everything else can be built. If no, everything else is irrelevant.
+The Brain is almost always the same thing: **data plus decisions**. What information goes in, and what output comes out?
 
-The same logic applies to your first agentic experiment.
+The workshop example that makes this concrete is SleepGuard. The 2035 vision: a Neural-Weave Pillow that detects your mood and plays the exact audio frequency to induce sleep. The Shell is the pillow — the hardware, the neural interface, the physical device. Obviously impossible to build in 48 hours.
+
+But the Brain? The Brain is: take signals about someone's current state, determine the right audio response, deliver it. Data — the user's state — plus a decision — the right frequency. Both buildable today, without any hardware, using an AI agent that asks a few questions and queues the right audio. Teams in the workshop call this the Sleep Concierge Agent. It does exactly what the pillow promised. It just does not have a pillow around it yet.
+
+The Shell was 2035. The Brain was already buildable in 2025.
+
+The same gap exists in almost every ambitious vision. Find the Brain in your press release. That is what you build first. Everything else can wait.
 
 ---
 
@@ -62,6 +68,22 @@ This process — run, evaluate, refine, run again — is the texture of Level 1 
 
 ---
 
+## Pro Tip: Quality Gates Before the Output Reaches You
+
+There is one additional design decision that significantly improves the quality of what you get back — and reduces the back-and-forth that makes early experiments feel exhausting.
+
+Define the quality criteria upfront, and tell the agent to check its own output against them before it sends you anything.
+
+Without this, the default pattern is: agent produces something, sends it to you, you give feedback, agent revises, you evaluate again. This works — but every iteration requires your time and attention. You are the quality gate.
+
+With criteria built in, the pattern changes. The agent produces something, checks it internally against the criteria you defined, and if it does not meet them, it revises before you ever see it. What arrives is already past the first round of review. You are no longer the first reader — you are the final one.
+
+Here is what quality criteria look like in practice. For a daily email summary: "Check that every item is a direct quote or accurate paraphrase from an actual email. Check that the three most important items are listed first. Check that the total summary is under 200 words. If any of these is not met, revise before sending."
+
+That is a quality gate. The agent runs it, not you. The result: less back-and-forth, higher quality from the first version, and more of your attention available for the things that actually require a decision from you.
+
+---
+
 ## The Question of What to Eliminate from Your Life
 
 There is a second kind of elimination that becomes available once the first experiment is working.
@@ -94,7 +116,7 @@ That sentence is your evaluation criterion. At the end of the week, you will kno
 
 If you are unsure how to set the experiment up technically, use this prompt:
 
-> *"I want to run a one-week AI experiment. The task is [your task]. The data source is [your one source]. The output should be [your one output]. I want to keep this as simple as possible — the goal is to test whether the concept works, not to build a complete system. What is the simplest way to set this up that I could get running today? What tools would I need, and what would each step look like?"*
+> *"I want to run a one-week AI experiment. The task is [your task]. The data source is [your one source]. The output should be [your one output]. I want to keep this as simple as possible — the goal is to test whether the concept works, not to build a complete system. I am not a developer and I do not want to write code. Please suggest existing AI tools and services I can use, and explain each step in plain language without technical jargon. What is the simplest way to get this running today?"*
 
 Let the AI walk you through the setup. Ask follow-up questions until the path is clear.
 
