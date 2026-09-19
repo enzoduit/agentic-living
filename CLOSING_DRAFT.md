@@ -8,7 +8,7 @@ I was thinking about two people — my housemates in Buenos Aires — who were a
 
 The word was "Infinito."
 
-I built a private webpage, accessible only by entering that word. Wrong answers returned error messages in Argentine slang. The correct answer opened a Vienna itinerary — a night at a chef's private home, and a trip to the Austrian house in Zell am See where the Agentic Living story began.
+I built a private webpage, accessible only by entering that word. Wrong answers returned error messages in Argentine slang. The correct answer opened a Vienna itinerary — a trip back to the Austrian house in Zell am See where the Agentic Living story began.
 
 The idea was mine. The execution was the agent's. In under an hour.
 
@@ -55,6 +55,12 @@ Most visitors stay two or three days. The logistics of getting there determine h
 Those are not experiences you can compress into a two-day visit. They require patience, flexibility, and the willingness to wait for the conditions to be right.
 
 Both — the working mornings and the mountain afternoons — were possible because of the same decision made before I arrived. Build the system. Let it travel with you.
+
+The record of all of it — the trails, the routes, the places this attention made possible — lives at [runs.trillion-initiative.com](https://runs.trillion-initiative.com) and [rides.trillion-initiative.com](https://rides.trillion-initiative.com). Trek and Sea: mountain trails and coastal rides through some of the most extraordinary terrain on Earth.
+
+For every trail on runs.trillion-initiative.com, there is a short documentary. Built by my agent from the raw footage of my Meta AI glasses and my drone — no editor, no production team, no script. Just the footage, the data, and an agent that knew what to make of it. Each one is a record of a place I got to be in fully, because the work was handled and I was not managing a screen.
+
+This is what the attention goes toward. Not productivity metrics. Life.
 
 ---
 
@@ -127,6 +133,12 @@ I want to end where I began.
 Zell am See. January 2025. Minus fifteen degrees. The research paper. The shaking.
 
 I did not know, that night, what I had just understood. I did not have a framework for it yet, or a name for the crossing, or a hundred and forty days of data. I had a feeling I could not sit still with, and a walk in the cold.
+
+Less than a year later, in Tulum City, I had a different version of the same sensation. Not the shock of understanding what was now possible — I already knew that. Something else: the recognition that it was spreading. People I knew were crossing. People I met were crossing. The acceleration that had felt theoretical in January 2025 was visible and measurable by late 2025.
+
+By February 2026, many more had already made it across. The question had shifted from whether this was possible to how many more people could be brought there.
+
+That is why I wrote this book.
 
 What I found, on the other side of that walk, is what this book describes.
 
