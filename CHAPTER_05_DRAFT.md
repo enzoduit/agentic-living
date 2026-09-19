@@ -62,6 +62,8 @@ A task executor would have run its check and moved on. A responsibility holder f
 
 An agent holding a responsibility is not the alternative to an expert. It is the alternative to the gap.
 
+If you are already running OpenClaw and want a ready-to-use interface for managing the digital employees you nominate, I have built an open-source framework for exactly this: **[→ Digital Employee Framework](https://github.com/enzoduit/de-framework)**. Fork it, adapt it to your stack, and use it as the management layer for the roles you are building.
+
 ---
 
 ## The Knowledge Principle
