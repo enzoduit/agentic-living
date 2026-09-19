@@ -2,7 +2,7 @@
 
 ---
 
-You have crossed from Level 0 to Level 1. You have proven one thing: a system can do the thing. One experiment, one task, one week — and you have demonstrated that autonomous operation is real for you, not just in principle.
+You have crossed from Level 0 to Level 1. You have proven one thing: a system can do the thing. You ran an experiment, and you demonstrated that autonomous operation is real for you, not just in principle.
 
 The question arrives immediately: what next?
 

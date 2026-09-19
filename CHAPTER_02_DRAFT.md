@@ -26,17 +26,19 @@ The reason the 3-day workshop works with a 100% success rate is not that three d
 
 If you are waiting to understand it first, you are waiting for something that will not arrive on its own.
 
-**The second reason is that they are trying to automate the wrong things first.**
+**The second reason is fear — that something could go terribly wrong.**
 
-When people first approach AI agents — especially people who are good at their jobs, who have built things, who are competent — they tend to reach for the most complex and high-stakes problem they can find. The thing that has been annoying them for years. The workflow that is genuinely broken. The output that requires the most expertise.
+This fear is often unnamed. But it shapes almost every early conversation about agents. You have probably read the stories: AI systems accessing personal data without permission, taking actions nobody asked for. There was significant press around specific platforms — concerns about AI going wild, doing unexpected things with private data. Some of those stories are exaggerated. Some are not. The concern is legitimate.
 
-This is a mistake, and it is a very specific kind of mistake: using a new capability on a problem that requires you to already trust the capability fully, before you have built that trust.
+The answer is not to dismiss the fear. It is to design around it by starting somewhere where the cost of going wrong is effectively zero.
 
-The result is almost always a bad first experience. The agent produces something that misses the mark in a way you did not anticipate. You spend more time correcting it than you would have spent doing it yourself. You conclude — incorrectly — that the technology does not work for your domain.
+The first thing I automated was not a business problem. Not anything company-sensitive. It was my Garmin data — six years of running activities: GPS tracks, heart rate records, pace data, elevation profiles. Something entirely mine. If the agent misread a pace number or produced a wrong training summary, the consequence was a wrong number in a report I would review anyway. No irreversible action possible. No sensitive data. Nothing that belonged to anyone else.
 
-What should you automate first? Something where failure is cheap. Something where the cost of a wrong output is low — where you can see clearly what went wrong, fix it, and run it again. Something small enough that the feedback loop is tight and the learning comes fast.
+But from that starting point, something happened I had not fully anticipated. The agent took the raw running data and built something real: a short documentary of my training season, a coaching summary, a live page on a public domain. I had built software end-to-end — from raw data all the way to deployment, publicly visible — without being a developer. It was mine to own entirely. No company involvement, no permissions required, no risk to anyone else. And because the stakes were low, I could see exactly what the agent did and where the limits were.
 
-The first things I automated were not the important things. They were the boring things. The things I hated doing. The things that consumed time but not judgment. I started there not because they were strategic, but because they were safe — and because seeing something boring get handled perfectly by an agent is, it turns out, more motivating than any inspiring demo.
+That experience changed something. Not just because it worked — but because I could hold full responsibility for the outcome.
+
+Start where failure is free. Start with something personal, something yours entirely, something where a wrong output teaches you more than it costs you. The Garmin experiment is the template.
 
 **The third reason is the most subtle, and the hardest to fix.**
 
@@ -71,6 +73,8 @@ The question is not whether the story changes. The question is whether you get t
 Take out the press release you wrote at the end of the last chapter.
 
 Read it once.
+
+Now — before you open any AI — close the screen. Think offline, without inputs. What is the one thing that could actually go terribly wrong with this vision? Give yourself a few minutes. Let your own thinking happen first, before the AI starts shaping the conversation. When you have a clear sense of the main risk, then open the AI.
 
 Now open a new AI conversation and type this:
 

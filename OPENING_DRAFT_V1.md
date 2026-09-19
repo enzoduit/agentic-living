@@ -62,9 +62,12 @@ At IMC Krems in Austria. At Queensland University of Technology in Brisbane, Aus
 
 100% success rate across every cohort.
 
+> *"If I can do it, everybody can — thanks to the technology we can access nowadays."*
+> — Sofia, participant, QUT Brisbane workshop 2026
+
 That number is the most important sentence in this introduction. Not because it proves I am a good teacher. Because it proves the crossing is learnable. It is not a talent. It is not reserved for developers or founders or people who grew up thinking about systems. It is a threshold, and there is a path across it. I have walked people across it enough times now to know exactly where the difficult parts are, and what helps.
 
-Peter Steinberger — the Austrian entrepreneur who built the infrastructure that made my year-long experiment possible — has a phrase I keep coming back to: *"Only imagination is holding us back."* He said it in the context of what his software could do. But I think it describes Level 1 exactly. Not just the capability. The mental shift. The moment when you stop asking *is this possible* and start asking *what should I build*.
+Peter Steinberger — the Austrian entrepreneur who created OpenClaw, the agent platform that made my year-long experiment possible — has a phrase I keep coming back to: *"Only imagination is holding us back."* He said it in the context of what his software could do. But I think it describes Level 1 exactly. Not just the capability. The mental shift. The moment when you stop asking *is this possible* and start asking *what should I build*.
 
 That is the shift this book is trying to produce.
 
@@ -78,17 +81,19 @@ One note on who this is for. Some readers are building their own companies. Othe
 
 ## How This Book Is Structured
 
-The framework you will encounter in this book — I call it FLOW — is not a productivity system. It is a map for the crossing from Level 0 to Level 1, and for what to do once you're there.
+The framework you will encounter in this book — I call it AGENT — is not a productivity system. It is a map for the crossing from Level 0 to Level 1, and for what to do once you're there. The name is the acronym: **A**wareness, **G**rounding, **E**limination, **N**omination, **T**ranslation.
 
-**Awareness** is the first move: understanding that the levels exist, that you are at one of them, and what the distance between them actually means for your work and your life. You cannot cross a threshold you cannot see.
+**A — Awareness** is the first move: understanding that the levels exist, that you are at one of them, and what the distance between them actually means for your work and your life. You cannot cross a threshold you cannot see.
 
-**Grounding** is building the infrastructure that makes Level 1 real for you — not theoretical, not something you've watched someone else do, but running on your behalf, in your context, producing results you own. This is not a technical exercise. It is a trust exercise.
+**G — Grounding** is building the infrastructure that makes Level 1 real for you — not theoretical, not something you've watched someone else do, but running on your behalf, in your context, producing results you own. This is not a technical exercise. It is a trust exercise.
 
-**Elimination** is the practice that Level 1 makes possible and Level 0 makes impossible: stopping doing the things that do not require you. At Level 0, you can't stop because you don't fully believe something else can do them. At Level 1, elimination becomes obvious. The question is not *can I delegate this* — you know you can. The question is *what exactly do I do with what is returned*.
+**E — Elimination** is stripping away everything that does not require your judgment. Not permanently — just starting with the minimum viable thing that proves the concept works. Find the core. Strip the rest. That is where Level 1 starts.
 
-**Output** is what comes after: reinvesting the attention you have reclaimed into the things that actually require a human — judgment, creativity, presence, responsibility. The goal of Agentic Living is not efficiency. It is not even freedom, though freedom tends to follow. The goal is more of your actual self, applied to the things that actually need you.
+**N — Nomination** is deputising responsibility: not individual tasks, but roles. The parts of your working life that could be held permanently by an agent — because the context is clear, the standards are defined, and the output can be evaluated. Nomination is how Level 1 scales.
 
-The diary of experiments that forms the core of this book is organised around those four movements. Every story in it is an example of what they look like in practice — the successes, the failures, the moments where the system corrected itself at 3am while I slept, and the moments where nothing worked and I had to figure out why.
+**T — Translation** is what you do with the hours that nomination returns. Not productivity — presence. Creating the conditions where your best thinking actually happens, and then directing that thinking back into the system.
+
+The chapters that follow are organised around those five steps. Every story in this book is an example of what they look like in practice — the successes, the failures, the moments where the system corrected itself at 3am while I slept, and the moments where nothing worked and I had to figure out why.
 
 Read it as a field report. Not as a manifesto. Not as a how-to. As notes from someone who crossed the threshold and kept walking.
 

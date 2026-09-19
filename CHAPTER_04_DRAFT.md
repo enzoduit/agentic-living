@@ -34,23 +34,7 @@ The Shell was 2035. The Brain was already buildable in 2025.
 
 The same gap exists in almost every ambitious vision. Find the Brain in your press release. That is what you build first. Everything else can wait.
 
----
-
-## What Elimination Actually Means
-
-Elimination in this context is not giving up. It is identifying the minimum surface required to prove the thing that matters.
-
-In practice, this means making four decisions:
-
-**One task.** Not a workflow. Not a system. One task that the agent will own, end to end. It should be a task you currently do yourself that consumes time but not judgment — or consumes judgment that you could describe precisely enough to put in a brief. Email summarisation. Meeting note extraction. Content research for a specific topic. Daily monitoring of a metric you care about. One thing.
-
-**One data source.** Not every source you eventually want connected. The one source that is necessary for this specific task. If the task is summarising emails, the data source is email. If the task is monitoring a dashboard, the data source is the dashboard. Everything else waits.
-
-**One output.** Not a multi-channel deployment. One place where the result appears that you can review. A daily summary document. A Telegram message. A log file. Something you can read every morning and evaluate: did the agent do what I wanted? Is the output accurate? Is it useful?
-
-**One week.** Not a six-month roadmap. Run the experiment for one week. At the end of the week, you will know whether it works, what it gets wrong, and what to adjust. That is enough to decide whether to expand it.
-
-This is not a limited ambition. It is a precise one. The scope of the first experiment is narrow specifically so that the feedback loop is tight. Tight feedback loops produce learning fast. Learning fast is what gets you to Level 1.
+And never forget to challenge based on the principle you just learned.
 
 ---
 
@@ -65,6 +49,15 @@ Each of those is valuable. Because the correction required to fix the output is 
 Run the corrected version. Evaluate it. Adjust again if needed. By the third iteration, most experiments produce outputs that are genuinely useful — not because the agent got smarter, but because your instructions got clearer.
 
 This process — run, evaluate, refine, run again — is the texture of Level 1 in its early phase. It is not passive. It is not "let the AI do everything." It is active collaboration, where your contribution is the clarity of your thinking and the quality of your goal-setting, and the agent's contribution is the execution that makes your thinking visible.
+
+The data from the experiment tells the same story:
+
+| Period | Interactive sessions | Autonomous (background) |
+|--------|---------------------|------------------------|
+| March 2026 | ~73% | ~27% |
+| July 2026 | ~4% | ~96% |
+
+In March, a message arrived every 3.3 minutes on average — constant direction required. By July, 96% of sessions ran autonomously, with no input at all. The curve is not the agent getting smarter. It is trust accumulating — and every nominated responsibility reducing the next interaction required.
 
 ---
 
@@ -104,11 +97,7 @@ Eliminate from your own plate what does not belong there. This is not laziness. 
 
 ## Your Fourth Step
 
-Take your read-only experiment design from the last chapter. Apply the four decisions:
-
-One task. One data source. One output format. One week.
-
-Then run it.
+Take your read-only experiment design from the last chapter and run it.
 
 Before you start, write one sentence describing what success looks like. Not "it works" — something specific. "The daily summary contains the three most important things I would have noticed myself, without me reading everything." "The meeting notes capture every action item with the right owner." "The research briefing gives me enough to make a decision without reading the original sources."
 

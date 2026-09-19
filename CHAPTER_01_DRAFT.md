@@ -60,6 +60,20 @@ What is happening now, and what the Perplexity story illustrates, is that the ju
 
 That is the structural shift. Everything else — the lifestyle stories, the experiments, the tools and workflows and frameworks — is downstream of that one fact.
 
+One measure captures the pace of this shift. METR — an independent AI research organisation — tracks what they call the “time horizon”: how long an agent can work reliably on a complex task before needing human input.
+
+| Year | Reliable autonomous operation |
+|------|-------------------------------|
+| 2019 | ~1 minute |
+| 2022 | ~8 minutes |
+| 2025 | ~1 hour |
+| 2026 | ~4–6 hours |
+| Soon | Days / weeks |
+
+*Source: METR Time Horizon 1.1, January 2026. Capability doubling approximately every 7 months.*
+
+An agent that works reliably for six hours is qualitatively different from one that needed checking every eight minutes. What required constant supervision becomes something you can hand off completely. And what you can hand off completely is not where your attention should go.
+
 ---
 
 And here is the implication that most people resist when they first encounter it:

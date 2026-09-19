@@ -60,7 +60,7 @@ The instinct to "give it everything so it can really help" is the instinct that 
 
 The third design decision is what data the agent has access to at all.
 
-Not every piece of data you own should be available to an agent. Sensitive personal data, confidential client information, financial records, legal documents — these have higher stakes if mishandled. They require higher trust before you connect them.
+Not every piece of data you own should be available to an agent. Sensitive personal data, confidential client information, financial records, legal documents — these have higher stakes if mishandled. They require higher trust before you connect them — or you just work with IDs. In many cases you do not need the actual sensitive data; you only need a reference to it. An order number, a client reference, a file path. The agent can work with the identifier without ever seeing what it points to. Same functionality, smaller security surface.
 
 The practical recommendation is to start your first experiments with data that has low sensitivity and high volume. Email newsletters, public-facing content, historical reports, meeting notes from internal planning sessions — these give the agent enough to work with to produce genuinely useful outputs, without exposing anything you could not recover from if something went wrong.
 
@@ -131,6 +131,8 @@ The isolation principle means it only has access to what you have explicitly giv
 What you are building, when you do this well, is not a system that does whatever it wants with your life. You are building a system that does exactly what you have defined, within exactly the space you have defined, and reports back to you so that you can see what it is doing. The autonomy is real. The constraint is also real.
 
 That combination — genuine autonomy within genuine constraints — is what makes it useful and what makes it safe. One without the other is either useless or dangerous.
+
+This is also why — if you have heard the OpenClaw stories and security concerns about AI accessing your computer — the right response is not to avoid it. It is to install it correctly. Not on your personal laptop or your work machine, where everything on the device is potentially reachable. On an isolated machine: a separate server or clean environment where the only access that exists is what you have deliberately granted. Nothing else connects without a decision. That isolation is not a workaround. It is the design.
 
 ---
 
