@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepGuard Spec Check | MVP Example</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sleepguard-styles.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="gradient-overlay"></div>
+    
+    <nav class="sg-navbar">
+        <div class="nav-left">
+            <a href="mvp-instructions.html" class="back-link">← Back to Instructions</a>
+        </div>
+        <div class="nav-brand">
+            <span class="sg-logo">☾</span>
+            <span class="sg-wordmark">SleepGuard</span>
+        </div>
+        <div class="nav-right">
+            <span class="nav-label">Internal Spec Document</span>
+        </div>
+    </nav>
+
+    <main class="sg-main">
+        <header class="sg-header">
+            <div class="header-badge">SPEC CHECK</div>
+            <h1 class="header-title">From Vision to Build</h1>
+            <div class="header-transform">
+                <div class="transform-box from">
+                    <span class="t-label">The Dream</span>
+                    <span class="t-year">2035</span>
+                </div>
+                <div class="transform-connector">
+                    <span class="connector-line"></span>
+                    <span class="connector-icon">☾</span>
+                    <span class="connector-line"></span>
+                </div>
+                <div class="transform-box to">
+                    <span class="t-label">The Prototype</span>
+                    <span class="t-year">Today</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Step 1: The Promise -->
+        <section class="sg-section">
+            <div class="sg-card promise-card">
+                <div class="card-header">
+                    <span class="card-number">01</span>
+                    <h2>The Press Release Promise</h2>
+                </div>
+                <div class="card-body">
+                    <div class="promise-grid">
+                        <div class="promise-item">
+                            <div class="promise-icon">🌙</div>
+                            <div class="promise-content">
+                                <span class="promise-label">The Device</span>
+                                <p class="promise-value">"Neural-Weave Pillow"</p>
+                            </div>
+                        </div>
+                        <div class="promise-item">
+                            <div class="promise-icon">✨</div>
+                            <div class="promise-content">
+                                <span class="promise-label">The Magic</span>
+                                <p class="promise-value">"Detects your mood and instantly plays the exact frequency to induce sleep."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="constraint-box">
+                        <span class="constraint-icon">⏰</span>
+                        <p><strong>The Constraint:</strong> We cannot build a neural interface or a physical pillow in 48 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: The Trap -->
+        <section class="sg-section">
+            <div class="sg-card trap-card">
+                <div class="card-header trap-header">
+                    <span class="card-number">02</span>
+                    <h2>The Trap <span class="header-sub">(What most teams build)</span></h2>
+                </div>
+                <div class="card-body">
+                    <div class="trap-showcase">
+                        <div class="trap-visual">
+                            <div class="fake-dashboard">
+                                <div class="dash-header">Sleep Analytics</div>
+                                <div class="dash-chart">
+                                    <div class="chart-bar" style="height: 40%"></div>
+                                    <div class="chart-bar" style="height: 60%"></div>
+                                    <div class="chart-bar" style="height: 45%"></div>
+                                    <div class="chart-bar" style="height: 70%"></div>
+                                    <div class="chart-bar" style="height: 55%"></div>
+                                    <div class="chart-bar" style="height: 35%"></div>
+                                    <div class="chart-bar" style="height: 65%"></div>
+                                </div>
+                                <div class="dash-label">Weekly Sleep Quality</div>
+                            </div>
+                            <div class="trap-x">✗</div>
+                        </div>
+                        <div class="trap-explanation">
+                            <h3>"A Sleep Tracking Dashboard"</h3>
+                            <p class="trap-quote">"Look, here is a graph of your sleep."</p>
+                            <div class="trap-failure">
+                                <span class="fail-label">Why it fails:</span>
+                                <p>Graphs don't help you sleep. The Press Release promised <strong>induction</strong>, not <strong>monitoring</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: The Spec -->
+        <section class="sg-section">
+            <div class="sg-card spec-card">
+                <div class="card-header spec-header">
+                    <span class="card-number">03</span>
+                    <h2>The Spec <span class="header-sub">(The One Core Feature)</span></h2>
+                </div>
+                <div class="card-body">
+                    <div class="insight-banner">
+                        <p>To prove the PR, we must prove the <strong>Algorithm</strong>, not the Pillow.</p>
+                    </div>
+                    
+                    <div class="core-loop-section">
+                        <h4 class="loop-title">The Core Loop</h4>
+                        <div class="loop-visual">
+                            <div class="loop-node input">
+                                <div class="node-icon">💭</div>
+                                <div class="node-label">User Input</div>
+                                <div class="node-detail">Mood / State</div>
+                            </div>
+                            <div class="loop-flow">
+                                <div class="flow-line"></div>
+                                <div class="flow-pulse"></div>
+                            </div>
+                            <div class="loop-node process">
+                                <div class="node-icon">🧠</div>
+                                <div class="node-label">AI Decision</div>
+                                <div class="node-detail">Analysis</div>
+                            </div>
+                            <div class="loop-flow">
+                                <div class="flow-line"></div>
+                                <div class="flow-pulse"></div>
+                            </div>
+                            <div class="loop-node output">
+                                <div class="node-icon">🎵</div>
+                                <div class="node-label">Audio Output</div>
+                                <div class="node-detail">Personalized</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mvp-reveal-box">
+                        <div class="reveal-icon">☾</div>
+                        <div class="reveal-content">
+                            <span class="reveal-label">The 2025 MVP</span>
+                            <h3>"The Sleep Concierge Agent"</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: Technical Spec -->
+        <section class="sg-section">
+            <div class="sg-card tech-card">
+                <div class="card-header tech-header">
+                    <span class="card-number">04</span>
+                    <h2>The Technical Spec <span class="header-sub">(Day 2 Build)</span></h2>
+                </div>
+                <div class="card-body">
+                    <div class="phone-demo">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <div class="chat-header">
+                                    <span class="chat-avatar">☾</span>
+                                    <span class="chat-name">SleepGuard</span>
+                                    <span class="chat-status">Online</span>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message user">
+                                        <div class="message-bubble">
+                                            I can't sleep. My mind is racing about the meeting tomorrow.
+                                        </div>
+                                        <div class="message-time">11:42 PM</div>
+                                    </div>
+                                    
+                                    <div class="processing-indicator">
+                                        <div class="process-step">
+                                            <span class="step-icon">🧠</span>
+                                            <span class="step-text">Analyzing sentiment...</span>
+                                        </div>
+                                        <div class="process-tag">High Anxiety • Work Stress</div>
+                                        <div class="process-step">
+                                            <span class="step-icon">🎵</span>
+                                            <span class="step-text">Matching to "Beta-Wave Downshift"</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="message bot">
+                                        <div class="message-bubble">
+                                            <p>I've calibrated this track to lower your cortisol. Listen now.</p>
+                                            <div class="audio-player" id="audioPlayer" onclick="toggleAudio()">
+                                                <div class="audio-icon" id="playIcon">▶</div>
+                                                <div class="audio-wave" id="audioWave">
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                </div>
+                                                <div class="audio-duration" id="audioDuration">0:00 / 0:30</div>
+                                            </div>
+                                            <div class="audio-name">beta_wave_downshift_v3.mp3</div>
+                                        </div>
+                                        <div class="message-time">11:42 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4>Tech Stack</h4>
+                            <div class="stack-items">
+                                <div class="stack-item">
+                                    <span class="stack-label">Trigger</span>
+                                    <span class="stack-value">WhatsApp API</span>
+                                </div>
+                                <div class="stack-item">
+                                    <span class="stack-label">Logic</span>
+                                    <span class="stack-value">ChatGPT / Claude</span>
+                                </div>
+                                <div class="stack-item">
+                                    <span class="stack-label">Action</span>
+                                    <span class="stack-value">Zapier / Make</span>
+                                </div>
+                                <div class="stack-item">
+                                    <span class="stack-label">Database</span>
+                                    <span class="stack-value">Airtable / Notion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="sg-section">
+            <div class="conclusion-card">
+                <div class="conclusion-moon">☾</div>
+                <h2>The Conclusion</h2>
+                <p class="conclusion-strike">We aren't building the pillow.</p>
+                <p class="conclusion-reveal">We are building <strong>the Brain</strong> of the pillow.</p>
+            </div>
+        </section>
+
+        <!-- Shell vs Brain -->
+        <section class="sg-section">
+            <div class="comparison-grid">
+                <div class="comp-card shell">
+                    <div class="comp-header">
+                        <span class="comp-icon">✗</span>
+                        <h3>The Shell</h3>
+                        <span class="comp-subtitle">Don't build this</span>
+                    </div>
+                    <ul class="comp-list">
+                        <li>The pillow fabric</li>
+                        <li>The Neural-Weave material</li>
+                        <li>A sleep tracking dashboard</li>
+                        <li>Marketing landing pages</li>
+                        <li>3D product renders</li>
+                    </ul>
+                </div>
+                <div class="comp-card brain">
+                    <div class="comp-header">
+                        <span class="comp-icon">☾</span>
+                        <h3>The Brain</h3>
+                        <span class="comp-subtitle">Build this</span>
+                    </div>
+                    <ul class="comp-list">
+                        <li>The mood detection AI</li>
+                        <li>The audio selection algorithm</li>
+                        <li>The Sleep Concierge Agent</li>
+                        <li>A working WhatsApp bot</li>
+                        <li>Real personalized output</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="nav-section">
+            <a href="mvp-instructions.html" class="sg-btn secondary">
+                <span class="btn-arrow">←</span>
+                <span>Back to Instructions</span>
+            </a>
+            <a href="index.html" class="sg-btn primary">
+                <span>Workshop</span>
+                <span class="btn-arrow">→</span>
+            </a>
+        </section>
+    </main>
+
+    <footer class="sg-footer">
+        <div class="footer-brand">
+            <span class="sg-logo">☾</span>
+            <span>SleepGuard</span>
+        </div>
+        <p class="footer-note">This is a demonstration document for educational purposes.</p>
+    </footer>
+
+    <script>
+        // === Beta Wave Audio Generator ===
+        let audioContext = null;
+        let isPlaying = false;
+        let oscillators = [];
+        let gainNode = null;
+        let startTime = 0;
+        let timerInterval = null;
+
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function createBinauralBeat() {
+            initAudio();
+            
+            // Create gain node for volume control
+            gainNode = audioContext.createGain();
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 2); // Fade in
+            gainNode.connect(audioContext.destination);
+
+            // Base frequency for relaxation (around 200Hz carrier)
+            const baseFreq = 200;
+            // Beta wave difference (12-14 Hz for relaxed alertness transitioning to sleep)
+            const beatFreq = 6; // Theta range for deep relaxation
+
+            // Left ear oscillator
+            const oscLeft = audioContext.createOscillator();
+            oscLeft.type = 'sine';
+            oscLeft.frequency.setValueAtTime(baseFreq, audioContext.currentTime);
+            
+            // Right ear oscillator (slightly different frequency creates binaural beat)
+            const oscRight = audioContext.createOscillator();
+            oscRight.type = 'sine';
+            oscRight.frequency.setValueAtTime(baseFreq + beatFreq, audioContext.currentTime);
+
+            // Create stereo panner for left channel
+            const panLeft = audioContext.createStereoPanner();
+            panLeft.pan.setValueAtTime(-1, audioContext.currentTime);
+            
+            // Create stereo panner for right channel
+            const panRight = audioContext.createStereoPanner();
+            panRight.pan.setValueAtTime(1, audioContext.currentTime);
+
+            // Add subtle pink noise for texture
+            const noiseBuffer = createPinkNoise();
+            const noiseSource = audioContext.createBufferSource();
+            noiseSource.buffer = noiseBuffer;
+            noiseSource.loop = true;
+            
+            const noiseGain = audioContext.createGain();
+            noiseGain.gain.setValueAtTime(0.05, audioContext.currentTime);
+            
+            noiseSource.connect(noiseGain);
+            noiseGain.connect(gainNode);
+
+            // Connect oscillators
+            oscLeft.connect(panLeft);
+            panLeft.connect(gainNode);
+            
+            oscRight.connect(panRight);
+            panRight.connect(gainNode);
+
+            // Start all sources
+            oscLeft.start();
+            oscRight.start();
+            noiseSource.start();
+
+            oscillators = [oscLeft, oscRight, noiseSource];
+            
+            return { oscLeft, oscRight, noiseSource };
+        }
+
+        function createPinkNoise() {
+            const bufferSize = 2 * audioContext.sampleRate;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const output = buffer.getChannelData(0);
+            
+            let b0, b1, b2, b3, b4, b5, b6;
+            b0 = b1 = b2 = b3 = b4 = b5 = b6 = 0.0;
+            
+            for (let i = 0; i < bufferSize; i++) {
+                const white = Math.random() * 2 - 1;
+                b0 = 0.99886 * b0 + white * 0.0555179;
+                b1 = 0.99332 * b1 + white * 0.0750759;
+                b2 = 0.96900 * b2 + white * 0.1538520;
+                b3 = 0.86650 * b3 + white * 0.3104856;
+                b4 = 0.55000 * b4 + white * 0.5329522;
+                b5 = -0.7616 * b5 - white * 0.0168980;
+                output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+                output[i] *= 0.11;
+                b6 = white * 0.115926;
+            }
+            return buffer;
+        }
+
+        function toggleAudio() {
+            const playIcon = document.getElementById('playIcon');
+            const audioWave = document.getElementById('audioWave');
+            const audioDuration = document.getElementById('audioDuration');
+            
+            if (!isPlaying) {
+                // Start playing
+                createBinauralBeat();
+                isPlaying = true;
+                playIcon.textContent = '⏸';
+                audioWave.classList.add('playing');
+                startTime = Date.now();
+                
+                // Update timer
+                timerInterval = setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                    const mins = Math.floor(elapsed / 60);
+                    const secs = elapsed % 60;
+                    audioDuration.textContent = `${mins}:${secs.toString().padStart(2, '0')} / 0:30`;
+                    
+                    // Auto-stop after 30 seconds for demo
+                    if (elapsed >= 30) {
+                        stopAudio();
+                    }
+                }, 1000);
+                
+            } else {
+                stopAudio();
+            }
+        }
+
+        function stopAudio() {
+            const playIcon = document.getElementById('playIcon');
+            const audioWave = document.getElementById('audioWave');
+            const audioDuration = document.getElementById('audioDuration');
+            
+            // Fade out
+            if (gainNode) {
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 1);
+            }
+            
+            // Stop oscillators after fade
+            setTimeout(() => {
+                oscillators.forEach(osc => {
+                    try { osc.stop(); } catch(e) {}
+                });
+                oscillators = [];
+            }, 1000);
+            
+            isPlaying = false;
+            playIcon.textContent = '▶';
+            audioWave.classList.remove('playing');
+            clearInterval(timerInterval);
+            audioDuration.textContent = '0:00 / 0:30';
+        }
+
+        // Initialize wave animation delays
+        const waves = document.querySelectorAll('.audio-wave span');
+        waves.forEach((wave, i) => {
+            wave.style.animationDelay = `${i * 0.1}s`;
+        });
+    </script>
+</body>
+</html>

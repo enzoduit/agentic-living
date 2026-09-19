@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race to Series A | Admin Control</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="race-styles.css">
+</head>
+<body class="admin-page">
+    <div class="grain-overlay"></div>
+    
+    <nav class="race-nav">
+        <div class="nav-brand">
+            <span class="brand-icon">🚀</span>
+            <span class="brand-text">Race to Series A</span>
+        </div>
+        <div class="nav-badge admin-badge">ADMIN CONTROL</div>
+    </nav>
+
+    <main class="admin-main">
+        <header class="admin-header">
+            <h1>Race Control Panel</h1>
+            <p>Manage teams and control the race</p>
+        </header>
+
+        <div class="firebase-warning" id="firebaseWarning" style="display: none;">
+            <div class="warning-icon">⚠️</div>
+            <div class="warning-content">
+                <h3>Firebase Not Configured</h3>
+                <p>Cross-device sync is disabled. To enable real-time sync across phones and projector:</p>
+                <ol>
+                    <li>Create a free Firebase project at <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a></li>
+                    <li>Create a Realtime Database in <strong>Test Mode</strong></li>
+                    <li>Copy your database URL</li>
+                    <li>Edit <code>race-game.js</code> and replace <code>YOUR-PROJECT-ID</code> with your URL</li>
+                </ol>
+                <p class="warning-note">Currently running in local mode (same browser only).</p>
+            </div>
+        </div>
+
+        <section class="game-status-section">
+            <div class="status-card" id="statusCard">
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Setup Mode</span>
+                </div>
+                <div class="status-info">
+                    <span id="teamCount">0</span> teams registered
+                </div>
+            </div>
+        </section>
+
+        <section class="add-team-section">
+            <h2>Add Teams</h2>
+            <div class="add-team-form">
+                <div class="emoji-select" id="emojiSelect">
+                    <!-- Populated by JS -->
+                </div>
+                <input type="text" id="teamNameInput" placeholder="Enter team name..." maxlength="30">
+                <button id="addTeamBtn" class="btn-primary">
+                    <span>Add Team</span>
+                    <span class="btn-icon">+</span>
+                </button>
+            </div>
+            <div class="quick-add">
+                <span class="quick-add-label">Quick add:</span>
+                <button class="quick-btn" onclick="quickAddTeam('Alpha')">Alpha</button>
+                <button class="quick-btn" onclick="quickAddTeam('Beta')">Beta</button>
+                <button class="quick-btn" onclick="quickAddTeam('Gamma')">Gamma</button>
+                <button class="quick-btn" onclick="quickAddTeam('Delta')">Delta</button>
+                <button class="quick-btn" onclick="quickAddTeam('Omega')">Omega</button>
+            </div>
+        </section>
+
+        <section class="teams-section">
+            <h2>Registered Teams</h2>
+            <div class="teams-list" id="teamsList">
+                <div class="empty-state" id="emptyState">
+                    <span class="empty-icon">👥</span>
+                    <p>No teams added yet</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="race-controls-section">
+            <h2>Race Controls</h2>
+            <div class="race-controls">
+                <button id="startRaceBtn" class="btn-start" disabled>
+                    <span class="btn-icon">🏁</span>
+                    <span>Start Race</span>
+                </button>
+                <button id="stopRaceBtn" class="btn-stop" style="display:none;">
+                    <span class="btn-icon">⏹️</span>
+                    <span>Stop Race</span>
+                </button>
+                <button id="resetRaceBtn" class="btn-reset">
+                    <span class="btn-icon">🔄</span>
+                    <span>Reset & Stop Race</span>
+                </button>
+                <button id="clearAllBtn" class="btn-danger">
+                    <span class="btn-icon">🗑️</span>
+                    <span>Clear All Teams</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="links-section">
+            <h2>Share Links</h2>
+            <div class="links-grid">
+                <a href="race-remote.html" target="_blank" class="link-card">
+                    <span class="link-icon">📱</span>
+                    <span class="link-title">Team Remote</span>
+                    <span class="link-desc">Share with students</span>
+                </a>
+                <a href="race-leaderboard.html" target="_blank" class="link-card">
+                    <span class="link-icon">📺</span>
+                    <span class="link-title">Leaderboard</span>
+                    <span class="link-desc">Display on projector</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="race-game.js"></script>
+    <script>
+        // Admin-specific functionality
+        const teamNameInput = document.getElementById('teamNameInput');
+        const addTeamBtn = document.getElementById('addTeamBtn');
+        const teamsList = document.getElementById('teamsList');
+        const emptyState = document.getElementById('emptyState');
+        const startRaceBtn = document.getElementById('startRaceBtn');
+        const stopRaceBtn = document.getElementById('stopRaceBtn');
+        const resetRaceBtn = document.getElementById('resetRaceBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const teamCount = document.getElementById('teamCount');
+        const statusCard = document.getElementById('statusCard');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const emojiSelect = document.getElementById('emojiSelect');
+        
+        let selectedEmojiIndex = 0;
+
+        // Populate emoji selector
+        function renderEmojiSelector() {
+            const usedEmojis = RaceGame.getTeams().map(t => t.emojiIndex);
+            
+            emojiSelect.innerHTML = TEAM_EMOJIS.map((e, i) => `
+                <button type="button" 
+                    class="emoji-btn ${i === selectedEmojiIndex ? 'selected' : ''} ${usedEmojis.includes(i) ? 'used' : ''}" 
+                    onclick="selectEmoji(${i})"
+                    title="${e.name}"
+                    ${usedEmojis.includes(i) ? 'disabled' : ''}>
+                    ${e.emoji}
+                </button>
+            `).join('');
+            
+            // Auto-select first available emoji
+            if (usedEmojis.includes(selectedEmojiIndex)) {
+                for (let i = 0; i < TEAM_EMOJIS.length; i++) {
+                    if (!usedEmojis.includes(i)) {
+                        selectedEmojiIndex = i;
+                        renderEmojiSelector();
+                        break;
+                    }
+                }
+            }
+        }
+
+        function selectEmoji(index) {
+            selectedEmojiIndex = index;
+            renderEmojiSelector();
+        }
+
+        function renderTeamsList() {
+            const teams = RaceGame.getTeams();
+            const gameState = RaceGame.getGameState();
+            
+            teamCount.textContent = teams.length;
+            
+            // Update button states based on race status
+            if (gameState.isRaceActive) {
+                startRaceBtn.style.display = 'none';
+                stopRaceBtn.style.display = 'flex';
+                statusCard.className = 'status-card active';
+                statusIndicator.innerHTML = '<span class="status-dot"></span><span class="status-text">Race In Progress</span>';
+            } else {
+                startRaceBtn.style.display = 'flex';
+                startRaceBtn.disabled = teams.length === 0;
+                stopRaceBtn.style.display = 'none';
+                statusCard.className = 'status-card';
+                statusIndicator.innerHTML = '<span class="status-dot"></span><span class="status-text">Setup Mode</span>';
+            }
+            
+            if (teams.length === 0) {
+                teamsList.innerHTML = `
+                    <div class="empty-state">
+                        <span class="empty-icon">👥</span>
+                        <p>No teams added yet</p>
+                    </div>
+                `;
+                renderEmojiSelector();
+                return;
+            }
+            
+            teamsList.innerHTML = teams.map(team => {
+                const emojiData = RaceGame.getTeamEmoji(team);
+                return `
+                <div class="team-item ${team.currentStep === 5 ? 'finished' : ''}">
+                    <div class="team-emoji">${emojiData.emoji}</div>
+                    <div class="team-info">
+                        <span class="team-name">${team.name}</span>
+                        <span class="team-progress">Step ${team.currentStep}/5 - ${CHECKPOINTS[team.currentStep]}</span>
+                    </div>
+                    <div class="team-controls">
+                        <button class="ctrl-btn minus" onclick="adjustStep('${team.id}', -1)" ${team.currentStep === 0 ? 'disabled' : ''}>−</button>
+                        <span class="step-display">${team.currentStep}</span>
+                        <button class="ctrl-btn plus" onclick="adjustStep('${team.id}', 1)" ${team.currentStep === 5 ? 'disabled' : ''}>+</button>
+                        <button class="delete-btn" onclick="deleteTeam('${team.id}')">🗑️</button>
+                    </div>
+                </div>
+            `}).join('');
+            
+            renderEmojiSelector();
+        }
+
+        function addTeam() {
+            const name = teamNameInput.value.trim();
+            if (name) {
+                RaceGame.addTeam(name, selectedEmojiIndex);
+                teamNameInput.value = '';
+                renderTeamsList();
+            }
+        }
+
+        function quickAddTeam(suffix) {
+            RaceGame.addTeam(`Team ${suffix}`, selectedEmojiIndex);
+            renderTeamsList();
+        }
+
+        function deleteTeam(id) {
+            if (confirm('Remove this team?')) {
+                RaceGame.removeTeam(id);
+                renderTeamsList();
+            }
+        }
+
+        function adjustStep(id, delta) {
+            const teams = RaceGame.getTeams();
+            const team = teams.find(t => t.id === id);
+            if (team) {
+                const newStep = Math.max(0, Math.min(5, team.currentStep + delta));
+                RaceGame.updateTeamStep(id, newStep);
+                renderTeamsList();
+            }
+        }
+
+        addTeamBtn.addEventListener('click', addTeam);
+        teamNameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTeam();
+        });
+
+        startRaceBtn.addEventListener('click', () => {
+            if (confirm('Start the race? All teams will be reset to Step 0.')) {
+                RaceGame.startRace();
+                renderTeamsList();
+            }
+        });
+
+        stopRaceBtn.addEventListener('click', () => {
+            RaceGame.stopRace();
+            renderTeamsList();
+        });
+
+        resetRaceBtn.addEventListener('click', () => {
+            if (confirm('Reset all team progress and stop the race?')) {
+                RaceGame.stopRace();
+                RaceGame.resetProgress();
+                renderTeamsList();
+            }
+        });
+
+        clearAllBtn.addEventListener('click', () => {
+            if (confirm('Delete ALL teams? This cannot be undone.')) {
+                RaceGame.clearAllTeams();
+                renderTeamsList();
+            }
+        });
+
+        // Listen for updates from other tabs
+        RaceGame.onUpdate(() => {
+            renderTeamsList();
+        });
+
+        // Initial render
+        renderTeamsList();
+
+        // Check Firebase configuration
+        setTimeout(() => {
+            if (!RaceGame.isFirebaseConfigured()) {
+                document.getElementById('firebaseWarning').style.display = 'flex';
+            }
+        }, 100);
+        
+        // Poll Firebase every 3 seconds for sync
+        setInterval(async () => {
+            try {
+                const response = await fetch('https://series-a-game-default-rtdb.europe-west1.firebasedatabase.app/race.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && window.RaceGame._updateLocalData) {
+                        const teams = data.teams ? Object.values(data.teams) : [];
+                        const gameState = data.gameState || { isRaceActive: false, raceStartTime: null };
+                        window.RaceGame._updateLocalData(teams, gameState);
+                        renderTeamsList();
+                    }
+                }
+            } catch (e) {}
+        }, 3000);
+    </script>
+</body>
+</html>
+

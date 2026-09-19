@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race to Series A | The Racetrack</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --bg-track: #2d2d44;
+            --track-line: #ffffff;
+            --grass-green: #2d5a27;
+            --grass-light: #3d7a37;
+            --finish-gold: #ffd700;
+            --accent-red: #ff4757;
+            --accent-blue: #3498db;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .race-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.5);
+            border-bottom: 3px solid var(--finish-gold);
+        }
+
+        .race-title {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 2rem;
+            color: var(--finish-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .race-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 100px;
+        }
+
+        .race-status.active {
+            background: rgba(46, 213, 115, 0.2);
+            color: #2ed573;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #888;
+        }
+
+        .race-status.active .status-dot {
+            background: #2ed573;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(46, 213, 115, 0.5); }
+            50% { box-shadow: 0 0 0 10px rgba(46, 213, 115, 0); }
+        }
+
+        .timer {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Racetrack Container */
+        .racetrack-container {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Checkpoint Labels */
+        .checkpoint-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 60px;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkpoint-label {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            width: 100px;
+        }
+
+        .checkpoint-label .cp-icon {
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Track */
+        .racetrack {
+            position: relative;
+            background: var(--grass-green);
+            border-radius: 20px;
+            padding: 20px 0;
+            box-shadow: 
+                inset 0 10px 30px rgba(0,0,0,0.3),
+                0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Grass texture */
+        .racetrack::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(0,0,0,0.05) 20px,
+                rgba(0,0,0,0.05) 40px
+            );
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        /* Track lanes */
+        .track-lanes {
+            position: relative;
+        }
+
+        .track-lane {
+            display: flex;
+            align-items: center;
+            height: 80px;
+            margin: 10px 20px;
+            background: linear-gradient(180deg, #3d3d5c 0%, #2d2d44 50%, #3d3d5c 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* Lane markings */
+        .track-lane::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: repeating-linear-gradient(
+                90deg,
+                white 0px,
+                white 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            opacity: 0.3;
+        }
+        
+        .track-lane.celebrating {
+            animation: laneGlow 5s ease-out;
+        }
+        
+        @keyframes laneGlow {
+            0%, 100% { box-shadow: none; }
+            10% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.2); }
+            30% { box-shadow: 0 0 50px rgba(99, 102, 241, 0.5), inset 0 0 30px rgba(99, 102, 241, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 107, 0.5), inset 0 0 25px rgba(255, 107, 107, 0.2); }
+            70% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), inset 0 0 35px rgba(255, 215, 0, 0.3); }
+            90% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+        }
+
+        /* Start line */
+        .start-zone {
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: repeating-linear-gradient(
+                0deg,
+                white 0px,
+                white 10px,
+                black 10px,
+                black 20px
+            );
+            z-index: 5;
+        }
+
+        /* Finish line */
+        .finish-zone {
+            position: absolute;
+            right: 40px;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: repeating-linear-gradient(
+                0deg,
+                white 0px,
+                white 10px,
+                black 10px,
+                black 20px
+            );
+            z-index: 5;
+        }
+
+        .finish-zone::after {
+            content: '🏁';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+        }
+
+        /* Checkpoint markers */
+        .checkpoints-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 60px;
+            right: 60px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .checkpoint-marker {
+            width: 4px;
+            background: rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        /* Racer */
+        .racer {
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            cursor: default;
+        }
+
+        .racer.just-moved {
+            animation: racerBoost 5s ease-out;
+        }
+
+        @keyframes racerBoost {
+            0% { transform: translateY(-50%) scale(1); }
+            5% { transform: translateY(-50%) scale(1.4) rotate(-8deg); }
+            10% { transform: translateY(-50%) scale(1.2) rotate(5deg); }
+            15% { transform: translateY(-50%) scale(1.3) rotate(-5deg); }
+            20% { transform: translateY(-50%) scale(1.15) rotate(3deg); }
+            30% { transform: translateY(-50%) scale(1.25) rotate(-3deg); }
+            40% { transform: translateY(-50%) scale(1.2) rotate(4deg); }
+            50% { transform: translateY(-50%) scale(1.3) rotate(-4deg); }
+            60% { transform: translateY(-50%) scale(1.25) rotate(3deg); }
+            70% { transform: translateY(-50%) scale(1.35) rotate(-5deg); }
+            80% { transform: translateY(-50%) scale(1.4) rotate(5deg); }
+            90% { transform: translateY(-50%) scale(1.2) rotate(-2deg); }
+            100% { transform: translateY(-50%) scale(1) rotate(0); }
+        }
+        
+        .racer.just-moved .racer-name {
+            animation: namePulse 5s ease-out;
+        }
+        
+        @keyframes namePulse {
+            0%, 100% { background: rgba(0,0,0,0.8); }
+            10%, 30%, 50%, 70%, 90% { background: linear-gradient(135deg, #ffd700, #ff6b6b); color: black; }
+            20%, 40%, 60%, 80% { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        }
+        
+        .racer.just-moved::after {
+            content: '🎉';
+            position: absolute;
+            font-size: 2rem;
+            animation: confettiFloat 5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes confettiFloat {
+            0% { opacity: 0; top: 0; left: 50%; }
+            10% { opacity: 1; top: -20px; }
+            50% { opacity: 1; top: -40px; }
+            100% { opacity: 0; top: -60px; }
+        }
+
+        .racer-emoji {
+            font-size: 3rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+            transition: transform 0.3s ease;
+            transform: scaleX(-1); /* Flip to face forward (right) */
+        }
+        
+        /* Rocket already points forward, don't flip it */
+        .racer-emoji.no-flip {
+            transform: scaleX(1);
+        }
+
+        .racer:hover .racer-emoji {
+            transform: scaleX(-1) scale(1.2);
+        }
+        
+        .racer:hover .racer-emoji.no-flip {
+            transform: scaleX(1) scale(1.2);
+        }
+
+        .racer.winner .racer-emoji {
+            animation: winnerDance 0.5s ease-in-out infinite;
+        }
+        
+        .racer.winner .racer-emoji.no-flip {
+            animation: winnerDanceNoFlip 0.5s ease-in-out infinite;
+        }
+        
+        @keyframes winnerDance {
+            0%, 100% { transform: scaleX(-1) rotate(-10deg) scale(1.1); }
+            50% { transform: scaleX(-1) rotate(10deg) scale(1.2); }
+        }
+        
+        @keyframes winnerDanceNoFlip {
+            0%, 100% { transform: rotate(-10deg) scale(1.1); }
+            50% { transform: rotate(10deg) scale(1.2); }
+        }
+
+        .racer-name {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            border: 2px solid transparent;
+        }
+
+        .racer.first .racer-name {
+            border-color: var(--finish-gold);
+            background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(0,0,0,0.8));
+        }
+
+        .racer.first .racer-name::before {
+            content: '🔥 ';
+        }
+
+        .racer.winner .racer-name {
+            background: linear-gradient(135deg, var(--finish-gold), #ffa500);
+            color: black;
+            font-weight: 700;
+        }
+
+        .racer.winner .racer-name::after {
+            content: ' 🏆';
+        }
+
+        /* Speed lines effect */
+        .speed-lines {
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .racer.just-moved .speed-lines {
+            opacity: 1;
+            animation: speedFade 0.8s ease-out;
+        }
+
+        @keyframes speedFade {
+            0% { opacity: 1; left: -20px; }
+            100% { opacity: 0; left: -60px; }
+        }
+
+        .speed-lines span {
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8));
+            margin: 4px 0;
+            border-radius: 2px;
+        }
+
+        /* Empty state */
+        .empty-track {
+            text-align: center;
+            padding: 4rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .empty-track .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Sound Test Button */
+        .sound-test {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .sound-test:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Crowd */
+        .crowd {
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+        
+        /* Mobile/Tablet support */
+        @media (max-width: 768px) {
+            .race-header {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .race-title {
+                font-size: 1.5rem;
+            }
+            
+            .racetrack-container {
+                padding: 1rem;
+            }
+            
+            .checkpoint-labels {
+                padding: 0 0.5rem;
+            }
+            
+            .checkpoint-label {
+                font-size: 0.6rem;
+            }
+            
+            .cp-icon {
+                font-size: 1rem;
+            }
+            
+            .racer-emoji {
+                font-size: 2rem;
+            }
+            
+            .racer-name {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+            }
+            
+            .race-footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .test-sound-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="race-header">
+        <div class="race-title">
+            <span>🏎️</span>
+            <span>Race to Series A</span>
+        </div>
+        <div class="race-status" id="raceStatus">
+            <span class="status-dot"></span>
+            <span>Waiting to Start</span>
+        </div>
+        <div class="timer" id="timer">00:00:00</div>
+    </header>
+
+    <div class="racetrack-container">
+        <div class="checkpoint-labels">
+            <div class="checkpoint-label">
+                <span class="cp-icon">🏁</span>
+                START
+            </div>
+            <div class="checkpoint-label">
+                <span class="cp-icon">👋</span>
+                Hello World
+            </div>
+            <div class="checkpoint-label">
+                <span class="cp-icon">🧠</span>
+                Brain Alive
+            </div>
+            <div class="checkpoint-label">
+                <span class="cp-icon">📱</span>
+                On Phone
+            </div>
+            <div class="checkpoint-label">
+                <span class="cp-icon">💥</span>
+                Crash Test
+            </div>
+            <div class="checkpoint-label">
+                <span class="cp-icon">🏆</span>
+                FINISH
+            </div>
+        </div>
+
+        <div class="racetrack">
+            <div class="start-zone"></div>
+            <div class="finish-zone"></div>
+            
+            <div class="checkpoints-overlay">
+                <div class="checkpoint-marker" data-step="0"></div>
+                <div class="checkpoint-marker" data-step="1"></div>
+                <div class="checkpoint-marker" data-step="2"></div>
+                <div class="checkpoint-marker" data-step="3"></div>
+                <div class="checkpoint-marker" data-step="4"></div>
+                <div class="checkpoint-marker" data-step="5"></div>
+            </div>
+
+            <div class="track-lanes" id="trackLanes">
+                <!-- Lanes generated by JS -->
+            </div>
+        </div>
+
+        <div class="crowd">
+            👏👏👏👏👏👏👏👏👏👏
+        </div>
+    </div>
+
+    <button class="sound-test" onclick="testSounds()">🔊 Test Sounds</button>
+
+    <!-- Real Sound Effects -->
+    <script>
+        // Sound URLs from free sound libraries
+        const SOUND_URLS = {
+            engine: 'https://www.soundjay.com/transportation/sounds/car-engine-starting-1.mp3',
+            neigh: 'https://www.soundjay.com/animal/sounds/horse-neigh-1.mp3',
+            whoosh: 'https://www.soundjay.com/mechanical/sounds/rocket-launch-1.mp3',
+            screech: 'https://www.soundjay.com/animal/sounds/bird-1.mp3',
+            zap: 'https://www.soundjay.com/misc/sounds/magic-chime-02.mp3',
+            growl: 'https://www.soundjay.com/animal/sounds/lion-roar-and-growl-1.mp3',
+            vroom: 'https://www.soundjay.com/transportation/sounds/motorcycle-start-and-drive-1.mp3',
+            roar: 'https://www.soundjay.com/animal/sounds/lion-roar-and-growl-1.mp3',
+            fire: 'https://www.soundjay.com/nature/sounds/fire-burning-1.mp3',
+            magic: 'https://www.soundjay.com/misc/sounds/magic-chime-01.mp3'
+        };
+
+        // Audio cache
+        const audioCache = {};
+
+        // Create synthesized sounds as fallback
+        let audioCtx = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        // Crowd cheering effect
+        function playCrowdCheer(ctx, startTime, duration) {
+            const bufferSize = ctx.sampleRate * duration;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                const t = i / bufferSize;
+                // Crowd builds up and sustains
+                const envelope = Math.min(1, t * 3) * (1 - Math.pow(t - 0.8, 2) * 2);
+                data[i] = (Math.random() * 2 - 1) * Math.max(0, envelope) * 0.4;
+            }
+            
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 2000;
+            filter.Q.value = 0.5;
+            
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.3, startTime);
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            noise.start(startTime);
+        }
+        
+        // Fanfare/trumpet effect
+        function playFanfare(ctx, startTime) {
+            const notes = [523, 659, 784, 1047]; // C E G C
+            
+            notes.forEach((freq, i) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(freq, startTime + i * 0.15);
+                
+                gain.gain.setValueAtTime(0, startTime + i * 0.15);
+                gain.gain.linearRampToValueAtTime(0.15, startTime + i * 0.15 + 0.05);
+                gain.gain.setValueAtTime(0.15, startTime + i * 0.15 + 0.3);
+                gain.gain.exponentialRampToValueAtTime(0.01, startTime + i * 0.15 + 0.6);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(startTime + i * 0.15);
+                osc.stop(startTime + i * 0.15 + 0.6);
+            });
+        }
+        
+        // Victory jingle
+        function playVictoryJingle(ctx, startTime) {
+            const melody = [
+                { freq: 523, time: 0, dur: 0.15 },
+                { freq: 587, time: 0.15, dur: 0.15 },
+                { freq: 659, time: 0.3, dur: 0.15 },
+                { freq: 784, time: 0.45, dur: 0.3 },
+                { freq: 659, time: 0.8, dur: 0.15 },
+                { freq: 784, time: 0.95, dur: 0.5 },
+                { freq: 1047, time: 1.5, dur: 0.8 }
+            ];
+            
+            melody.forEach(note => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'square';
+                osc.frequency.value = note.freq;
+                
+                gain.gain.setValueAtTime(0, startTime + note.time);
+                gain.gain.linearRampToValueAtTime(0.12, startTime + note.time + 0.02);
+                gain.gain.setValueAtTime(0.12, startTime + note.time + note.dur - 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.01, startTime + note.time + note.dur);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(startTime + note.time);
+                osc.stop(startTime + note.time + note.dur + 0.1);
+            });
+        }
+
+        // Better synthesized sounds - now with celebration!
+        const synthSounds = {
+            engine: () => {
+                const ctx = getAudioContext();
+                const duration = 0.6;
+                
+                // Create multiple oscillators for rich engine sound
+                const osc1 = ctx.createOscillator();
+                const osc2 = ctx.createOscillator();
+                const osc3 = ctx.createOscillator();
+                const gain = ctx.createGain();
+                const filter = ctx.createBiquadFilter();
+                
+                osc1.type = 'sawtooth';
+                osc2.type = 'square';
+                osc3.type = 'sawtooth';
+                
+                osc1.frequency.setValueAtTime(80, ctx.currentTime);
+                osc1.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.15);
+                osc1.frequency.exponentialRampToValueAtTime(150, ctx.currentTime + duration);
+                
+                osc2.frequency.setValueAtTime(40, ctx.currentTime);
+                osc2.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.15);
+                
+                osc3.frequency.setValueAtTime(160, ctx.currentTime);
+                osc3.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.1);
+                
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(500, ctx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(2000, ctx.currentTime + 0.1);
+                filter.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + duration);
+                
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                osc1.connect(filter);
+                osc2.connect(filter);
+                osc3.connect(filter);
+                filter.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc1.start();
+                osc2.start();
+                osc3.start();
+                osc1.stop(ctx.currentTime + duration);
+                osc2.stop(ctx.currentTime + duration);
+                osc3.stop(ctx.currentTime + duration);
+            },
+            
+            neigh: () => {
+                const ctx = getAudioContext();
+                const duration = 0.8;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                const vibrato = ctx.createOscillator();
+                const vibratoGain = ctx.createGain();
+                
+                vibrato.frequency.value = 30;
+                vibratoGain.gain.value = 100;
+                vibrato.connect(vibratoGain);
+                vibratoGain.connect(osc.frequency);
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(300, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.15);
+                osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.4);
+                osc.frequency.exponentialRampToValueAtTime(500, ctx.currentTime + 0.6);
+                osc.frequency.exponentialRampToValueAtTime(250, ctx.currentTime + duration);
+                
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.3, ctx.currentTime + 0.3);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc.start();
+                vibrato.start();
+                osc.stop(ctx.currentTime + duration);
+                vibrato.stop(ctx.currentTime + duration);
+            },
+            
+            whoosh: () => {
+                const ctx = getAudioContext();
+                const duration = 0.7;
+                
+                // Noise-based whoosh
+                const bufferSize = ctx.sampleRate * duration;
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                for (let i = 0; i < bufferSize; i++) {
+                    const t = i / bufferSize;
+                    data[i] = (Math.random() * 2 - 1) * Math.sin(t * Math.PI) * (1 - t * 0.5);
+                }
+                
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+                
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(500, ctx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(3000, ctx.currentTime + 0.2);
+                filter.frequency.exponentialRampToValueAtTime(1500, ctx.currentTime + duration);
+                filter.Q.value = 2;
+                
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(ctx.destination);
+                noise.start();
+            },
+            
+            screech: () => {
+                const ctx = getAudioContext();
+                const duration = 0.5;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(2000, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(3500, ctx.currentTime + 0.1);
+                osc.frequency.exponentialRampToValueAtTime(1500, ctx.currentTime + 0.25);
+                osc.frequency.exponentialRampToValueAtTime(2500, ctx.currentTime + 0.35);
+                osc.frequency.exponentialRampToValueAtTime(1000, ctx.currentTime + duration);
+                
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.25, ctx.currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            },
+            
+            zap: () => {
+                const ctx = getAudioContext();
+                const duration = 0.25;
+                
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(2000, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + duration);
+                
+                gain.gain.setValueAtTime(0.4, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            },
+            
+            growl: () => {
+                const ctx = getAudioContext();
+                const duration = 0.6;
+                
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                const lfo = ctx.createOscillator();
+                const lfoGain = ctx.createGain();
+                
+                lfo.frequency.value = 20;
+                lfoGain.gain.value = 30;
+                lfo.connect(lfoGain);
+                lfoGain.connect(osc.frequency);
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(150, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.3);
+                osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + duration);
+                
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.35, ctx.currentTime + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                lfo.start();
+                osc.stop(ctx.currentTime + duration);
+                lfo.stop(ctx.currentTime + duration);
+            },
+            
+            vroom: () => {
+                const ctx = getAudioContext();
+                const duration = 0.5;
+                
+                const osc1 = ctx.createOscillator();
+                const osc2 = ctx.createOscillator();
+                const gain = ctx.createGain();
+                const distortion = ctx.createWaveShaper();
+                
+                // Create distortion curve
+                const curve = new Float32Array(256);
+                for (let i = 0; i < 256; i++) {
+                    const x = (i / 128) - 1;
+                    curve[i] = Math.tanh(x * 2);
+                }
+                distortion.curve = curve;
+                
+                osc1.type = 'sawtooth';
+                osc2.type = 'square';
+                
+                osc1.frequency.setValueAtTime(100, ctx.currentTime);
+                osc1.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.15);
+                osc1.frequency.exponentialRampToValueAtTime(250, ctx.currentTime + duration);
+                
+                osc2.frequency.setValueAtTime(50, ctx.currentTime);
+                osc2.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.15);
+                
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                osc1.connect(distortion);
+                osc2.connect(distortion);
+                distortion.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc1.start();
+                osc2.start();
+                osc1.stop(ctx.currentTime + duration);
+                osc2.stop(ctx.currentTime + duration);
+            },
+            
+            roar: () => {
+                const ctx = getAudioContext();
+                const duration = 0.8;
+                
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                const filter = ctx.createBiquadFilter();
+                const lfo = ctx.createOscillator();
+                const lfoGain = ctx.createGain();
+                
+                lfo.frequency.value = 15;
+                lfoGain.gain.value = 50;
+                lfo.connect(lfoGain);
+                lfoGain.connect(osc.frequency);
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(200, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.3);
+                osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + duration);
+                
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(1000, ctx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + duration);
+                
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.35, ctx.currentTime + 0.4);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                osc.connect(filter);
+                filter.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                lfo.start();
+                osc.stop(ctx.currentTime + duration);
+                lfo.stop(ctx.currentTime + duration);
+            },
+            
+            fire: () => {
+                const ctx = getAudioContext();
+                const duration = 0.6;
+                
+                const bufferSize = ctx.sampleRate * duration;
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                for (let i = 0; i < bufferSize; i++) {
+                    const t = i / bufferSize;
+                    data[i] = (Math.random() * 2 - 1) * Math.pow(Math.sin(t * Math.PI), 0.5);
+                }
+                
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+                
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(800, ctx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(2000, ctx.currentTime + 0.1);
+                filter.frequency.exponentialRampToValueAtTime(500, ctx.currentTime + duration);
+                filter.Q.value = 3;
+                
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.5, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(ctx.destination);
+                noise.start();
+            },
+            
+            magic: () => {
+                const ctx = getAudioContext();
+                const duration = 0.6;
+                
+                // Create shimmering magic sound with multiple oscillators
+                const frequencies = [523, 659, 784, 1047]; // C, E, G, C (octave)
+                const oscs = [];
+                const gain = ctx.createGain();
+                
+                frequencies.forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(freq * 1.5, ctx.currentTime + duration);
+                    osc.connect(gain);
+                    osc.start(ctx.currentTime + i * 0.05);
+                    osc.stop(ctx.currentTime + duration);
+                    oscs.push(osc);
+                });
+                
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+                gain.connect(ctx.destination);
+            }
+        };
+
+        function playTeamSound(soundType) {
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+                
+                // Phase 1: Character sound (0-1s) - plays twice with build
+                if (synthSounds[soundType]) {
+                    synthSounds[soundType]();
+                    setTimeout(() => synthSounds[soundType](), 400);
+                }
+                
+                // Phase 2: Fanfare (0.8s)
+                setTimeout(() => playFanfare(ctx, ctx.currentTime), 800);
+                
+                // Phase 3: Victory jingle (1.5s)
+                setTimeout(() => playVictoryJingle(ctx, ctx.currentTime), 1500);
+                
+                // Phase 4: Crowd cheering throughout (0-5s)
+                playCrowdCheer(ctx, now, 5);
+                
+                // Phase 5: Final character sound as climax (4s)
+                setTimeout(() => {
+                    if (synthSounds[soundType]) {
+                        synthSounds[soundType]();
+                    }
+                }, 3800);
+                
+                // Bonus: Shimmer at the end
+                setTimeout(() => synthSounds.magic(), 4200);
+                
+            } catch (e) {
+                console.warn('Sound error:', e);
+            }
+        }
+
+        function testSounds() {
+            const sounds = Object.keys(synthSounds);
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i >= sounds.length) {
+                    clearInterval(interval);
+                    return;
+                }
+                console.log('Playing:', sounds[i]);
+                synthSounds[sounds[i]]();
+                i++;
+            }, 800);
+        }
+    </script>
+
+    <script src="race-game.js"></script>
+    <script>
+        // Leaderboard functionality
+        let previousPositions = {};
+        let firstMovers = {};
+        let raceStartTime = null;
+        let timerInterval = null;
+
+        function updateTimer() {
+            if (!raceStartTime) return;
+            
+            const elapsed = Math.floor((Date.now() - raceStartTime) / 1000);
+            const hours = Math.floor(elapsed / 3600);
+            const mins = Math.floor((elapsed % 3600) / 60);
+            const secs = elapsed % 60;
+            
+            document.getElementById('timer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function getPositionPercent(step) {
+            // Calculate position on track (0 = start, 5 = finish)
+            const trackWidth = 100;
+            const startOffset = 8; // % from left edge
+            const endOffset = 8; // % from right edge
+            const usableTrack = trackWidth - startOffset - endOffset;
+            
+            return startOffset + (step / 5) * usableTrack;
+        }
+
+        function renderRacetrack() {
+            const teams = RaceGame.getTeams();
+            const gameState = RaceGame.getGameState();
+            const trackLanes = document.getElementById('trackLanes');
+            
+            // Update race status
+            const statusEl = document.getElementById('raceStatus');
+            if (gameState.isRaceActive) {
+                statusEl.innerHTML = '<span class="status-dot"></span><span>Race In Progress!</span>';
+                statusEl.classList.add('active');
+                
+                if (!raceStartTime) {
+                    raceStartTime = gameState.raceStartTime || Date.now();
+                    timerInterval = setInterval(updateTimer, 1000);
+                }
+            } else {
+                statusEl.innerHTML = '<span class="status-dot"></span><span>Waiting to Start</span>';
+                statusEl.classList.remove('active');
+                
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                raceStartTime = null;
+                document.getElementById('timer').textContent = '00:00:00';
+            }
+
+            if (teams.length === 0) {
+                trackLanes.innerHTML = `
+                    <div class="empty-track">
+                        <div class="empty-icon">🏎️</div>
+                        <p>No teams registered yet. Add teams in the Admin panel!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Track first movers
+            teams.forEach(team => {
+                if (team.currentStep > 0 && !firstMovers[team.currentStep]) {
+                    firstMovers[team.currentStep] = team.id;
+                }
+            });
+
+            // Render lanes
+            trackLanes.innerHTML = teams.map(team => {
+                const emojiData = RaceGame.getTeamEmoji(team);
+                const position = getPositionPercent(team.currentStep);
+                const prevStep = previousPositions[team.id];
+                const justMoved = prevStep !== undefined && prevStep !== team.currentStep;
+                const isFirst = firstMovers[team.currentStep] === team.id && team.currentStep > 0;
+                const isWinner = team.currentStep >= 5;
+                
+                // Play sound if moved forward
+                if (justMoved && team.currentStep > prevStep) {
+                    setTimeout(() => playTeamSound(emojiData.sound), 100);
+                }
+                
+                previousPositions[team.id] = team.currentStep;
+                
+                // Rocket and lightning already point forward, don't flip them
+                const noFlip = ['🚀', '⚡'].includes(emojiData.emoji);
+                
+                return `
+                    <div class="track-lane ${justMoved ? 'celebrating' : ''}">
+                        <div class="racer ${justMoved ? 'just-moved' : ''} ${isFirst ? 'first' : ''} ${isWinner ? 'winner' : ''}" 
+                             style="left: ${position}%">
+                            <div class="speed-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="racer-emoji ${noFlip ? 'no-flip' : ''}">${emojiData.emoji}</span>
+                            <span class="racer-name">${team.name}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Listen for updates from other tabs (same browser)
+        RaceGame.onUpdate(() => {
+            renderRacetrack();
+        });
+
+        // Initial render
+        setTimeout(renderRacetrack, 200);
+        
+        // Keep timer running
+        setInterval(updateTimer, 1000);
+        
+        // Store last known data hash to detect changes
+        let lastDataHash = '';
+        
+        // Poll Firebase every 2 seconds for cross-device sync
+        async function pollFirebase() {
+            try {
+                const response = await fetch('https://series-a-game-default-rtdb.europe-west1.firebasedatabase.app/race.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    const newHash = JSON.stringify(data);
+                    
+                    // Only update if data changed
+                    if (newHash !== lastDataHash) {
+                        lastDataHash = newHash;
+                        
+                        if (data) {
+                            // Update the local data cache
+                            const teams = data.teams ? Object.values(data.teams) : [];
+                            const gameState = data.gameState || { isRaceActive: false, raceStartTime: null };
+                            
+                            // Inject into RaceGame's local cache (bit hacky but works)
+                            if (window.RaceGame && window.RaceGame._updateLocalData) {
+                                window.RaceGame._updateLocalData(teams, gameState);
+                            }
+                            
+                            // Re-render with new data
+                            renderRacetrack();
+                            console.log('🔄 Leaderboard synced from Firebase');
+                        }
+                    }
+                }
+            } catch (e) {
+                console.warn('Polling error:', e);
+            }
+        }
+        
+        // Start polling every 2 seconds
+        setInterval(pollFirebase, 2000);
+        
+        // Also poll immediately on focus (when switching back to tab)
+        window.addEventListener('focus', pollFirebase);
+        
+        console.log('🏎️ Leaderboard polling active - updates every 2 seconds');
+    </script>
+</body>
+</html>

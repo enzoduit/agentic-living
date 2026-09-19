@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 10-Year Illusion | Quote Guessing Game</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Code+Pro:wght@400;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="quote-styles.css">
+</head>
+<body>
+    <div class="grain-overlay"></div>
+    
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="back-link">← Back to Workshop</a>
+        </div>
+        <div class="nav-brand">
+            <span class="brand-icon">◆</span>
+            <span class="brand-text">AGENTIC LIVING</span>
+        </div>
+        <div class="nav-right">
+            <span class="nav-label">Interactive Exercise</span>
+        </div>
+    </nav>
+
+    <!-- Intro Screen -->
+    <section class="intro-screen active" id="intro">
+        <div class="intro-content">
+            <div class="intro-badge">QUOTE GUESSING GAME</div>
+            <h1 class="intro-title">
+                The 10-Year<br>
+                <span class="title-accent">Illusion</span>
+            </h1>
+            <button class="start-btn" onclick="startGame()">
+                <span>Begin the Exercise</span>
+                <span class="btn-arrow">→</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Quote 1: Etzler -->
+    <section class="quote-screen" id="quote1">
+        <div class="quote-container">
+            <div class="quote-phase phase-question active" data-phase="question">
+                <div class="phase-label">READ THIS QUOTE</div>
+                <blockquote class="mystery-quote">
+                    <span class="quote-mark">"</span>
+                    <p>I promise to show the means of creating a paradise within ten years, where everything desirable for human life may be had by every man... without labor or toil.</p>
+                    <p class="quote-addition">We will just supervise the machines.</p>
+                </blockquote>
+                <div class="guess-prompt">
+                    <p class="prompt-text">Who said this?</p>
+                    <div class="guess-options">
+                        <button class="guess-btn" onclick="revealQuote(1)">Sam Altman<br><span class="guess-sub">OpenAI, 2024</span></button>
+                        <button class="guess-btn" onclick="revealQuote(1)">Elon Musk<br><span class="guess-sub">AI Summit, 2023</span></button>
+                        <button class="guess-btn correct" onclick="revealQuote(1)">Someone Else<br><span class="guess-sub">???</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-phase phase-reveal" data-phase="reveal">
+                <div class="reveal-dramatic">
+                    <div class="reveal-year">1833</div>
+                    <div class="reveal-ago">192 years ago</div>
+                </div>
+                
+                <div class="reveal-person">
+                    <div class="person-image">JE</div>
+                    <div class="person-info">
+                        <h2>John Adolphus Etzler</h2>
+                        <p>German-American Engineer & Futurist</p>
+                    </div>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="col-header past">The Promise (1833)</div>
+                        <div class="col-header present">The Promise (Today)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col-cell past">
+                            <div class="cell-person">
+                                <span class="person-avatar">JE</span>
+                                <div>
+                                    <strong>John Adolphus Etzler</strong>
+                                    <span>Engineer & Futurist</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-cell present">
+                            <div class="cell-person">
+                                <span class="person-avatar modern">SA</span>
+                                <div>
+                                    <strong>Sam Altman / Elon Musk</strong>
+                                    <span>OpenAI / Tesla</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-row quotes-row">
+                        <div class="col-cell past">
+                            <p class="cell-quote">"I promise to show the means of creating a paradise within ten years, where everything desirable for human life may be had by every man... without labor or toil."</p>
+                        </div>
+                        <div class="col-cell present">
+                            <p class="cell-quote">"There will come a point where no job is needed... the AI will be able to do everything."</p>
+                            <p class="cell-quote secondary">"AI will do all productive work."</p>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col-cell past">
+                            <div class="cell-label">THE TECH</div>
+                            <p>"Infinite Powers of Nature" (Wind, Tide, Solar Mirrors)</p>
+                        </div>
+                        <div class="col-cell present">
+                            <div class="cell-label">THE TECH</div>
+                            <p>"AGI" (Artificial General Intelligence)</p>
+                        </div>
+                    </div>
+                    <div class="comparison-row result-row">
+                        <div class="col-cell past result">
+                            <div class="cell-label">THE RESULT</div>
+                            <p>1843 came and went. We worked <strong>more</strong> hours in factories, not less.</p>
+                        </div>
+                        <div class="col-cell present question">
+                            <div class="cell-label">THE QUESTION</div>
+                            <p>Are we different? Or is this just the 1833 cycle repeating?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-box">
+                    <div class="lesson-icon">💡</div>
+                    <p class="lesson-text">"We always mistake the <strong>capability</strong> of technology for the <strong>speed</strong> of social adoption. Tech moves fast; society moves slow."</p>
+                </div>
+
+                <button class="next-btn" onclick="nextQuote(2)">
+                    <span>Next Quote</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote 2: Arthur C. Clarke -->
+    <section class="quote-screen" id="quote2">
+        <div class="quote-container">
+            <div class="quote-phase phase-question active" data-phase="question">
+                <div class="phase-label">ANOTHER PREDICTION</div>
+                <blockquote class="mystery-quote">
+                    <span class="quote-mark">"</span>
+                    <p>The goal of the future is full unemployment, so we can play. That is why we have to destroy the present politico-economic system.</p>
+                </blockquote>
+                <div class="guess-prompt">
+                    <p class="prompt-text">Revolutionary tech bro from Silicon Valley?</p>
+                    <div class="guess-options">
+                        <button class="guess-btn" onclick="revealQuote(2)">Elon Musk<br><span class="guess-sub">AI Summit, 2023</span></button>
+                        <button class="guess-btn" onclick="revealQuote(2)">Marc Andreessen<br><span class="guess-sub">Techno-Optimist, 2024</span></button>
+                        <button class="guess-btn correct" onclick="revealQuote(2)">Someone Older<br><span class="guess-sub">???</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-phase phase-reveal" data-phase="reveal">
+                <div class="reveal-dramatic">
+                    <div class="reveal-year">1969</div>
+                    <div class="reveal-ago">56 years ago</div>
+                </div>
+                
+                <div class="reveal-person">
+                    <div class="person-image">AC</div>
+                    <div class="person-info">
+                        <h2>Arthur C. Clarke</h2>
+                        <p>Sci-Fi Legend & Futurist</p>
+                    </div>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="col-header past">The Promise (1969)</div>
+                        <div class="col-header present">The Promise (Today)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col-cell past">
+                            <div class="cell-person">
+                                <span class="person-avatar">AC</span>
+                                <div>
+                                    <strong>Arthur C. Clarke</strong>
+                                    <span>Sci-Fi Legend & Futurist</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-cell present">
+                            <div class="cell-person">
+                                <span class="person-avatar modern">EM</span>
+                                <div>
+                                    <strong>Elon Musk</strong>
+                                    <span>CEO of Tesla / xAI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-row quotes-row">
+                        <div class="col-cell past">
+                            <p class="cell-quote">"The goal of the future is full unemployment, so we can play. That is why we have to destroy the present politico-economic system."</p>
+                        </div>
+                        <div class="col-cell present">
+                            <p class="cell-quote">"There will come a point where no job is needed... if you want to do a job for personal satisfaction like a hobby you can, but the AI will be able to do everything."</p>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col-cell past">
+                            <div class="cell-label">THE CONTEXT</div>
+                            <p>Said during the rise of mainframes. He believed computers would liberate us entirely by the year 2000.</p>
+                        </div>
+                        <div class="col-cell present">
+                            <div class="cell-label">THE CONTEXT</div>
+                            <p>Said at the AI Safety Summit 2023. He believes AI Robots (Optimus) will create abundance.</p>
+                        </div>
+                    </div>
+                    <div class="comparison-row result-row">
+                        <div class="col-cell past result">
+                            <div class="cell-label">THE REALITY</div>
+                            <p>We invented the <strong>"Gig Economy"</strong> and <strong>24/7 email availability</strong> instead.</p>
+                        </div>
+                        <div class="col-cell present question">
+                            <div class="cell-label">THE QUESTION</div>
+                            <p>Why did the last "End of Work" prediction fail?</p>
+                            <p class="answer-hint">(Answer: Human desire for status/growth is infinite)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="next-btn" onclick="nextQuote(3)">
+                    <span>Next Quote</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote 3: Nixon vs Gates -->
+    <section class="quote-screen" id="quote3">
+        <div class="quote-container">
+            <div class="quote-phase phase-question active" data-phase="question">
+                <div class="phase-label">THE 4-DAY WEEK</div>
+                <blockquote class="mystery-quote">
+                    <span class="quote-mark">"</span>
+                    <p>We foresee a four-day work week and a fuller life for every American... in the not too distant future.</p>
+                </blockquote>
+                <div class="guess-prompt">
+                    <p class="prompt-text">A modern work-life balance advocate?</p>
+                    <div class="guess-options">
+                        <button class="guess-btn" onclick="revealQuote(3)">Bill Gates<br><span class="guess-sub">Microsoft, 2024</span></button>
+                        <button class="guess-btn" onclick="revealQuote(3)">Tim Ferriss<br><span class="guess-sub">4-Hour Workweek</span></button>
+                        <button class="guess-btn correct" onclick="revealQuote(3)">A Politician<br><span class="guess-sub">???</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-phase phase-reveal" data-phase="reveal">
+                <div class="reveal-dramatic">
+                    <div class="reveal-year">1956</div>
+                    <div class="reveal-ago">69 years ago</div>
+                </div>
+                
+                <div class="reveal-person">
+                    <div class="person-image">RN</div>
+                    <div class="person-info">
+                        <h2>Richard Nixon</h2>
+                        <p>US Vice President (later President)</p>
+                    </div>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="col-header past">The Promise (1956)</div>
+                        <div class="col-header present">The Promise (Today)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col-cell past">
+                            <div class="cell-person">
+                                <span class="person-avatar">RN</span>
+                                <div>
+                                    <strong>Richard Nixon</strong>
+                                    <span>US Vice President</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-cell present">
+                            <div class="cell-person">
+                                <span class="person-avatar modern">BG</span>
+                                <div>
+                                    <strong>Bill Gates</strong>
+                                    <span>Founder of Microsoft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-row quotes-row">
+                        <div class="col-cell past">
+                            <p class="cell-quote">"We foresee a four-day work week and a fuller life for every American... in the not too distant future."</p>
+                        </div>
+                        <div class="col-cell present">
+                            <p class="cell-quote">"Machines that can make food and stuff... [mean] we don't have to work as hard... a 3-day work week is likely."</p>
+                        </div>
+                    </div>
+                    <div class="comparison-row result-row">
+                        <div class="col-cell past result">
+                            <div class="cell-label">THE RESULT</div>
+                            <p>It's been <strong>69 years</strong>. The 5-day week is still the global standard.</p>
+                        </div>
+                        <div class="col-cell present question">
+                            <div class="cell-label">THE BIG QUESTION</div>
+                            <p>Why does technology <strong>never</strong> actually reduce working hours?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="next-btn" onclick="showConclusion()">
+                    <span>See the Lesson</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="quote-screen conclusion-screen" id="conclusion">
+        <div class="conclusion-container">
+            <div class="conclusion-header">
+                <div class="conclusion-icon">⏳</div>
+                <h1>The Pattern Repeats</h1>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1833</div>
+                    <div class="timeline-content">
+                        <strong>John Etzler</strong> promises paradise in 10 years via wind & solar machines
+                    </div>
+                    <div class="timeline-result fail">Result: Industrial Revolution → More work</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1956</div>
+                    <div class="timeline-content">
+                        <strong>Richard Nixon</strong> promises 4-day work week "soon"
+                    </div>
+                    <div class="timeline-result fail">Result: 69 years later → Still 5 days</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1969</div>
+                    <div class="timeline-content">
+                        <strong>Arthur C. Clarke</strong> promises full unemployment by 2000
+                    </div>
+                    <div class="timeline-result fail">Result: Gig economy & 24/7 emails</div>
+                </div>
+                <div class="timeline-item current">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <strong>Altman, Musk, Gates</strong> promise AI will do all work
+                    </div>
+                    <div class="timeline-result question">Result: ???</div>
+                </div>
+            </div>
+
+            <div class="final-lesson">
+                <blockquote>
+                    <p>"We always mistake the <strong>capability</strong> of technology for the <strong>speed</strong> of social adoption."</p>
+                </blockquote>
+                <p class="lesson-subtitle">Tech moves fast. Society moves slow.</p>
+            </div>
+
+            <div class="conclusion-actions">
+                <button class="restart-btn" onclick="restartGame()">
+                    <span>Play Again</span>
+                </button>
+                <a href="index.html" class="home-btn">
+                    <span>Back to Workshop</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="quote-game.js"></script>
+</body>
+</html>
+

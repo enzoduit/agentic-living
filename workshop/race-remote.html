@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Race to Series A | Team Remote</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="race-styles.css">
+</head>
+<body class="remote-page">
+    <div class="grain-overlay"></div>
+    
+    <!-- Team Selection Screen -->
+    <div class="remote-screen" id="selectScreen">
+        <div class="remote-header">
+            <span class="remote-icon">🚀</span>
+            <h1>Race to Series A</h1>
+        </div>
+        <div class="select-container">
+            <h2>Select Your Team</h2>
+            <select id="teamSelect" class="team-select">
+                <option value="">-- Choose Team --</option>
+            </select>
+            <button id="joinBtn" class="btn-join" disabled>Join Race</button>
+        </div>
+    </div>
+
+    <!-- Waiting Screen -->
+    <div class="remote-screen hidden" id="waitingScreen">
+        <div class="waiting-content">
+            <div class="waiting-animation">
+                <span class="waiting-dot"></span>
+                <span class="waiting-dot"></span>
+                <span class="waiting-dot"></span>
+            </div>
+            <h2>Waiting for Professor</h2>
+            <p>The race hasn't started yet...</p>
+            <p class="team-label">Your Team: <strong id="waitingTeamName"></strong></p>
+        </div>
+    </div>
+
+    <!-- Active Race Screen -->
+    <div class="remote-screen hidden" id="activeScreen">
+        <div class="active-header">
+            <div class="team-badge-full">
+                <span class="badge-emoji" id="activeTeamEmoji">🏎️</span>
+                <span class="badge-name" id="activeTeamName"></span>
+            </div>
+            <div class="progress-mini">
+                <span id="progressText">Step 0/5</span>
+            </div>
+        </div>
+        
+        <div class="objective-card">
+            <span class="objective-label">CURRENT OBJECTIVE</span>
+            <div class="objective-step" id="currentStepNum">1</div>
+            <h2 class="objective-title" id="currentObjective">Hello World</h2>
+            <p class="objective-desc" id="currentDesc">Establish your connection logic</p>
+        </div>
+
+        <div class="progress-track">
+            <div class="track-fill" id="trackFill"></div>
+            <div class="track-markers">
+                <span class="marker" data-step="1">1</span>
+                <span class="marker" data-step="2">2</span>
+                <span class="marker" data-step="3">3</span>
+                <span class="marker" data-step="4">4</span>
+                <span class="marker" data-step="5">5</span>
+            </div>
+        </div>
+
+        <button class="btn-complete" id="completeBtn">
+            <span class="btn-text">Mark Complete</span>
+            <span class="btn-rocket">🚀</span>
+        </button>
+
+        <p class="next-hint" id="nextHint">Next: The Brain is Alive</p>
+    </div>
+
+    <!-- Celebration Screen -->
+    <div class="remote-screen hidden" id="celebrateScreen">
+        <div class="celebrate-content">
+            <div class="confetti-container" id="confetti"></div>
+            <div class="celebrate-check">✓</div>
+            <h2>Checkpoint Complete!</h2>
+            <p id="celebrateMsg">Moving to next objective...</p>
+        </div>
+    </div>
+
+    <!-- Finished Screen -->
+    <div class="remote-screen hidden" id="finishedScreen">
+        <div class="finished-content">
+            <div class="unicorn-animation">🦄</div>
+            <h1>UNICORN STATUS</h1>
+            <h2>ACHIEVED!</h2>
+            <p class="finished-team" id="finishedTeamName">Team Alpha</p>
+            <div class="trophy-row">
+                <span>🏆</span>
+                <span>🎉</span>
+                <span>🏆</span>
+            </div>
+            <p class="finished-msg">You've completed all checkpoints!</p>
+        </div>
+    </div>
+
+    <script src="race-game.js"></script>
+    <script>
+        // Remote-specific functionality
+        let selectedTeamId = null;
+        
+        const selectScreen = document.getElementById('selectScreen');
+        const waitingScreen = document.getElementById('waitingScreen');
+        const activeScreen = document.getElementById('activeScreen');
+        const celebrateScreen = document.getElementById('celebrateScreen');
+        const finishedScreen = document.getElementById('finishedScreen');
+        
+        const teamSelect = document.getElementById('teamSelect');
+        const joinBtn = document.getElementById('joinBtn');
+        const completeBtn = document.getElementById('completeBtn');
+
+        const STEP_DESCRIPTIONS = [
+            { title: 'Start', desc: 'Get ready to begin' },
+            { title: 'Hello World', desc: 'Establish your connection logic' },
+            { title: 'Brain is Alive', desc: 'AI decision engine working' },
+            { title: 'On the Phone', desc: 'Mobile interface ready' },
+            { title: 'Crash Test', desc: 'Pass peer review' },
+            { title: 'Turing Test', desc: 'Professor verification' }
+        ];
+
+        function showScreen(screen) {
+            [selectScreen, waitingScreen, activeScreen, celebrateScreen, finishedScreen].forEach(s => {
+                s.classList.add('hidden');
+            });
+            screen.classList.remove('hidden');
+        }
+
+        function populateTeamSelect() {
+            const teams = RaceGame.getTeams();
+            teamSelect.innerHTML = '<option value="">-- Choose Team --</option>' +
+                teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+        }
+
+        function updateRemoteState() {
+            if (!selectedTeamId) return;
+            
+            const teams = RaceGame.getTeams();
+            const team = teams.find(t => t.id === selectedTeamId);
+            const gameState = RaceGame.getGameState();
+            
+            if (!team) {
+                // Team was deleted
+                selectedTeamId = null;
+                showScreen(selectScreen);
+                populateTeamSelect();
+                return;
+            }
+
+            const emojiData = RaceGame.getTeamEmoji(team);
+            document.getElementById('waitingTeamName').textContent = team.name;
+            document.getElementById('activeTeamName').textContent = team.name;
+            document.getElementById('activeTeamEmoji').textContent = emojiData.emoji;
+            document.getElementById('finishedTeamName').textContent = team.name;
+            
+            if (!gameState.isRaceActive) {
+                showScreen(waitingScreen);
+                return;
+            }
+            
+            if (team.currentStep >= 5) {
+                showScreen(finishedScreen);
+                return;
+            }
+            
+            // Update active screen
+            const nextStep = team.currentStep + 1;
+            const stepInfo = STEP_DESCRIPTIONS[nextStep] || STEP_DESCRIPTIONS[5];
+            
+            document.getElementById('currentStepNum').textContent = nextStep;
+            document.getElementById('currentObjective').textContent = stepInfo.title;
+            document.getElementById('currentDesc').textContent = stepInfo.desc;
+            document.getElementById('progressText').textContent = `Step ${team.currentStep}/5`;
+            
+            // Update progress track
+            document.getElementById('trackFill').style.width = `${(team.currentStep / 5) * 100}%`;
+            document.querySelectorAll('.marker').forEach(m => {
+                const step = parseInt(m.dataset.step);
+                m.classList.toggle('completed', step <= team.currentStep);
+                m.classList.toggle('current', step === nextStep);
+            });
+            
+            // Next hint
+            if (nextStep < 5) {
+                const nextInfo = STEP_DESCRIPTIONS[nextStep + 1];
+                document.getElementById('nextHint').textContent = `Next: ${nextInfo.title}`;
+                document.getElementById('nextHint').style.display = 'block';
+            } else {
+                document.getElementById('nextHint').style.display = 'none';
+            }
+            
+            showScreen(activeScreen);
+        }
+
+        function celebrate(callback) {
+            showScreen(celebrateScreen);
+            createConfetti();
+            
+            setTimeout(() => {
+                callback();
+            }, 1500);
+        }
+
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            container.innerHTML = '';
+            const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.animationDuration = (Math.random() * 1 + 1) + 's';
+                container.appendChild(confetti);
+            }
+        }
+
+        teamSelect.addEventListener('change', () => {
+            joinBtn.disabled = !teamSelect.value;
+        });
+
+        joinBtn.addEventListener('click', () => {
+            selectedTeamId = teamSelect.value;
+            if (selectedTeamId) {
+                updateRemoteState();
+            }
+        });
+
+        completeBtn.addEventListener('click', () => {
+            if (!selectedTeamId) return;
+            
+            const teams = RaceGame.getTeams();
+            const team = teams.find(t => t.id === selectedTeamId);
+            
+            if (team && team.currentStep < 5) {
+                completeBtn.disabled = true;
+                
+                celebrate(() => {
+                    RaceGame.updateTeamStep(selectedTeamId, team.currentStep + 1);
+                    completeBtn.disabled = false;
+                    updateRemoteState();
+                });
+            }
+        });
+
+        // Listen for updates
+        RaceGame.onUpdate(() => {
+            populateTeamSelect();
+            if (selectedTeamId) {
+                updateRemoteState();
+            }
+        });
+
+        // Initial setup
+        populateTeamSelect();
+        
+        // Poll Firebase every 2 seconds for sync
+        setInterval(async () => {
+            try {
+                const response = await fetch('https://series-a-game-default-rtdb.europe-west1.firebasedatabase.app/race.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && window.RaceGame._updateLocalData) {
+                        const teams = data.teams ? Object.values(data.teams) : [];
+                        const gameState = data.gameState || { isRaceActive: false, raceStartTime: null };
+                        window.RaceGame._updateLocalData(teams, gameState);
+                        populateTeamSelect();
+                        if (selectedTeamId) {
+                            updateRemoteState();
+                        }
+                    }
+                }
+            } catch (e) {}
+        }, 2000);
+    </script>
+</body>
+</html>
+
