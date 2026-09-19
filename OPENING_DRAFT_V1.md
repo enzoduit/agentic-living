@@ -34,6 +34,8 @@ What I did not know — what I could not have named in that moment — was that 
 
 Let me explain what I mean by that. Because this is the frame through which everything else in this book should be read.
 
+A chatbot responds when you speak to it. An agent runs while you sleep.
+
 There are two levels of relationship with AI and agents. Most people are at Level 0. Almost nobody talks about this distinction. But it is the most important thing I know about the moment we are living through.
 
 **Level 0** is where you don't yet know — really know — what AI and agents can do. You may have seen demos. You may use ChatGPT. You may think you understand it reasonably well. But you have not yet felt in your body what it means for a system to build something complex, autonomously, from a single instruction — while you are doing something else entirely. You haven't watched it fail, correct itself, and produce a result that you would not have reached faster alone. Until you have experienced that, you cannot fully believe it. And because you can't fully believe it, you can't actually participate in what is being built around you. You are watching the game from outside the stadium.
